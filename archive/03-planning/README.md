@@ -129,29 +129,4 @@ Còn một câu đáng hỏi cuối buổi, không nhét vào prompt vì tuỳ n
 
 File tổng hợp của vòng này để cạnh file vòng 1 (đi bằng Claude Code thì nó tự lưu thành `docs/03-planning.md` và `docs/03-stack.md`). Bước 5 sẽ mở đúng file stack ra để biết phải cài gì.
 
-## Prompt này từng hụt chỗ nào
-
-### Vòng 1 – 5 chỗ, tìm ra lúc chạy thật với TapTip
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| 1 | Trả lời "để bên thứ ba lo" được chấp nhận cả khi câu hỏi là "app xử lý lỗi ra sao" – né tránh trách nhiệm thay vì trả lời đúng phạm vi | Chỉ chấp nhận đẩy qua bên thứ ba nếu câu hỏi gốc là về độ an toàn của bên đó |
-| 2 | Trả lời đúng 1 câu trong nhóm 4-5 câu rồi dừng, coi cả nhóm đã xong | Bắt liệt kê lại câu chưa trả lời trước khi qua nhóm tiếp – im lặng không phải là pass |
-| 3 | Hai quyết định riêng lẻ hợp lý cộng lại thành rủi ro lớn hơn, không ai chỉ ra | Bắt chỉ rõ tổ hợp rủi ro cuối mỗi nhóm, không chỉ đánh giá từng quyết định độc lập |
-| 4 | AI có xu hướng thuyết phục đổi ý khi user nói "chấp nhận rủi ro, không care" | Ghi rõ đây là câu trả lời hợp lệ và đủ – việc của AI là đảm bảo user *thấy* rủi ro, không phải ép tránh rủi ro |
-| 5 | Xong nhiều nhóm rồi không ai chủ động tổng hợp thành file, hỏi đáp nằm rải trong chat | Thêm bước cuối: chủ động hỏi Chat tổng hợp thành 1 file duy nhất |
-
-### Vòng 2 – 8 chỗ, tìm ra lúc chạy khô và lúc thử thật
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| 1 | Bảo "đi từng luồng một" nhưng không bắt chốt danh sách luồng trước. Chạy khô: AI tự gom "đăng nhập + tạo ví" làm một luồng và bỏ luôn luồng quy đổi VNĐ có trong PRD | Thêm BƯỚC 0: liệt kê luồng, đợi mình chốt/bổ sung rồi mới bàn tech |
-| 2 | Khung dùng chung (app chạy bằng gì, host ở đâu, data để đâu) không thuộc luồng nào, nên bị quyết lén trong lúc bàn luồng đầu tiên – mấy luồng sau mặc nhiên kế thừa. Đúng loại quyết định khó đổi nhất lại là loại duy nhất không bị soi | Thêm BƯỚC 1: chốt khung chung riêng, cũng đủ 4 phần như một luồng |
-| 3 | Hỏi "luồng nào có sample app dùng lại được" tức là hỏi theo từng luồng → chỉ ra được mảnh lẻ, không bao giờ ra được "fork nguyên app mẫu" (đúng thứ TapTip đã làm) | Hỏi thẳng: có sample app nào bao được NHIỀU luồng cùng lúc không, rồi đặt lên bàn cân fork nguyên vs tự ghép – kèm cái mình MẤT khi fork |
-| 4 | Ép đủ 2 phương án thay thế cho mọi luồng đẻ ra rác. Luồng Nạp/rút trên testnet chỉ là một link tới Circle Faucet, không có tech nào để chọn, AI vẫn nặn ra "tự build faucet riêng" | Cho phép nói thẳng "chỉ có 1 lựa chọn" hoặc "chỗ này không cần tech gì" |
-| 5 | Không có chỗ đánh dấu "bản đầu chưa làm". Quy đổi VNĐ nằm trong PRD nhưng TapTip cố ý hoãn – prompt không cho nói vậy nên AI vẫn chọn sẵn nguồn tỷ giá | Cho phép trả lời "luồng này bản đầu chưa làm" → ghi CHƯA CHỌN, không chọn tech |
-| 6 | Hỏi tiền, hỏi chain, quên môi trường chạy: cái nào đòi HTTPS, đòi khai báo domain trước, đòi quyền thiết bị. Đây đúng là chỗ ngốn thời gian nhất lúc TapTip build thật (Passkey Domain Config trên Circle Console là mục riêng, khác Allowed Domain của Client Key) | Thêm việc bắt buộc thứ tư: cảnh báo điều kiện môi trường ngay lúc đề xuất, kèm chỗ phải vào khai báo. Ràng buộc thêm dòng giai đoạn testnet/mainnet |
-| 7 | Ngân sách hỏi cứng cho mọi dự án, kể cả lúc đã nói rõ đây là demo/hackathon chạy trên testnet – câu hỏi vô nghĩa, chẳng ai cân đo chi phí hạ tầng lúc đó | Đổi câu ngân sách thành có điều kiện: bỏ qua nếu đang ở giai đoạn testnet/demo, chỉ hỏi khi tính lên production |
-| 8 | File tổng hợp không có chỗ cho những gì **chưa chắc**. Spec của DailyReal (nhật ký ảnh trên Arc) cho thấy chỗ đáng có: phí gas mint + memo mới là ước tính từ gas limit, Memo giới hạn dung lượng bao nhiêu chưa rõ, The Graph có hỗ trợ Arc không chưa rõ, cách thu phí Arweave từ người dùng chưa chốt – spec đó gom hết vào một mục "Cần kiểm tra khi build" và ghi "ước tính, cần đo lại" cạnh từng con số. Thiếu mục này thì số ước tính sang tới Bước 6 sẽ được code như số thật | Thêm vào file tổng hợp mục "CẦN KIỂM TRA KHI BUILD" (kèm cách kiểm từng dòng) và mục "ĐỂ SAU". Bước 6 bắt Claude Code kiểm mục này trước khi viết code |
-
 Xong bước này mới qua Bước 4, vẽ wireframe để chốt mỗi màn hình trông ra sao trước khi cho AI code.

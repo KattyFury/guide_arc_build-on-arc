@@ -105,26 +105,3 @@ XONG CÂU 3 THÌ TỰ ĐỘNG LÀM 2 VIỆC NÀY, ĐỪNG ĐỢI MÌNH NHẮC:
 
 Chỗ nào chưa hợp lý thì rèn lại cho hợp lý, xong xuôi hết mới qua Bước 2.
 ```
-
-## Prompt này từng hụt chỗ nào
-
-Bản đầu của prompt chạy ra được ý tưởng, nhưng lộ 5 chỗ hụt (# 1-5). Bốn chỗ hụt sau (# 6-9) lộ ra ở một lượt thử thật khác, với một ý tưởng không khớp thẳng vào hướng nào của Arc (lúc đó docs mới có 4 hướng) và có dùng nhiều cơ chế khác nhau của Arc lẫn ngoài Arc – đúng kiểu tình huống bản đầu của Câu 0 và Câu 3 chưa xử lý được. Chỗ hụt #11 không phải prompt sai mà là thế giới đổi: có thêm Arc Studio. Chỗ hụt #12 là cách sửa #11 dùng thật thấy chậm, nên dời Arc Studio sang Bước 6. Chỗ hụt #10 lộ ra ở lượt chạy với DailyReal (nhật ký ảnh thật, khoá vĩnh viễn trên Arc) – một ý tưởng có sẵn từ đầu và không thuộc hướng nào trong 6 hướng. Đã sửa hết vào khối prompt ở trên.
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| 1 | Câu hỏi feasibility viết bằng tiếng Việt → AI của docs trả lời sơ sài | Bắt viết **bằng tiếng Anh** |
-| 2 | Hỏi chung chung "có hỗ trợ X không" → nhận về câu trả lời chung chung | Bắt hỏi thẳng tên SDK, tên kiến trúc, con số |
-| 3 | Docs đưa 2 lựa chọn, suýt kết luận "cả hai đều được" | Bắt đối chiếu lại **yêu cầu quan trọng nhất** ở câu 1 để loại – và thêm hẳn câu hỏi "yêu cầu quan trọng nhất là gì" vào câu 1 để có cái mà đối chiếu |
-| 4 | **Nặng nhất:** AI ngồi phản ứng theo người dùng thay vì dẫn | Thêm khối *"Cách làm việc"* lên đầu prompt: bạn DẪN, chủ động vặn, chưa hài lòng thì hỏi tiếp, đừng cho qua |
-| 5 | Xong câu 3 rồi đứng im, phải nhắc hai lần mới tổng hợp | Bắt tự động làm 2 việc cuối: xuất case study + rút lỗi quy trình |
-| 6 | Câu 0 đọc như danh sách đóng – ý tưởng không khớp hướng nào trong mấy gạch đầu dòng đó thì không rõ có bị loại hay không | Ghi rõ đây là gợi ý để có điểm bắt đầu, không phải rào chắn – không khớp cũng không sao miễn có dùng đặc thù kỹ thuật thật của Arc |
-| 7 | Ý tưởng nhắc tới chi tiết cụ thể của Arc (tên token, cơ chế) không được kiểm tra ngay từ đầu – tiền đề sai chỉ lộ ra muộn ở câu 3, sau khi đã tưởng tượng cả ý tưởng trên nền đó | Thêm nhắc ngay ở câu 0: ý tưởng nhắc thứ cụ thể của Arc thì tra ngay, đừng để dồn |
-| 8 | Câu 3 được thiết kế như một bước làm 1 lần duy nhất, nhưng feasibility thật ra cần tra liên tục xuyên suốt Bước 1-3 – ý tưởng càng đi sâu càng lộ thêm chi tiết kỹ thuật cụ thể cần verify, app có thể dùng nhiều cơ chế Arc khác nhau chứ không phải một | Ghi rõ câu 3 là cửa TỐI THIỂU trước khi qua Bước 2, không phải lần duy nhất – hễ chốt dùng cơ chế Arc cụ thể nào ở bước sau, quay lại tra ngay lúc đó |
-| 9 | docs.arc.io bị hỏi cả câu hỏi không liên quan gì tới Arc (tokenomics/roadmap của token hay dự án khác) – AI của docs trả lời bừa vì ngoài phạm vi của nó | Tách rõ: câu hỏi thuộc cơ chế Arc thì hỏi docs.arc.io, câu hỏi ngoài Arc thì tự search web riêng |
-| 10 | Sửa ở #6 chưa đủ: prompt vẫn bảo "có ý tưởng rồi thì check thử có khớp 1 trong 6 hướng không", tức vẫn đem ý tưởng có sẵn ra so – Câu 0 vẫn mang dáng một bộ lọc, chỉ là bộ lọc "dễ tính" | Câu 0 chỉ dành cho người chưa có ý tưởng. Có ý tưởng rồi thì bỏ qua, vào thẳng Câu 1. Chuyện có dùng đặc thù kỹ thuật của Arc hay không chuyển sang Câu 3 |
-| 11 | Câu 3 chỉ biết một nguồn kỹ thuật là AI của docs.arc.io. Từ 09/2026 Circle có Arc Studio – AI chuyên tech hơn, thử được thật trên testnet – prompt không nhắc thì người đọc không biết mà dùng | Tách việc: "có không, hoạt động thế nào" hỏi docs; câu kỹ thuật sâu, phải thử mới biết thì hỏi Arc Studio, dặn chỉ thử, chưa build cả app. **Đã thay bằng #12** |
-| 12 | Sửa ở #11 làm Bước 1 chậm hẳn: thử trên Arc Studio mỗi lượt mất 5-20 phút, chat tay trên web, trong khi ý tưởng còn đang đổi – thử xong có khi bước sau bỏ luôn tính năng đó | Câu 3 chỉ hỏi docs.arc.io. Câu phải thử mới biết thì ghi vào danh sách "cần thử khi build", Bước 3 gom vào spec, Bước 6 Claude Code giao Arc Studio đo qua CLI ngay trong thư mục dự án |
-
-Lỗi số 4 là lỗi làm hỏng nhiều nhất trong lượt đầu. Prompt bảo AI "hỏi bạn từng câu" nhưng không bảo nó *dẫn*, nên nó thành thư ký ghi chép: bạn nói gì nó gật nấy, chỉ góp ý khi bạn đã nói xong. Bạn tự dẫn được thì cần gì cố vấn.
-
-Lỗi số 8 là lỗi nặng nhất trong lượt thứ hai, và dễ tái phát nhất nếu không ghi rõ: bất kỳ bước nào có chữ "kiểm tra khả thi" cũng dễ bị đọc thành một cửa làm-một-lần-rồi-quên, trong khi bản chất công việc đó là tra cứu liên tục mỗi khi có thêm một quyết định kỹ thuật mới.

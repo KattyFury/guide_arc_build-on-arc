@@ -35,10 +35,4 @@ Chỗ nào không ưng thì nói lại bằng lời thường, bảo nó sửa k
 
 Một kế hoạch Arc Studio đã chốt với bạn. Copy kế hoạch ra, đang đi theo repo bằng Claude Code thì dán vào để nó lưu thành `docs/02-plan.md` – sau này Bước 4 sẽ cần, và để lỡ đóng tab cũng không mất.
 
-## Prompt này từng hụt chỗ nào
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| – | Bước mới (10/2026), **chưa chạy thật lần nào**. Chỗ hụt sẽ ghi vào đây sau lượt chạy đầu | – |
-
 Kế hoạch chốt rồi thì sang [Bước 3](../03-build-demo/README.md): cho build và thử luôn.

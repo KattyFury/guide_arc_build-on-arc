@@ -58,4 +58,3 @@ Trả lời khi Chat hỏi: chọn Windows hay macOS, log in cái gì thì log i
 cd "đường-dẫn-tới-project"
 claude
 ```
-

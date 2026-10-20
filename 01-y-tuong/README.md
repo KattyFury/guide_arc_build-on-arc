@@ -53,12 +53,4 @@ In bản brief trong một khối code để mình copy.
 
 Một bản brief tiếng Anh, dưới 1 trang. Đang đi theo repo bằng Claude Code thì dán bản brief vào, nó lưu thành `docs/01-brief.md` trong thư mục dự án của bạn (không phải trong repo hướng dẫn này).
 
-## Prompt này từng hụt chỗ nào
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| – | Bản mới (10/2026), gộp từ Bước 1-3 cũ, **chưa chạy thật lần nào**. Chỗ hụt sẽ ghi vào đây sau lượt chạy đầu | – |
-
-Bài học mang từ bản cũ (chi tiết ở [`archive/01-ideation`](../archive/01-ideation/README.md)): prompt phải nói rõ **AI dẫn, mình theo** – thiếu câu đó AI thành thư ký ngồi chép; 6 hướng Arc chỉ là điểm bắt đầu, không phải bộ lọc; câu phải thử mới biết thì để lúc build, đừng thử lúc ý tưởng còn đổi.
-
 Có brief rồi thì sang [Bước 2](../02-arc-studio-plan/README.md), đưa nó cho Arc Studio lên kế hoạch.

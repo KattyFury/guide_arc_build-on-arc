@@ -86,12 +86,6 @@ Prompt giao cho Claude Code:
 
 Một link sản phẩm chạy thật trên Arc mainnet, người ngoài vào dùng được. Đưa cho người không biết gì về dự án dùng thử, ngồi nhìn họ mò – chỗ họ khựng lại là chỗ cần sửa.
 
-## Prompt này từng hụt chỗ nào
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| – | Bước mới (10/2026), **chưa chạy thật lần nào**. Chỗ hụt sẽ ghi vào đây sau lượt chạy đầu | – |
-
 Kinh nghiệm build thật chi tiết hơn (đọc chữ ký hàm SDK trước khi gọi, sửa code nhớ sửa test, đo trước rồi mới đổ lỗi, RPC giới hạn request) nằm ở [`archive/06-build`](../archive/06-build/README.md), mục "5 thứ làm bạn chậm gấp nhiều lần".
 
 Có link rồi thì đăng lên X, Arc House, Discord: bạn là ai, vì sao làm app này, mời mọi người dùng thử. Đừng ngại lời chê – người chê là người còn quan tâm.

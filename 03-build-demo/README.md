@@ -34,10 +34,4 @@ Trước khi sang Bước 4, chép ra (hoặc dán cho Claude Code lưu vào `do
 
 Một bản demo chạy trên Arc testnet, luồng chính đi trọn được, có link preview để khoe. Đủ để biết ý tưởng có đáng làm tiếp hay không – nhiều ý tưởng tới đây là biết nên dừng, và dừng ở đây rẻ hơn nhiều so với dừng sau khi đã redesign.
 
-## Prompt này từng hụt chỗ nào
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| – | Bước mới (10/2026), **chưa chạy thật lần nào**. Chỗ hụt sẽ ghi vào đây sau lượt chạy đầu | – |
-
 Demo ổn và muốn làm tiếp thì sang [Bước 4](../04-hoan-thien-mainnet/README.md): mang code về máy, redesign, lên mainnet.

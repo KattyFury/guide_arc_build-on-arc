@@ -34,7 +34,6 @@ Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài
 1. **Vì sao cần bước này** – ngắn thôi
 2. **Prompt / cách làm** – copy dán được
 3. **Kết quả cuối bước** – mang gì sang bước sau
-4. **Prompt này từng hụt chỗ nào** – bản đầu sai ở đâu, sửa thế nào. Prompt được đem đi chạy thật, hụt chỗ nào ghi lại nguyên vẹn
 
 ## Bản 6 bước cũ
 

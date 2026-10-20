@@ -59,16 +59,4 @@ XONG THÌ TỰ ĐỘNG LÀM 2 VIỆC NÀY, ĐỪNG ĐỢI MÌNH NHẮC:
 [DÁN KẾT QUẢ BƯỚC 1 VÀO ĐÂY]
 ```
 
-## Prompt này từng hụt chỗ nào
-
-Prompt đã có sẵn khối *"Cách làm việc"* từ bài học Bước 1, nhưng chạy thật lộ thêm 5 chỗ hụt riêng của bước này:
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| 1 | Câu 1 (mô tả app) lẫn thông số kỹ thuật (vd "dưới 1s") vào câu mô tả sản phẩm | Ghi rõ câu 1 là mô tả sản phẩm, tách riêng thông số kỹ thuật ra khỏi câu này |
-| 2 | Câu 2 (đối tượng dùng) trả lời một chiều – chỉ tả người NHẬN, quên người GỬI dù cả hai đều là user thật | Với app có ≥2 vai trò, bắt hỏi riêng từng vai, không mặc định vai còn lại giống vai đầu |
-| 3 | Câu 4 hỏi "cái nào core" → nhận về "cái nào cũng core" | Đổi thành tình huống cụ thể: "giả sử phải cắt 1 cái để kịp deadline, cắt cái nào?" |
-| 4 | Câu 6 (ranh giới) bị né bằng cách trả lời sang chi tiết thiết kế khác | Bắt kéo lại đúng câu hỏi gốc, không tính câu lạc đề vào ranh giới |
-| 5 | Core value nhét thông số kỹ thuật hiện tại (vd "1s", "instant") vào làm niềm tin | Test bằng câu "nếu con số này đổi, niềm tin có đổi theo không" – đổi theo thì chưa phải core value |
-
 Xong bước này mới qua Bước 3, mô tả chi tiết từng tính năng, luồng sử dụng và giao diện để AI biết phải build như thế nào.

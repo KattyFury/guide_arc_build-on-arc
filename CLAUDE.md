@@ -6,13 +6,9 @@
 
 ## Repo này là gì
 
-Series hướng dẫn build app trên Arc: lý thuyết, prompt copy-dán được, và kinh nghiệm thật rút
-ra sau khi chạy. **Prompt chưa đem đi chạy thật thì chưa được đăng** – không nhất thiết phải
-build trong repo này, chạy thử với dự án thật của ai đó (của tác giả hay người khác) là đủ, ghi
-lại chỗ hụt vào mục "Prompt này từng hụt chỗ nào" của bước đó.
-
-Repo này **thuần hướng dẫn** – không giữ code dự án mẫu, cũng không có mục ví dụ dự án mẫu
-(ví dụ TapTip/EZwallet đã gỡ hết 2026-10-20 vì cũ).
+Series hướng dẫn build app trên Arc: lý thuyết ngắn + prompt copy-dán được. **Prompt chưa đem
+đi chạy thật thì chưa được đăng.** Chạy thấy hụt chỗ nào thì sửa thẳng vào prompt – không giữ
+nhật ký lỗi, không giữ ví dụ dự án mẫu.
 
 ---
 
@@ -57,17 +53,8 @@ I'm a **Vietnamese vibecoder** – I have ideas, not a programming background. I
 - I'm **decisive and push back fast** when output is off – don't guess and make me review later.
 - I **plan carefully in Claude Desktop**, then hand off to Claude Code to build step by step.
 
-**What I'm building – two directions:**
+**What I build on Arc:** small but useful dapps for **regular people**, not DeFi degens – UX must be simple, mobile-first, explainable in one sentence.
 
-**Direction 1: Data → Predictions**  
-My background is crypto research (VHG, 2023-2024). Now I do content + community ([0xhieu.xyz](https://0xhieu.xyz)). I have datasets on TGE, FDV, market conditions. I build tools that turn **data and statistics into predictions** – e.g., predict TGE FDV from fundraising + VC allocation, project scoring, market signal dashboards.
-
-**Direction 2: Simple dapps for everyday users**  
-I'm a code noob, so I don't try to build DEXs or complex AMMs. I aim for **small but useful dapps** – payment app (QuickPay), savings app (PigSave / Bỏ Heo), trading agent (Arcis). Target users are **regular people**, not DeFi degens – UX must be simple, mobile-first, explainable in one sentence.
-
-**Stack**: Solidity + Cloudflare Workers + Cloudflare Pages  
-**Chains**: Arc, Seismic, Monad (EVM-compatible)  
-**AI integration**: Anthropic API (Claude)  
 **GitHub**: KattyFury · **Local projects**: `D:\Files\Claude\`
 
 ---
@@ -90,12 +77,10 @@ I'm a code noob, so I don't try to build DEXs or complex AMMs. I aim for **small
 - Bảng khi so sánh, blockquote cho ghi chú đáng nhớ, mỗi bước kết bằng một câu dẫn sang bước sau.
 - **Dấu gạch dài: CHỈ dùng en dash `–` (U+2013). TUYỆT ĐỐI KHÔNG em dash `—` (U+2014).**
   Áp dụng cho mọi chữ người đọc nhìn thấy: README các bước, tài liệu, bài đăng.
-- **Không có mục "Ví dụ" dự án mẫu** (gỡ 2026-10-20). Kinh nghiệm thật thì ghi vào mục
-  "Prompt này từng hụt chỗ nào", không bịa tình huống.
-- Sửa prompt thì **ghi lại nó từng hụt gì** ở mục "Prompt này từng hụt chỗ nào" của bước đó –
-  đừng lặng lẽ sửa. Đây là phần BẮT BUỘC của mỗi bước, kể cả khi không có mục Ví dụ.
+- **Không có mục "Ví dụ", không có mục "Prompt này từng hụt chỗ nào".** Prompt hụt thì sửa
+  prompt, xong là thôi – lịch sử đã có git.
 - Prompt sửa xong nên chạy thử trước khi coi là chốt (chạy thật với ai đó, hoặc tự chạy khô) –
-  chỗ hụt lòi ra lúc chạy mới là thứ đáng ghi, đừng đoán chỗ hụt trên giấy.
+  sửa theo chỗ hụt lòi ra lúc chạy, đừng đoán trên giấy.
 
 ---
 
@@ -136,8 +121,7 @@ When I'm in **planning phase**, don't rush to code. When I have a spec, don't re
 
 Đây là series hướng dẫn, không phải một sản phẩm duy nhất — dự án của người đọc chọn stack theo cái phù hợp nhất lúc đó (ở bản 4 bước, Arc Studio đề xuất trong kế hoạch Bước 2). Đừng mặc định Cloudflare Workers/Pages chỉ vì đó là stack quen thuộc của tác giả.
 
-- **Chains**: Arc / Seismic / Monad (EVM-compatible)
-- **AI**: Anthropic API
+- **Chain**: Arc
 - Backend/frontend/hosting: quyết định theo từng dự án, ghi rõ trong `HANDOFF.md` hoặc README của dự án đó.
 - **Secrets**: không hardcode key trong source, bất kể dùng stack nào.
 

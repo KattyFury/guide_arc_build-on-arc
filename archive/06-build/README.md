@@ -38,7 +38,7 @@ Trước khi bắt đầu, xác nhận lại với tôi bạn hiểu thứ tự 
 
 Claude Code sẽ kiểm mục "cần kiểm tra" trước, rồi đọc spec, liệt kê lại thứ tự tính năng sắp build, đợi xác nhận rồi mới bắt đầu.
 
-**Vì sao phải kiểm trước khi code:** spec nào cũng có những câu viết lúc chưa chắc. Spec DailyReal (nhật ký ảnh, mỗi ảnh một NFT trên Arc) ghi thẳng phí gas mint + memo là *"ước tính từ gas limit, chưa phải số công bố chính thức"*, chưa biết Memo chứa được bao nhiêu chữ, chưa biết The Graph có hỗ trợ Arc không – và gom hết vào một mục riêng. Không bắt kiểm trước thì AI code luôn trên giả định đó. Có chỗ sai là sửa được, có chỗ sai là mất luôn: caption gửi qua Memo nằm **công khai, vĩnh viễn** trên chain, quên mã hoá thì caption của người dùng đầu tiên đã lộ, không có nút xoá. Spec chưa có mục này thì quay lại Vòng 2 Bước 3 lấy (file stack giờ có sẵn mục đó). Xong tính năng đầu tiên, nó dừng lại chờ mở app test flow – mọi thứ đúng thì gõ "OK" để nó tiếp tục.
+**Vì sao phải kiểm trước khi code:** spec nào cũng có những câu viết lúc chưa chắc. Vd một app nhật ký ảnh (mỗi ảnh một NFT trên Arc) ghi thẳng phí gas mint + memo là *"ước tính từ gas limit, chưa phải số công bố chính thức"*, chưa biết Memo chứa được bao nhiêu chữ, chưa biết The Graph có hỗ trợ Arc không – và gom hết vào một mục riêng. Không bắt kiểm trước thì AI code luôn trên giả định đó. Có chỗ sai là sửa được, có chỗ sai là mất luôn: caption gửi qua Memo nằm **công khai, vĩnh viễn** trên chain, quên mã hoá thì caption của người dùng đầu tiên đã lộ, không có nút xoá. Spec chưa có mục này thì quay lại Vòng 2 Bước 3 lấy (file stack giờ có sẵn mục đó). Xong tính năng đầu tiên, nó dừng lại chờ mở app test flow – mọi thứ đúng thì gõ "OK" để nó tiếp tục.
 
 ### Giao phần on-chain cho Arc Studio
 
@@ -148,7 +148,7 @@ Yêu cầu:
 Làm xong thì tự chạy app, tự chụp màn hình và tự đo lại vị trí các khối, đối chiếu với bản dựng tham chiếu rồi báo tôi số đo. Đừng đoán bằng mắt.
 ```
 
-**Chỗ dễ mất công nhất:** không có câu "tự chạy, tự chụp, tự đo" cuối cùng thì rất dễ nhận về một bản build *biên dịch sạch nhưng nhìn sai*. Ở TapTip, code pass hết kiểm tra mà nút bấm hiện ra là ô rỗng không có chữ – chỉ chụp ảnh lên mới thấy.
+**Chỗ dễ mất công nhất:** không có câu "tự chạy, tự chụp, tự đo" cuối cùng thì rất dễ nhận về một bản build *biên dịch sạch nhưng nhìn sai*. Từng có lần code pass hết kiểm tra mà nút bấm hiện ra là ô rỗng không có chữ – chỉ chụp ảnh lên mới thấy.
 
 Chưa ưng chỗ nào thì **quay lại 2.2 sửa ở Claude Design**, đừng ngồi tả bằng lời cho Claude Code sửa vặt từng li.
 
@@ -170,7 +170,7 @@ Chưa ưng chỗ nào thì **quay lại 2.2 sửa ở Claude Design**, đừng n
 - Nói rõ cho tôi: lần sau sửa code thì push lên GitHub có tự cập nhật web không, hay phải chạy lệnh deploy bằng tay? Ghi câu trả lời vào HANDOFF/MEMORY của dự án.
 ```
 
-   Câu cuối cứu được một buổi: TapTip từng sửa, commit, push xong xuôi mà web vẫn y như cũ – vì deploy là việc chạy tay, push không tự làm.
+   Câu cuối cứu được một buổi: từng có lần sửa, commit, push xong xuôi mà web vẫn y như cũ – vì deploy là việc chạy tay, push không tự làm.
 2. **Tự mình xài thật** như một người dùng bình thường, không phải như người viết ra nó – đi hết flow từ đầu, đừng bỏ qua bước nào vì "biết rồi".
 3. **Đưa cho người khác test.** Quan trọng là người *không* biết gì về dự án. Đừng hướng dẫn trước, cứ đưa link rồi ngồi nhìn họ mò – chỗ họ khựng lại chính là chỗ sai, dù bạn thấy nó hiển nhiên.
 4. **Ghi lại mọi lời chê**, kể cả lời khó nghe. "Không hiểu bấm gì tiếp" cũng là bug, ngang với app crash.
@@ -187,21 +187,19 @@ Lặp tới khi **không ai còn chê được gì nữa** thì mới coi là xo
 - **Kiên nhẫn đi từng tính năng một.** Đừng để nó gộp nhiều tính năng vào một lượt build vì "cho nhanh".
 - **Xong hẳn giai đoạn này mới sang giai đoạn kia.** Logic ổn định trước thì chỉnh giao diện sau không làm gãy flow.
 - **Đừng chỉnh giao diện bằng mồm ở Giai đoạn 1.** Ngứa mắt thì ghi lại, để dành xử một lượt ở Giai đoạn 2.
-- **Ở Giai đoạn 2, dựng đúng px trên khung gốc rồi phóng/thu nguyên khung** – đúng hệ lưới đã chốt ở Bước 4 (chữ bội số của 3, khoảng cách/khối bội số của 8). Đừng để từng khối tự co giãn theo màn hình: cả TapTip lẫn EZwallet từng làm vậy và cùng lệch khỏi bản vẽ, mỗi máy lệch một kiểu.
+- **Ở Giai đoạn 2, dựng đúng px trên khung gốc rồi phóng/thu nguyên khung** – đúng hệ lưới đã chốt ở Bước 4 (chữ bội số của 3, khoảng cách/khối bội số của 8). Đừng để từng khối tự co giãn theo màn hình: làm vậy là lệch khỏi bản vẽ, mỗi máy lệch một kiểu.
 - **Bắt AI tự kiểm tra bằng số đo, đừng để nó (và bạn) đoán bằng mắt.** Xem mục 2 phần dưới.
 - **Build app không phải thả cho AI tự làm hết.** Có lúc phải tự tay tạo tài khoản, lấy API key, tạo database, deploy smart contract – cứ làm rồi sửa, ai cũng chật vật ở bước này.
 
 ## 5 thứ làm bạn chậm gấp nhiều lần
 
-Rút từ quá trình build thật của [`KattyFury/ezwallet`](https://github.com/KattyFury/project_arc_ezwallet) – ví crypto cho người dùng phổ thông, chạy thật trên Arc Testnet. Không phải vì dự án khó, mà vì 5 cái bẫy dưới đây lặp đi lặp lại. Tránh được là nhanh hơn hẳn:
+Rút từ build thật. Không phải vì dự án khó, mà vì 5 cái bẫy dưới đây lặp đi lặp lại. Tránh được là nhanh hơn hẳn:
 
 1. **Không đọc chữ ký hàm thật của SDK trước khi gọi.** Một màn quan trọng (câu hỏi bảo mật) hiện RỖNG TRẮNG, chặn cả luồng tạo ví – dò nguyên nhân bằng cách đoán rồi thử-sai trên production tốn nhiều lượt vẫn sai. Root cause thật: gọi hàm SDK theo kiểu object trong khi hàm đó nhận **tham số vị trí** – đọc thẳng file `.d.ts` trong `node_modules` (30 giây) ra ngay, nhưng chỉ đọc SAU khi đã đoán mò nhiều vòng. Đụng SDK lạ, cư xử lạ: đọc chữ ký hàm thật trước, đừng đoán từ triệu chứng.
 2. **Sửa giao diện mà không nhìn thấy được kết quả.** Bắt AI dựng cách tự kiểm tra trước khi sửa: chụp màn hình headless ở nhiều kích thước máy (390px và 375px – đo cả hai, vì lỗi tràn chữ chỉ lộ ra ở máy hẹp hơn), đo toạ độ từng khối bằng script chứ không đoán bằng mắt.
 3. **Sửa code mà quên sửa test trong cùng lúc.** Một lần sửa thuật toán gợi ý số tiền nhưng quên đồng bộ file test tương ứng – bộ test báo đỏ suốt **9 ngày** dù app chạy đúng, vì nhìn quen thấy đỏ riết rồi bỏ qua, test mất hẳn tác dụng cảnh báo. Sửa logic ở đâu, sửa test ngay trong cùng một lượt, đừng tách ra "làm sau".
 4. **Đổ lỗi cho code của mình trước khi đo.** Ba lần trong một phiên tưởng lỗi do code, hoá ra không phải: chữ tiếng Việt mất dấu khi gửi qua Telegram (do cách gọi lệnh dòng lệnh trên Windows mã hoá sai, không phải server); một tính năng đổi tiền báo lỗi "không tìm được đường" (do hạ tầng bên thứ ba hết thanh khoản test, không phải code); một lỗi tràn giao diện tưởng mới xuất hiện (kiểm bằng cách lùi lại phiên bản code cũ thì hoá ra đã tràn từ trước). Đo trước, đổ lỗi sau.
 5. **Gặp giới hạn kỹ thuật thật thì né bằng cách đọc kỹ hơn, không phải đổi ẩu.** RPC công cộng giới hạn số lượng request rất chặt – phản xạ đầu là retry liên tục khi gặp lỗi, mà retry dày lại tự đâm vào chính giới hạn đó, thành vòng lặp tự giết mình. Sửa đúng: gộp nhiều lệnh đọc thành một request (Multicall), giãn cách giữa các lần thử lại, và khi chưa chắc số liệu thì hiện dấu `…` chứ không vẽ số `0` giả – vẽ `0` sai với một app tiền bạc là làm người dùng tưởng mất tiền thật.
-
-Chi tiết từng lỗi (kèm nguyên nhân kỹ thuật thật) nằm ở [`HANDOFF.md`](https://github.com/KattyFury/project_arc_ezwallet/blob/main/HANDOFF.md) của repo đó, đặc biệt mục "Gotchas" và "Bài học chính".
 
 ## Kết quả cuối
 
@@ -214,19 +212,6 @@ Một website để người khác vào trải nghiệm thật, đã qua tay ng�
 1. Giới thiệu bản thân
 2. Vì sao làm dapp này, xây dựng thế nào, mất bao lâu
 3. Giới thiệu sản phẩm, mời trải nghiệm
-
-## Prompt này từng hụt chỗ nào
-
-| # | Hụt gì | Sửa thế nào |
-|---|---|---|
-| 1 | Prompt dựng giao diện bảo "neo mọi kích thước theo tỷ lệ màn hình". Cả TapTip lẫn EZwallet làm đúng như vậy và cùng lệch khỏi bản vẽ – mỗi khối tự co giãn một kiểu | Dựng đúng px trên khung gốc, phóng/thu nguyên khung (xem Bước 4, chỗ hụt #6-7) |
-| 2 | Không cấm thêm thứ bản thiết kế không vẽ. Khi dựng lại theo Figma, cả hai app đều bị AI tự giữ chi tiết từ code cũ (nút, chữ gợi ý, viền, cảnh báo) – tác giả phải bắt qua nhiều vòng | Thêm dòng: cái gì bản thiết kế không vẽ thì không có trong app, kể cả khi code cũ đang có |
-| 3 | Không có luật số cho bên thiết kế. Bản vẽ ra cỡ chữ 19/23/35, lề 25 – đẹp, nhưng lẻ, sang code phải chuẩn hoá tay | Đưa luật chữ bội số của 3, khoảng cách/khối bội số của 8 vào cả 3 nhịp: spec hiện trạng, lúc chỉnh ở Claude Design, gói bàn giao |
-| 4 | Giai đoạn 3 bảo "đưa lên live" mà không nói đưa thế nào – người mới kẹt đúng ở cửa cuối, chưa ra được sản phẩm. Phát hiện lúc đi thử cả series như một người mới | Thêm prompt deploy: build production trước, liệt kê việc chỉ người dùng làm được, tự kiểm tra link thật, ghi rõ push có tự deploy không |
-| 5 | Giai đoạn 1 bảo "copy 2 file spec vào folder dự án" trong khi Claude Code đã lưu sẵn 5 file ở `docs/` từ Bước 1-4 | Trỏ thẳng vào `docs/`, chỉ copy khi đi tay |
-| 6 | Giai đoạn 1 bảo "đọc toàn bộ folder" rồi code luôn, không phân biệt câu nào trong spec đã chắc, câu nào mới là ước tính. Lòi ra khi nhận spec DailyReal: spec có hẳn mục "Cần kiểm tra khi build", người giao spec phải dặn riêng "nhớ bảo Claude Code đọc cả mục 7 trước khi viết code" – tức prompt chưa tự lo chuyện đó | Thêm khối "trước khi viết dòng code đầu tiên": kiểm từng dòng chưa chắc bằng cách thật, báo bằng chứng, sai thì dừng sửa spec. Kèm đọc bản vẽ theo số màn, và không build mục "Để sau" |
-| 7 | Không có chỗ nào nói phần smart contract giao cho ai – Claude Code tự viết, tự deploy, tự mò lỗi Arc. Từ 09/2026 Circle có Arc Studio chuyên đúng việc này, kèm CLI để Claude Code giao việc | Thêm mục "Giao phần smart contract cho Arc Studio" (cài, prompt giao việc, 3 điều phải nhớ); dòng nào trong mục "cần kiểm tra" phải đo trên testnet thì giao Arc Studio đo |
-| 8 | Bước 1 từng dặn thử khả thi bằng Arc Studio ngay lúc lên ý tưởng – dùng thật thấy chậm (5-20 phút một lượt, chat tay trên web, ý tưởng còn đổi). Dời hẳn sang đây thì Bước 6 phải đón được danh sách "cần thử khi build" từ Bước 1 | Đổi tên mục thành "Giao phần on-chain cho Arc Studio": nhận cả dòng cần đo lẫn contract, nói rõ dùng qua CLI trong Claude Code, thêm prompt "chỉ đo một dòng" |
 
 ---
 
