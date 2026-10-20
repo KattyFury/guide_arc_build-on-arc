@@ -21,6 +21,8 @@ Sửa thêm: `README.md` viết lại (bảng 4 bước, Bước 1-3 chỉ cần
 
 **Chưa biết (đừng bịa khi viết tiếp):** vị trí nút bật Plan trên web studio.arc.io (docs không tả UI web) – bài chỉ ghi "bật chế độ Plan"; link preview có cho người ngoài mở không.
 
+**▶ ĐANG DỞ (cuối phiên 10-20):** user bắt đầu chạy thật 4 bước mới, tự đi trên **Claude Desktop** (không qua Claude Code dẫn) – lấy prompt Bước 1 từ link GitHub `01-y-tuong/README.md`. Chưa có ý tưởng/thư mục dự án nào được chốt. Phiên sau: hỏi user kết quả lượt chạy (brief ra sao, prompt hỏi thừa/thiếu/dẫn sai chỗ nào) → ghi vào mục "Prompt này từng hụt chỗ nào" của bước tương ứng; chú ý 2 chỗ chưa biết ở trên (nút Plan trên web, link preview có public không) để bổ sung vào Bước 2-3.
+
 **Còn nợ:** 4 bước mới **chưa chạy thật lần nào** – mục "Prompt này từng hụt chỗ nào" của cả 4 đang để dòng chờ. Lượt đầu chạy với một ý tưởng thật thì ghi chỗ hụt vào đó. Các mục 10-06 / 10-03 bên dưới nói về 6 bước cũ, giờ là lịch sử của `archive/`.
 
 ---
