@@ -4,6 +4,13 @@
 > Luật cho Claude Code nằm ở `CLAUDE.md`. File này ghi **đang ở đâu** và **quy định viết bài**.
 > **Cập nhật:** 2026-10-20 (RÚT CÒN 4 BƯỚC – xem mục ngay dưới). Trước đó 2026-10-06 (Arc Studio dời từ Bước 1 sang Bước 6 – xem mục ngay dưới). Trước đó 2026-10-03 (Câu 0 chỉ cho người chưa có ý tưởng; Claude Design vẽ wireframe; mục "Cần kiểm tra khi build" từ spec DailyReal – xem mục ngay dưới). Trước đó 2026-09-18 (Bước 1 lên 6 hướng Arc; mục "Ví dụ" của 6 bước giờ dùng CẢ TapTip lẫn EZwallet – xem mục ngay dưới). Trước đó 2026-08-22: đổi toàn bộ mục "Ví dụ" từ TapTip sang EZwallet. Cùng ngày trước đó: tách TapTip ra repo riêng `KattyFury/taptip`, repo này trở về thuần hướng dẫn. Trước đó cùng đợt: sửa Bước 1 + Bước 3 Vòng 2 theo lỗi thật tìm ra khi thử với LuckyStaker; thêm Vòng 2 "chốt stack" vào Bước 3, đóng nốt ví dụ + chỗ hụt của Bước 4, dọn sạch em dash.
 
+## ✅ 10-20 (tiếp): DỌN CHỖ LỖI THỜI + GỠ TOÀN BỘ VÍ DỤ
+
+- Link repo đổi tên: `build-on-arc` → `guide_arc_build-on-arc`, `ezwallet` → `project_arc_ezwallet`, `taptip` → `project_arc_taptip` (đã kiểm mọi file đích còn tồn tại). README lệnh `cd` theo tên mới. CLAUDE.md local path `Desktop/Claude/` → `D:\Files\Claude\`.
+- 4 bước mới: đối chiếu lại docs Arc (chain ID, RPC, explorer, 6 hướng usecase, Plan/Export/testnet-only của Arc Studio) + npm (`@circle-fin/arc-studio-cli` vẫn 1.2.1) – khớp, không sửa nội dung. `ARC-RESOURCES.md` thêm RPC dự phòng testnet (docs giờ có).
+- User: "dẹp toàn bộ example đi, cũ rồi" → xoá 6 mục `## Ví dụ` trong `archive/0N-*`, bỏ câu dẫn TapTip/EZwallet ở Bước 4 (giữ bài học, bỏ tên), README, CLAUDE.md (đoạn EZwallet vs TapTip ở Tech Stack). Bảng "hụt" trong archive giữ nguyên dù có nhắc tên TapTip – đó là lịch sử lỗi prompt.
+- HANDOFF mục 3.3/3.6/5 ghi rõ áp cho bản cũ hay Bước 4 mới.
+
 ## ✅ 10-20: RÚT SERIES CÒN 4 BƯỚC – ARC STUDIO CÓ CHẾ ĐỘ PLAN
 
 User: Arc Studio giờ có bước Plan (lên kế hoạch cùng người dùng trước khi build) → repo nên đơn giản hơn, bớt khắt khe. Quy trình mới user chốt:
@@ -108,7 +115,7 @@ Cũng sửa: `README.md` mục "Về dự án mẫu" (bảng 2 dự án), `CLAUD
 
 Ngay sau khi tách TapTip ra repo riêng (mục dưới), user chỉ ra: mục "Ví dụ" của 6 bước vẫn giữ TapTip – đó là quyết định Claude Code **tự chọn mà không hỏi lại**, trong khi user đã yêu cầu rõ "ví dụ trỏ ra ezwallet đi, bỏ taptip" ngay lúc bắt đầu tách repo. Bị bỏ sót vì lúc đó đổi sang ezwallet tốn công hơn (phải đọc thật `HANDOFF.md`/`README.md` của ezwallet để không bịa), còn giữ TapTip thì có sẵn nội dung – Claude Code chọn đường rẻ hơn thay vì hỏi user. User xác nhận qua `AskUserQuestion`: đổi sang ezwallet đúng như yêu cầu ban đầu.
 
-**Đã đọc thật** [`KattyFury/ezwallet`](https://github.com/KattyFury/ezwallet) – `README.md` (207 dòng) + `HANDOFF.md` (618 dòng) – trước khi viết lại, đúng luật "chỉ nói những gì làm thật, không chế số liệu". EZwallet **có trước cả series** nên không chạy đúng trình tự 4 câu/6 câu/Product Discovery như TapTip từng làm – mọi ví dụ ở đây đều **dựng ngược** (lấy quyết định có thật, dựng lại tình huống sinh ra nó), không phải chép lại một buổi chạy prompt thật.
+**Đã đọc thật** [`KattyFury/ezwallet`](https://github.com/KattyFury/project_arc_ezwallet) – `README.md` (207 dòng) + `HANDOFF.md` (618 dòng) – trước khi viết lại, đúng luật "chỉ nói những gì làm thật, không chế số liệu". EZwallet **có trước cả series** nên không chạy đúng trình tự 4 câu/6 câu/Product Discovery như TapTip từng làm – mọi ví dụ ở đây đều **dựng ngược** (lấy quyết định có thật, dựng lại tình huống sinh ra nó), không phải chép lại một buổi chạy prompt thật.
 
 **Viết lại cả 6 mục "Ví dụ":**
 - **01-ideation:** 4 câu dựng từ README + HANDOFF thật. Câu 3 đổi hẳn ví dụ minh hoạ "loại phương án khả thi" – từ chuyện Circle Wallets vs Privy (TapTip) sang chuyện **từ chối chuẩn EIP-681** dù đúng chuẩn, vì nhiều ví khác bỏ qua field chainId khiến gửi nhầm mạng mất tiền – khả thi trên giấy không bằng an toàn cho đúng đối tượng (người lớn tuổi).
@@ -140,7 +147,7 @@ User: "cảm giác nó không mang lại hiệu quả, còn gây xao nhãng" –
 8. **Sửa lại toàn bộ nội dung guide phụ thuộc vào `example/`:**
    - `CLAUDE.md`: viết lại mục "Repo này là gì" (bỏ "kèm luôn dự án mẫu"), mục "THƯ MỤC", luật "Ví dụ xuyên suốt" → đổi thành "Ví dụ là tuỳ chọn, không bắt buộc, dẫn chứng trỏ link ra ngoài repo nếu có". Luật "chạy thật trước khi đăng" giữ nguyên nhưng bỏ ràng buộc phải build trong `example/`.
    - `README.md`: bỏ cột "Ví dụ" khỏi bảng cấu trúc (không còn ✅ đồng loạt vì ví dụ giờ tuỳ chọn), viết lại mục "Về dự án mẫu".
-   - 6 file `0N-*/README.md`: **giữ nguyên toàn bộ mục "Ví dụ" + "Prompt này từng hụt chỗ nào"** (đây là "kinh nghiệm", đúng thứ user muốn giữ) – chỉ đổi link `../example/...` sang link GitHub thật `https://github.com/KattyFury/taptip/...`. `04-wireframe` xoá tham chiếu chết tới `HANDOFF.md` mục 4.8 (đã chuyển sang `taptip`).
+   - 6 file `0N-*/README.md`: **giữ nguyên toàn bộ mục "Ví dụ" + "Prompt này từng hụt chỗ nào"** (đây là "kinh nghiệm", đúng thứ user muốn giữ) – chỉ đổi link `../example/...` sang link GitHub thật `https://github.com/KattyFury/project_arc_taptip/...`. `04-wireframe` xoá tham chiếu chết tới `HANDOFF.md` mục 4.8 (đã chuyển sang `taptip`).
 9. **Rút gọn `HANDOFF.md` của chính repo này** (file bạn đang đọc) – xoá mục "VIỆC TIẾP THEO", "GIAI ĐOẠN 1 CHỐT", "GIAI ĐOẠN 2 HOÀN TẤT", toàn bộ log fix bug 08-10/08-11 (tất cả đã chuyển nguyên vẹn sang `taptip/HANDOFF.md`), mục 4.7 + 4.8 (bài học kỹ thuật riêng của TapTip, cũng đã chuyển). Viết lại mục 1 (bảng trạng thái) và mục 2 (cách làm việc).
 
 **Quyết định giữ lại, không xoá:** mục "Ví dụ" + "Prompt này từng hụt chỗ nào" trong 6 file `0N-*/README.md` vẫn dẫn chứng TapTip – đây là lịch sử thật, xoá đi là mất bằng chứng cho luật "chỉ nói những gì làm thật, không chế số liệu". Link đã trỏ đúng sang `KattyFury/taptip`, verify được như cũ, chỉ khác chỗ ở.
@@ -186,9 +193,9 @@ Series hướng dẫn build app trên Arc, viết cho người Việt không rà
 
 **Repo thuần hướng dẫn** – không giữ code dự án mẫu song song bên trong (xem mục "08-22: TÁCH TAPTIP" ở trên về lý do và cách tách).
 
-- GitHub: https://github.com/KattyFury/build-on-arc (public)
+- GitHub: https://github.com/KattyFury/guide_arc_build-on-arc (public)
 - Local: `D:\Files\Claude\guide_arc_build-on-arc`
-- Hai dự án dùng làm ví dụ (repo riêng): https://github.com/KattyFury/taptip (chạy thật prompt) + https://github.com/KattyFury/ezwallet (dựng ngược)
+- Không còn dự án ví dụ (gỡ 10-20). TapTip/EZwallet là repo riêng, không liên quan nội dung series nữa.
 
 ## 1. Đang ở đâu
 
@@ -220,7 +227,9 @@ Lý do đổi: repo cũ có `example/` là bằng chứng "`git log` cho thấy 
 
 ## 3. QUY ĐỊNH VIẾT BÀI
 
-### 3.1 Ví dụ – tuỳ chọn, không bắt buộc
+### 3.1 Ví dụ – ĐÃ GỠ HẾT (10-20)
+
+User: "dẹp toàn bộ example đi, cũ rồi" → không viết mục "Ví dụ" dự án mẫu nữa, các gạch dưới chỉ còn là lịch sử. Mục "Prompt này từng hụt chỗ nào" vẫn bắt buộc.
 
 **Đây là chỗ DUY NHẤT giữ quy định viết bài.** `README.md` chỉ nói cho người đọc biết, không chép lại luật dưới đây.
 
@@ -236,6 +245,8 @@ Bước 1 Câu 1 ban đầu bắt ý tưởng phải giải **vấn đề thiế
 Cái **không** nới: vẫn phải là thứ mình hoặc người mình biết **thật sự làm ngoài đời**, không ngồi tưởng tượng ra.
 
 ### 3.3 Note dán spec dưới mọi prompt
+
+*(Luật của bản 6 bước – áp cho `archive/`. Bản 4 bước: Bước 2-3 làm trên Arc Studio, brief/kế hoạch dán thẳng vào đó, không cần note này.)*
 
 Mọi prompt chuyển giao cần spec bước trước (Bước 2 trở đi) phải kèm câu ghi chú ngay dưới khối prompt:
 
@@ -256,7 +267,7 @@ Tiếng Việt đời thường, xưng "mình" / "anh em" như bài gốc trên 
 
 ## 3.6 🔴 BẮT BUỘC đọc trước khi đụng Circle/Arc — đừng tự mò
 
-Trước khi viết bất kỳ code nào đụng tới Circle Wallets hoặc Arc, **load đúng skill/tài nguyên tương ứng trước, đừng tự mò qua docs search rồi thử-sai**. Bài học đau (lúc build TapTip): mất cả buổi vật lộn Entity Secret + Passkey Domain + WebAuthn error vì không load skill `circle:use-modular-wallets` trước khi code — skill đó có sẵn bảng lỗi + rule "ALWAYS complete Console Setup (client key, passkey domain, client URL) before using SDK" ngay từ đầu.
+Áp cho Bước 4 (code trên máy bằng Claude Code). Trước khi viết bất kỳ code nào đụng tới Circle Wallets hoặc Arc, **load đúng skill/tài nguyên tương ứng trước, đừng tự mò qua docs search rồi thử-sai**. Bài học đau (lúc build TapTip): mất cả buổi vật lộn Entity Secret + Passkey Domain + WebAuthn error vì không load skill `circle:use-modular-wallets` trước khi code — skill đó có sẵn bảng lỗi + rule "ALWAYS complete Console Setup (client key, passkey domain, client URL) before using SDK" ngay từ đầu.
 
 - **Circle Modular Wallets (Passkey, gasless)** → load skill `circle:use-modular-wallets` TRƯỚC. Có bảng lỗi đầy đủ (`NotAllowedError`, `SecurityError`, mã lỗi 155xxx, AA-series), rule bắt buộc (paymaster:true, transport URL path đúng chain, không dùng trên Ethereum mainnet/Solana/Aptos/NEAR).
 - **Circle Developer-Controlled Wallets (Entity Secret)** → load skill `circle:use-developer-controlled-wallets` TRƯỚC.
@@ -269,9 +280,9 @@ Chi tiết kỹ thuật sâu hơn (bug thật đã gặp, cách vá) nằm ở `
 
 Remote `origin` = GitHub, branch `main`. Xong việc là commit + push ngay, đừng để commit nằm im ở local.
 
-## 5. Tools tham khảo – dùng ở Bước 6 (code UI thật), KHÔNG dùng ở Bước 4
+## 5. Tools tham khảo – dùng ở Bước 4 (mục 4.3 Redesign)
 
-Bước 4 (wireframe) cố tình bỏ hết style, chỉ khung + label chức năng – mấy tool dưới đây đều thuộc chuyện style/component thật nên chỉ có ích lúc code, không có ích lúc vẽ khung.
+Bản 4 bước không còn bước wireframe riêng – mấy tool dưới đây thuộc chuyện style/component thật, có ích lúc redesign ở Bước 4.
 
 - **21st.dev** – https://21st.dev/ – marketplace React+Tailwind, prompt sẵn cho Claude Code/Cursor/v0
 - **Astryx (Meta)** – https://astryx.atmeta.com/ – design system chính thức Meta, React 19 + StyleX, 160+ component – hơi nặng đô cho app nhỏ

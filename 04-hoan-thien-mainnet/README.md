@@ -56,8 +56,8 @@ Demo của Arc Studio chạy được nhưng thường nhìn na ná nhau. Đây 
 Ba điều giúp đỡ tốn công nhất:
 
 1. **Chốt hình ở công cụ thiết kế trước, rồi mới bắt Code dựng một lần.** Sửa trên bản vẽ là lặp rẻ; tả bằng lời cho Code sửa từng li là lặp đắt.
-2. **Bản thiết kế là nguồn sự thật duy nhất.** Cái gì bản vẽ không có thì app không có – kể cả chi tiết đang nằm sẵn trong code demo. Không dặn câu này thì AI hay tự giữ lại nút, chữ gợi ý, viền cũ (cả TapTip lẫn EZwallet đều dính).
-3. **Bắt AI tự chụp màn hình và đo.** Build sạch không có nghĩa là nhìn đúng – TapTip từng có nút hiện thành ô rỗng mà mọi kiểm tra tự động vẫn xanh.
+2. **Bản thiết kế là nguồn sự thật duy nhất.** Cái gì bản vẽ không có thì app không có – kể cả chi tiết đang nằm sẵn trong code demo. Không dặn câu này thì AI hay tự giữ lại nút, chữ gợi ý, viền cũ.
+3. **Bắt AI tự chụp màn hình và đo.** Build sạch không có nghĩa là nhìn đúng – có lần nút hiện thành ô rỗng mà mọi kiểm tra tự động vẫn xanh.
 
 Prompt cho Claude Code khi đã có bản thiết kế:
 
@@ -73,7 +73,7 @@ Dựng lại giao diện app theo bản thiết kế [link Figma / thư mục g�
 2. **Ví deploy riêng, có ít USDC.** Gas trên Arc trả bằng USDC. Private key chỉ để trong file `.env` đã nằm trong `.gitignore` – **không bao giờ commit** (bot quét GitHub tìm key trong vài phút).
 3. **Deploy contract lên Arc mainnet bằng Claude Code** – chain ID `5042`, thông số mạng ở [`ARC-RESOURCES.md`](../ARC-RESOURCES.md). Bảo nó lấy RPC, địa chỉ USDC từ docs chính thức, không lấy từ trí nhớ.
 4. **Đổi app sang mainnet**: chain ID, RPC, địa chỉ contract mới, địa chỉ USDC mainnet. Gom hết vào một file cấu hình mạng, đừng rải khắp code – sau này giữ được cả bản testnet để thử.
-5. **Đưa app lên host** (Cloudflare Pages, Vercel...). Secret nhập thẳng lên host. Hỏi rõ Claude Code: *"push lên GitHub có tự cập nhật web không, hay phải chạy lệnh deploy tay?"* – TapTip từng push xong xuôi mà web vẫn y như cũ.
+5. **Đưa app lên host** (Cloudflare Pages, Vercel...). Secret nhập thẳng lên host. Hỏi rõ Claude Code: *"push lên GitHub có tự cập nhật web không, hay phải chạy lệnh deploy tay?"* – có lần push xong xuôi mà web vẫn y như cũ.
 6. **Tự thử bằng tiền thật, số nhỏ**, rồi mới đưa người khác dùng.
 
 Prompt giao cho Claude Code:

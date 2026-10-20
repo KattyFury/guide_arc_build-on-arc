@@ -6,7 +6,7 @@ Từ 10/2026 series rút còn 4 bước (xem [README chính](../README.md)), vì
 
 Vẫn giữ lại đây vì hai lý do:
 
-- **Ví dụ thật** của [TapTip](https://github.com/KattyFury/taptip) và [EZwallet](https://github.com/KattyFury/ezwallet) ở từng bước, cùng bảng **"Prompt này từng hụt chỗ nào"**, là kinh nghiệm có thật, xoá đi là mất.
+- Bảng **"Prompt này từng hụt chỗ nào"** ở từng bước là kinh nghiệm có thật, xoá đi là mất. (Mục "Ví dụ" TapTip/EZwallet đã gỡ 10/2026 vì cũ.)
 - Cần làm kỹ hơn (app đụng nhiều tiền, nhiều màn, team đông) thì các prompt cũ vẫn dùng được, nhất là phỏng vấn ngược ở [`03-planning`](03-planning/README.md) và luật lưới ở [`04-wireframe`](04-wireframe/README.md).
 
 | Bước cũ | Nội dung |

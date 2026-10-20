@@ -22,8 +22,8 @@ Từ 10/2026 series chỉ còn **4 bước**, vì [Arc Studio](https://studio.ar
 **Muốn có người giữ hộ trạng thái** (nhớ mình đang ở bước nào, lưu brief/kế hoạch xuống đĩa) thì mở repo này bằng Claude Code:
 
 ```bash
-git clone https://github.com/KattyFury/build-on-arc.git
-cd build-on-arc
+git clone https://github.com/KattyFury/guide_arc_build-on-arc.git
+cd guide_arc_build-on-arc
 claude
 ```
 
@@ -38,7 +38,7 @@ Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài
 
 ## Bản 6 bước cũ
 
-Quy trình 6 bước trước đây (cùng ví dụ thật của [TapTip](https://github.com/KattyFury/taptip) và [EZwallet](https://github.com/KattyFury/ezwallet)) nằm ở [`archive/`](archive/README.md). Vẫn đáng đọc khi làm app đụng nhiều tiền hoặc cần lên kế hoạch kỹ hơn những gì Arc Studio tự hỏi.
+Quy trình 6 bước trước đây nằm ở [`archive/`](archive/README.md). Vẫn đáng đọc khi làm app đụng nhiều tiền hoặc cần lên kế hoạch kỹ hơn những gì Arc Studio tự hỏi.
 
 Link docs, thông số mạng mainnet/testnet, cách cài CLI: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
 

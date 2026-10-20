@@ -187,13 +187,13 @@ Lặp tới khi **không ai còn chê được gì nữa** thì mới coi là xo
 - **Kiên nhẫn đi từng tính năng một.** Đừng để nó gộp nhiều tính năng vào một lượt build vì "cho nhanh".
 - **Xong hẳn giai đoạn này mới sang giai đoạn kia.** Logic ổn định trước thì chỉnh giao diện sau không làm gãy flow.
 - **Đừng chỉnh giao diện bằng mồm ở Giai đoạn 1.** Ngứa mắt thì ghi lại, để dành xử một lượt ở Giai đoạn 2.
-- **Ở Giai đoạn 2, dựng đúng px trên khung gốc rồi phóng/thu nguyên khung** – đúng hệ lưới đã chốt ở Bước 4 (chữ bội số của 3, khoảng cách/khối bội số của 8). Đừng để từng khối tự co giãn theo màn hình: cả TapTip lẫn EZwallet từng làm vậy và cùng lệch khỏi bản vẽ, mỗi máy lệch một kiểu (chi tiết ở ví dụ Bước 4).
+- **Ở Giai đoạn 2, dựng đúng px trên khung gốc rồi phóng/thu nguyên khung** – đúng hệ lưới đã chốt ở Bước 4 (chữ bội số của 3, khoảng cách/khối bội số của 8). Đừng để từng khối tự co giãn theo màn hình: cả TapTip lẫn EZwallet từng làm vậy và cùng lệch khỏi bản vẽ, mỗi máy lệch một kiểu.
 - **Bắt AI tự kiểm tra bằng số đo, đừng để nó (và bạn) đoán bằng mắt.** Xem mục 2 phần dưới.
 - **Build app không phải thả cho AI tự làm hết.** Có lúc phải tự tay tạo tài khoản, lấy API key, tạo database, deploy smart contract – cứ làm rồi sửa, ai cũng chật vật ở bước này.
 
 ## 5 thứ làm bạn chậm gấp nhiều lần
 
-Rút từ quá trình build thật của [`KattyFury/ezwallet`](https://github.com/KattyFury/ezwallet) – ví crypto cho người dùng phổ thông, chạy thật trên Arc Testnet. Không phải vì dự án khó, mà vì 5 cái bẫy dưới đây lặp đi lặp lại. Tránh được là nhanh hơn hẳn:
+Rút từ quá trình build thật của [`KattyFury/ezwallet`](https://github.com/KattyFury/project_arc_ezwallet) – ví crypto cho người dùng phổ thông, chạy thật trên Arc Testnet. Không phải vì dự án khó, mà vì 5 cái bẫy dưới đây lặp đi lặp lại. Tránh được là nhanh hơn hẳn:
 
 1. **Không đọc chữ ký hàm thật của SDK trước khi gọi.** Một màn quan trọng (câu hỏi bảo mật) hiện RỖNG TRẮNG, chặn cả luồng tạo ví – dò nguyên nhân bằng cách đoán rồi thử-sai trên production tốn nhiều lượt vẫn sai. Root cause thật: gọi hàm SDK theo kiểu object trong khi hàm đó nhận **tham số vị trí** – đọc thẳng file `.d.ts` trong `node_modules` (30 giây) ra ngay, nhưng chỉ đọc SAU khi đã đoán mò nhiều vòng. Đụng SDK lạ, cư xử lạ: đọc chữ ký hàm thật trước, đừng đoán từ triệu chứng.
 2. **Sửa giao diện mà không nhìn thấy được kết quả.** Bắt AI dựng cách tự kiểm tra trước khi sửa: chụp màn hình headless ở nhiều kích thước máy (390px và 375px – đo cả hai, vì lỗi tràn chữ chỉ lộ ra ở máy hẹp hơn), đo toạ độ từng khối bằng script chứ không đoán bằng mắt.
@@ -201,7 +201,7 @@ Rút từ quá trình build thật của [`KattyFury/ezwallet`](https://github.c
 4. **Đổ lỗi cho code của mình trước khi đo.** Ba lần trong một phiên tưởng lỗi do code, hoá ra không phải: chữ tiếng Việt mất dấu khi gửi qua Telegram (do cách gọi lệnh dòng lệnh trên Windows mã hoá sai, không phải server); một tính năng đổi tiền báo lỗi "không tìm được đường" (do hạ tầng bên thứ ba hết thanh khoản test, không phải code); một lỗi tràn giao diện tưởng mới xuất hiện (kiểm bằng cách lùi lại phiên bản code cũ thì hoá ra đã tràn từ trước). Đo trước, đổ lỗi sau.
 5. **Gặp giới hạn kỹ thuật thật thì né bằng cách đọc kỹ hơn, không phải đổi ẩu.** RPC công cộng giới hạn số lượng request rất chặt – phản xạ đầu là retry liên tục khi gặp lỗi, mà retry dày lại tự đâm vào chính giới hạn đó, thành vòng lặp tự giết mình. Sửa đúng: gộp nhiều lệnh đọc thành một request (Multicall), giãn cách giữa các lần thử lại, và khi chưa chắc số liệu thì hiện dấu `…` chứ không vẽ số `0` giả – vẽ `0` sai với một app tiền bạc là làm người dùng tưởng mất tiền thật.
 
-Chi tiết từng lỗi (kèm nguyên nhân kỹ thuật thật) nằm ở [`HANDOFF.md`](https://github.com/KattyFury/ezwallet/blob/main/HANDOFF.md) của repo đó, đặc biệt mục "Gotchas" và "Bài học chính".
+Chi tiết từng lỗi (kèm nguyên nhân kỹ thuật thật) nằm ở [`HANDOFF.md`](https://github.com/KattyFury/project_arc_ezwallet/blob/main/HANDOFF.md) của repo đó, đặc biệt mục "Gotchas" và "Bài học chính".
 
 ## Kết quả cuối
 
@@ -214,48 +214,6 @@ Một website để người khác vào trải nghiệm thật, đã qua tay ng�
 1. Giới thiệu bản thân
 2. Vì sao làm dapp này, xây dựng thế nào, mất bao lâu
 3. Giới thiệu sản phẩm, mời trải nghiệm
-
-## Ví dụ
-
-### TapTip – đi đúng 3 giai đoạn
-
-[`KattyFury/taptip`](https://github.com/KattyFury/taptip), fork từ [`circlefin/arc-p2p-payments`](https://github.com/circlefin/arc-p2p-payments), đang chạy thật trên Arc Testnet.
-
-**Giai đoạn 1** xong toàn bộ 5 tính năng với UI mộc: [`docs/06-build.md`](https://github.com/KattyFury/taptip/blob/main/docs/06-build.md).
-
-**Giai đoạn 2** đi đủ 3 nhịp:
-
-| Nhịp | Kết quả thật |
-|---|---|
-| 2.1 Đóng gói spec hiện trạng | [`docs/08-design-spec-hien-trang.md`](https://github.com/KattyFury/taptip/blob/main/docs/08-design-spec-hien-trang.md) – Claude Code tự đọc code viết ra |
-| 2.2 Chỉnh ở Claude Design | Đổi hẳn bảng màu, đổi font, dời lại vị trí một số khối |
-| 2.3 Xuất gói cho Code dựng lại | Gói [`design_handoff_taptip/`](https://github.com/KattyFury/taptip/tree/main/design_handoff_taptip) (mô tả + bản dựng tĩnh 15 màn + asset) → kết quả build ở [`docs/08-redesign-handoff.md`](https://github.com/KattyFury/taptip/blob/main/docs/08-redesign-handoff.md) |
-
-Đúng như cảnh báo ở 2.3: bản dựng lại **pass hết kiểm tra tự động** (typecheck sạch, build thành công 24 route) mà vẫn có 3 lỗi chỉ lòi ra khi chụp ảnh và đo thật – trong đó có lỗi nút bấm hiện ra thành **ô rỗng không có chữ**.
-
-Tháng 9, tác giả tự vẽ lại toàn bộ app trên **Figma** rồi bắt Claude Code dựng lại theo – và lần này lỗi không nằm ở chỗ thiếu mà ở chỗ **thừa**. Claude Code cứ tự giữ lại chi tiết của bản cũ mà Figma không hề vẽ: chip gợi ý `@gmail.com`, nút "Custom", dòng "Upload a QR image", khung vàng quanh camera, viền quanh QR. Tác giả phải bắt lỗi qua nhiều vòng, cuối cùng chốt thành luật cứng: **bản thiết kế là nguồn sự thật duy nhất – cái gì không vẽ là đã bỏ, không tự thêm lại "cho đủ"**. Cũng từ đợt này mới thấy đo bằng số khác nhìn bằng mắt xa tới đâu: góc nghiêng của nút là 19° chứ không phải 16°, một mã màu lệch đúng 1 ký tự (`#6697F5` thay vì `#6797F5`) – mấy thứ này nhìn ảnh không bao giờ ra, phải lấy số đo gốc từ Figma.
-
-**Giai đoạn 3** mới đi được một phần, nói thẳng:
-
-- **Người dùng thật gỡ hẳn một tính năng.** PRD ghi "quét passkey mỗi lần mở app" và app đã làm đúng như vậy. Tới lúc dùng thật, tác giả chốt lại: *"ban đầu chỉ dùng log in là chơi"* – rồi *"bỏ passkey khỏi app nha"*. Màn khoá passkey bị gỡ sạch. Đúng tinh thần Giai đoạn 3: spec viết trên giấy, người dùng thật mới là người quyết.
-- **Tính năng chính chưa từng chạy mà không ai biết.** Một đợt kiểm toán code phát hiện nút gửi tip **chưa bao giờ gửi được** – chuỗi xử lý đứt ở 3 chỗ, chỗ nào cũng im lặng, typecheck vẫn xanh. Chỉ lòi ra vì có người đi dò từng bước chứ không tin "build sạch là chạy".
-- **Còn thiếu:** chưa ai test trọn một lượt tip thật trên điện thoại thật (camera thật, quét QR thật, tiền đi thật). Mọi lần kiểm tra tới giờ đều chạy trên trình duyệt giả lập với camera giả.
-
-### EZwallet – Giai đoạn 1-2 đan xen, Giai đoạn 3 đi xa nhất
-
-[`KattyFury/ezwallet`](https://github.com/KattyFury/ezwallet) không được build theo đúng trình tự 3 giai đoạn của bước này (dự án có trước series), nên Giai đoạn 1 và 2 không tách bạch rõ ràng thành hai đợt riêng như prompt trên mô tả – logic và giao diện phát triển đan xen qua nhiều buổi. Đây là điều nên nói thẳng, không giả vờ khớp hoàn toàn: **làm đúng 3 giai đoạn tách bạch vẫn là cách nhanh hơn** cách EZwallet đã đi, không phải ngược lại.
-
-Tháng 9 EZwallet cũng dựng lại toàn bộ giao diện theo Figma, và dính y hệt TapTip: phải xoá từng chi tiết AI tự bịa thêm (một dòng cảnh báo "không hoàn tác được", một gợi ý dưới QR mà Figma không vẽ). Hai app, hai lần, cùng một lỗi – đủ để coi đây là thói quen của AI chứ không phải sự cố riêng một dự án.
-
-Bù lại, EZwallet đã đi xa hơn hẳn ở **Giai đoạn 3** – phần đòi hỏi người dùng thật. Ba câu chuyện thật, đúng tinh thần "ghi lại mọi lời chê, sửa dần, lặp tới khi không ai chê được nữa":
-
-**1. Thuật toán gợi ý số tiền – sửa 3 lần mới đúng.** Bản đầu làm tròn theo luỹ thừa 10 (0,5 → 5 → 50...), tưởng hợp lý trên giấy. Người dùng thật gõ 14,55 thì bị gợi ý nhảy hẳn sang "10 · 15 · 20" – bước nhảy quá thô ngay tại các mốc chục. Sửa lần 2 vẫn còn kẽ hở ở mốc 10 (9,99 bước 0,5 mà 10,0 nhảy thẳng lên bước 5). Lần 3 mới đúng: chỉ một bậc nhảy duy nhất, tại đúng một mốc. Bài học: **thấy đúng trên giấy không có nghĩa đúng khi người thật gõ số thật** – phải chờ phản hồi rồi sửa, không phải cố đoán đúng ngay từ đầu.
-
-**2. Cỡ icon – chốt sau khi lệch về cả hai phía.** Icon 48px + chữ 17px → người dùng chê "nhỏ quá". Chỉnh lên icon 64px + chữ 30px → chê tiếp "to quá". Chốt ở giữa (56px + 21px) mới vừa. Bài học: phản hồi đầu tiên không phải là điểm chốt, mà là một hướng để dò – đẩy quá tay theo một lời chê dễ tạo ra lời chê ngược lại.
-
-**3. Thông báo nhận tiền đến rất chậm – bug nghiêm trọng hơn vẻ ngoài.** Người dùng báo "thông báo tới rất lâu". Truy ra: hàm tên là "poll" (ngụ ý hỏi lặp lại) nhưng thực chất chỉ gọi đúng một lần lúc mở màn – đứng yên ở một màn thì tiền về cũng không ai hỏi lại. Vì đây là app cho người lớn tuổi xử lý tiền bạc, im lặng ở đúng màn hình tiền là lỗi nặng ngang một crash, không phải lỗi vặt bỏ qua được. Sửa: hỏi lặp lại theo nhịp khác nhau tuỳ màn (đang đứng chờ nhận tiền thì hỏi dày hơn), và hỏi ngay khi người dùng quay lại mở app.
-
-> Cả ba đều bắt đầu từ đúng bước 3 và 4 của Giai đoạn 3: đưa cho người thật dùng, và ghi lại lời chê dù có vẻ nhỏ. Không có bước đó thì cả ba lỗi này vẫn nằm im, "chạy được" trên giấy nhưng sai khi chạm vào người dùng thật.
 
 ## Prompt này từng hụt chỗ nào
 

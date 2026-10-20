@@ -106,58 +106,6 @@ XONG CÂU 3 THÌ TỰ ĐỘNG LÀM 2 VIỆC NÀY, ĐỪNG ĐỢI MÌNH NHẮC:
 Chỗ nào chưa hợp lý thì rèn lại cho hợp lý, xong xuôi hết mới qua Bước 2.
 ```
 
-## Ví dụ: TapTip và EZwallet đi qua 4 câu
-
-Hai dự án thật của tác giả, cùng hướng Peer-to-peer payments, cùng đối tượng có cả người lớn tuổi – nhưng chốt yêu cầu số một khác nhau, nên đi ra hai app khác hẳn. Đặt cạnh nhau để thấy 4 câu này lọc ra được gì.
-
-### TapTip – chạy thật đúng prompt trên
-
-[`KattyFury/taptip`](https://github.com/KattyFury/taptip) – Tip & Lì xì nhanh trên Arc, từng build song song với series rồi tách ra repo riêng. Đây là kết quả chạy thật prompt trên, bản đầy đủ: [`docs/01-ideation.md`](https://github.com/KattyFury/taptip/blob/main/docs/01-ideation.md).
-
-**Câu 0 – Định hướng Arc.** Peer-to-peer payments.
-
-**Câu 1 – Thật, và đúng đối tượng.** Gửi **tip** (bất cứ lúc nào) và **lì xì** (dịp Tết) – hai hành vi có thật trong đời sống người Việt, không phải thói quen nghĩ ra. Yêu cầu quan trọng nhất: **tốc độ**. Cả người gửi lẫn người nhận đều không cần biết gì về crypto, chỉ đăng nhập bằng email; ví được tạo tự động phía sau.
-
-**Câu 2 – Dẫn đầu hay cạnh tranh.** Chưa ai làm mảng này trên Arc – nó quá nhỏ để dự án lớn để ý. App tip ở nước khác (Ấn Độ chẳng hạn) thì không gắn với văn hoá lì xì Việt Nam. Lợi thế nằm ở **đặc thù văn hoá, không phải công nghệ** – và đó vẫn là một câu trả lời hợp lệ.
-
-**Câu 3 – Khả thi.** Hỏi AI của docs.arc.io, xác nhận được từng mảnh:
-
-| Cần gì | Kết quả |
-|---|---|
-| Ví ẩn sau email | Circle Wallets (dev-controlled) – user không thấy seed phrase |
-| Không bắt user trả gas | Arc hỗ trợ ERC-4337 + Paymaster → app trả gas thay user |
-| Đủ nhanh | Finality dưới 1 giây, benchmark thực tế **<350ms** |
-| Phí chịu được | ~$0.01/giao dịch, max $0.20 – hợp lý với khoản $0.50–$20 |
-
-**Và thứ KHÔNG có sẵn:** không có UI dựng sẵn cho luồng "gửi qua email", chỉ có `kit.send()` ở tầng SDK. Phần đăng nhập email + gửi tới email người khác phải tự build.
-
-> Chỗ đáng học nhất ở câu 3 là **một quyết định loại bớt**. Docs trả lời rằng dùng Circle Wallets hay Privy đều được. Nhưng yêu cầu số một ở câu 1 là *nhanh*, mà Privy bắt user tự ký từng giao dịch – thêm một nhịp chờ. Nên loại Privy, chọn Circle Wallets developer-controlled.
->
-> Và phần sau của câu chuyện còn đáng học hơn: quyết định đúng ở đây **vẫn bị lọt mất lúc code**. App mẫu TapTip fork về (Bước 3) chạy sẵn kiểu ví passkey – mỗi lần tip phải quét Face ID, đúng cái nhịp chờ vừa loại Privy để tránh. Không ai đối chiếu lại code với tài liệu Bước 1, nên app chạy sai kiến trúc gần một tháng, tới lúc kiểm toán mới lòi ra và đổi hẳn sang developer-controlled như đã chốt. Chốt ở Bước 1 xong không có nghĩa là code sẽ tự theo – tới Bước 6 vẫn phải mở lại tài liệu ra đối chiếu. Còn dòng "app trả gas thay user" thì tới giờ vẫn chưa bật: ví đang tự trả gas bằng USDC của chính nó.
-
-### EZwallet – dựng ngược từ quyết định có thật
-
-Đây là dự án thật của tác giả – [`KattyFury/ezwallet`](https://github.com/KattyFury/ezwallet), ví crypto cho người dùng phổ thông/người già ("A crypto wallet simple enough for my mom to use"), chạy thật trên Arc Testnet tại [ezwallet.cash](https://ezwallet.cash). Dự án không build theo đúng trình tự 4 câu của bước này (ra đời trước cả series), nên phần dưới **dựng ngược** từ quyết định có thật – không phải chép lại một lượt chat đã xảy ra.
-
-**Câu 0 – Định hướng Arc.** Peer-to-peer payments – gửi, nhận, quét QR.
-
-**Câu 1 – Thật, và đúng đối tượng.** Người dùng phổ thông, cụ thể tới mức lấy mẹ mình làm phép thử. Yêu cầu quan trọng nhất **không phải tốc độ mà là đơn giản**: không seed phrase (đăng nhập bằng email + PIN, khoá giữ bởi Circle MPC), không token gas riêng (Arc dùng thẳng USDC làm gas nên khỏi phải mua thêm một đồng chỉ để trả phí), chữ to, mỗi màn một hành động chính.
-
-**Câu 2 – Dẫn đầu hay cạnh tranh.** Không cạnh tranh bằng công nghệ – ví crypto thiếu gì. Cạnh tranh bằng **đối tượng bị bỏ quên**: hầu hết ví crypto dựng cho người đã hiểu crypto, seed phrase/địa chỉ hex/chọn mạng là rào cản với người mới, và là lý do chặn hẳn với người lớn tuổi. Giống kiểu trả lời của TapTip ("đặc thù văn hoá, không phải công nghệ") nhưng lệch trục: ở đây là **đặc thù đối tượng người dùng**.
-
-**Câu 3 – Khả thi.** Cơ chế Arc thật đã dùng, không phải tra một lần rồi thôi mà gom dần qua nhiều lần build:
-
-| Cần gì | Kết quả |
-|---|---|
-| Không bắt user mua token gas riêng | Arc dùng USDC làm gas token gốc (18 decimals on-chain) – ví chỉ cần đúng một loại tiền |
-| Gửi kèm lời nhắn on-chain | Contract Memo (precompile của Arc) – ghi lời nhắn kèm giao dịch, không cần dịch vụ ngoài |
-| Gộp nhiều thao tác vào 1 lần ký | `Multicall3From` – batch approve + swap thành đúng 1 giao dịch, 1 lần nhập PIN (thay vì 2 lần) |
-| Đọc số dư nhiều token không tốn nhiều request | `Multicall3` gộp lại 1 lệnh gọi, quan trọng vì RPC công cộng của Arc giới hạn request khá chặt |
-
-**Và thứ KHÔNG có sẵn:** `wrangler` CLI (Cloudflare) không có lệnh gắn custom domain cho Pages – phải tự gọi thẳng REST API mới xong việc này.
-
-> Chỗ đáng học nhất không nằm ở câu 3 mà là một quyết định về sau, cùng tinh thần "loại bớt phương án khả thi trên giấy": ban đầu QR mặc định chỉ vẽ địa chỉ `0x…` trần – đúng chuẩn, khả thi, nhưng địa chỉ EVM giống hệt nhau trên mọi chain nên ví bất kỳ đang mở sai mạng vẫn quét gửi được, tiền sang nhầm chain là mất luôn. Đối tượng là người lớn tuổi, không có cửa tự nhận ra sai mạng. Nên QR bị **khoá cứng vào đúng một mạng Arc**, chấp nhận validate chặt hơn để đổi lấy an toàn – "khả thi" và "an toàn cho đúng đối tượng" không phải lúc nào cũng là một.
-
 ## Prompt này từng hụt chỗ nào
 
 Bản đầu của prompt chạy ra được ý tưởng, nhưng lộ 5 chỗ hụt (# 1-5). Bốn chỗ hụt sau (# 6-9) lộ ra ở một lượt thử thật khác, với một ý tưởng không khớp thẳng vào hướng nào của Arc (lúc đó docs mới có 4 hướng) và có dùng nhiều cơ chế khác nhau của Arc lẫn ngoài Arc – đúng kiểu tình huống bản đầu của Câu 0 và Câu 3 chưa xử lý được. Chỗ hụt #11 không phải prompt sai mà là thế giới đổi: có thêm Arc Studio. Chỗ hụt #12 là cách sửa #11 dùng thật thấy chậm, nên dời Arc Studio sang Bước 6. Chỗ hụt #10 lộ ra ở lượt chạy với DailyReal (nhật ký ảnh thật, khoá vĩnh viễn trên Arc) – một ý tưởng có sẵn từ đầu và không thuộc hướng nào trong 6 hướng. Đã sửa hết vào khối prompt ở trên.

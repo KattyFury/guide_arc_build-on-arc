@@ -18,7 +18,7 @@ Nguồn: https://docs.arc.io/arc/references/rpc-endpoints + /arc/references/cont
 |---|---|---|
 | Chain ID | `5042` | `5042002` |
 | RPC (HTTPS) | `https://rpc.mainnet.arc.io` | `https://rpc.testnet.arc.io` |
-| RPC dự phòng | `https://rpc.drpc.mainnet.arc.io` (và các bên khác trong docs) | – |
+| RPC dự phòng | `https://rpc.drpc.mainnet.arc.io` (và các bên khác trong docs) | `https://rpc.drpc.testnet.arc.io` (và các bên khác trong docs) |
 | Block explorer | https://explorer.arc.io | https://explorer.testnet.arc.io |
 | Faucet | – | https://faucet.circle.com |
 | USDC (ERC-20, 6 decimals) | `0x3600000000000000000000000000000000000000` | `0x3600000000000000000000000000000000000000` |
