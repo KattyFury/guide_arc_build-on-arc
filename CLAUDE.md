@@ -18,47 +18,24 @@ việc viết guide nên đã tách TapTip ra repo riêng
 
 ---
 
-## VAI CỦA MỖI BÊN – chỗ dễ làm sai nhất, đọc kỹ
+## VAI CỦA MỖI BÊN – quy trình 4 bước (từ 2026-10-20)
 
-| | Làm gì | KHÔNG làm gì |
+| Bước | Ai làm | Claude Code (cửa sổ này) làm gì |
 |---|---|---|
-| **Claude Code** (cửa sổ này) | Dẫn đi từng bước, đưa prompt, giữ trạng thái, lưu kết quả xuống đĩa, build code từ Bước 5 | **KHÔNG** tự trả lời hộ user mấy câu của Bước 1-4. **KHÔNG** ôm hội thoại lên kế hoạch. |
-| **Claude Chat** (cửa sổ khác, trên web) | Toàn bộ hỏi đáp Bước 1-3, vẽ wireframe/spec Bước 4 | Không giữ file, đóng tab là mất – nên kết quả chốt phải mang về đây |
+| **1. Ý tưởng** | User + **Claude Chat** (web) | Đọc `01-y-tuong/README.md`, đưa nguyên khối prompt, ĐỨNG CHỜ. Nhận bản brief user dán về → lưu `docs/01-brief.md` trong thư mục dự án |
+| **2. Plan** | User + **Arc Studio** (web, chế độ Plan) | Đưa câu kèm brief trong `02-arc-studio-plan/README.md`, nhắc 4 điểm soi kế hoạch. Nhận kế hoạch chốt → lưu `docs/02-plan.md` |
+| **3. Build + demo** | User + **Arc Studio** | Không làm hộ. Nhận link preview + địa chỉ contract + ghi chú thử → lưu `docs/03-demo.md` |
+| **4. Hoàn thiện + mainnet** | **Claude Code** (hoặc Codex) trong thư mục dự án | Làm thật: tải code về, cài Arc Studio CLI, redesign, deploy mainnet theo `04-hoan-thien-mainnet/README.md` |
 
-Một câu cho dễ nhớ: **Chat để nghĩ, Code để giữ và để làm.**
+Một câu cho dễ nhớ: **Chat để nghĩ, Arc Studio để dựng demo, Code để giữ và để hoàn thiện.**
 
-### Giao thức Bước 1 → 4 (lặp đúng 4 nhịp, không tự chế thêm)
-
-1. **ĐỌC** `0N-*/README.md` của bước đang tới.
-2. **GIAO** đúng khối prompt trong file đó – in nguyên văn, trong code block, copy một phát là được. Kèm một câu: *"Dán cái này vào Claude Chat, nói chuyện xong thì mang kết quả về đây."*
-3. **ĐỨNG CHỜ.** Không hỏi thêm, không gợi ý, không trả lời thay. User đang nói chuyện ở cửa sổ khác.
-4. **NHẬN** kết quả user dán về → lưu vào `docs/0N-<tên-bước>.md` trong thư mục dự án của user → xác nhận đã lưu → hỏi có sang bước sau không.
-
-**Ngoại lệ duy nhất – Bước 3 có 2 vòng, tức 2 lượt 4 nhịp:** giao prompt Vòng 1 → nhận → lưu `docs/03-planning.md`; rồi giao prompt Vòng 2 (chốt stack) → nhận → lưu `docs/03-stack.md`. Đừng qua Bước 4 khi chưa có file Vòng 2 – thiếu nó thì Bước 5-6 không biết phải cài gì.
-
-**Bước 1:** user đã có ý tưởng thì Câu 0 (6 hướng Arc) bỏ qua – nó chỉ là điểm bắt đầu cho người chưa có ý tưởng, không phải bộ lọc. Đừng đem ý tưởng có sẵn ra so với 6 hướng. Câu 3 chỉ hỏi AI của docs.arc.io – câu phải thử thật mới biết thì ghi vào danh sách "cần thử khi build", để Bước 6 giao Arc Studio qua CLI, không thử ở Bước 1.
-
-**Bước 4:** sau khi lưu `docs/04-wireframe.md`, nếu user chưa biết Figma thì gợi ý nhờ Claude Design vẽ (prompt nằm trong `04-wireframe/README.md`, mục "Chưa biết Figma?"). Link bản vẽ mang về thì lưu vào `docs/` cạnh file wireframe.
-
-**Thư mục dự án tạo ngay ở Bước 1**, lúc lưu file đầu tiên (hỏi user đặt ở đâu – xem mục THƯ MỤC). Bước 5 chỉ nối thư mục đó với git/GitHub, không tạo mới.
-
-### Từ Bước 5 → 6
-
-- **Bước 5** chạy ngay trong Claude Code (đã cài sẵn vì user đang dùng nó để đọc repo này): đọc `05-setup/README.md`, **tự chạy** lệnh kiểm tra/cài đặt trong thư mục dự án thay vì bắt user chép lệnh qua lại. Việc cần user tự tay (đăng nhập GitHub, tạo tài khoản dịch vụ, lấy API key) thì dừng lại chỉ đúng chỗ.
-- **Bước 6** làm việc trong thư mục dự án. Prompt của từng giai đoạn nằm ở `06-build/README.md` của repo này – đọc từ đó, đừng bắt user chép.
-- **Đích cuối là link sản phẩm chạy thật** (Giai đoạn 3), không phải code chạy được ở máy. Chưa có link cho người ngoài vào thì chưa xong series.
-
-### ⚠️ Luật chống đốt token – vi phạm là hỏng cả ý tưởng
-
-**Một bước = một lần giao prompt + một lần nhận kết quả chốt.** Tuyệt đối không để user dán
-từng lượt hội thoại của Chat ngược vào đây – đó là trả tiền token cho việc chép chính tả,
-đúng cái sai mà Bước 3 đang dạy người ta tránh. Thấy user dán vào một đoạn dở dang thì nhắc:
-*"Cái này chưa chốt, nói tiếp với Chat cho xong rồi mang bản cuối về."*
-
-**Từ Bước 5 trở đi** Code mới vào việc thật. Nguồn sự thật là mấy file trong `docs/` mà 4 bước
-đầu đẻ ra – **đọc hết chúng trước khi viết dòng code đầu tiên**, đừng bắt user kể lại ý tưởng
-bằng trí nhớ. Có link bản vẽ thì mở ra đọc. Có mục "Cần kiểm tra khi build" thì **kiểm từng dòng
-bằng cách thật (đo testnet, tra docs) và báo kết quả trước khi code** – không đợi user dặn.
+- **Bước 1-3 Claude Code KHÔNG trả lời hộ, KHÔNG tự viết brief, KHÔNG tự lên kế hoạch thay Arc Studio.** Chỉ đưa prompt, chờ, nhận kết quả chốt, lưu.
+- **Một bước = một lần giao + một lần nhận kết quả chốt.** Không để user dán từng lượt hội thoại của Chat/Arc Studio vào đây – đó là trả tiền token cho việc chép chính tả. Thấy đoạn dở dang thì nhắc: *"Cái này chưa chốt, nói tiếp bên kia cho xong rồi mang bản cuối về."*
+- **Thư mục dự án tạo ở Bước 1**, lúc lưu file đầu tiên (hỏi user đặt ở đâu – xem mục THƯ MỤC). Bước 4 code tải về (export GitHub hoặc `arc-studio pull`) để chung thư mục đó.
+- **Bước 4: đọc hết `docs/` trước khi sửa dòng code đầu tiên.** Lên mainnet là đụng tiền thật: giải thích contract bằng lời thường và chờ user đồng ý trước khi deploy, lấy chain ID/RPC/địa chỉ từ docs chính thức (`ARC-RESOURCES.md` trước, rồi MCP `arc-docs`), private key chỉ trong `.env` đã gitignore.
+- **Arc Studio CLI bản 1.2.1 chỉ `skills install --tool claude-code`.** Codex thì gọi `arc-studio run ... --output json` + `arc-studio pull`. Windows báo "Claude Code not found" → cách vá ở `04-hoan-thien-mainnet/README.md` mục 4.2.
+- **Đích cuối là link sản phẩm chạy thật trên mainnet.** Bước 3 (demo testnet) là điểm dừng hợp lệ nếu user quyết không làm tiếp.
+- Bản 6 bước cũ nằm ở `archive/` – **không còn dẫn theo nó**, chỉ trích khi user hỏi hoặc cần dẫn chứng/bài học.
 
 ---
 
@@ -168,7 +145,7 @@ When I'm in **planning phase**, don't rush to code. When I have a spec, don't re
 - Backend/frontend/hosting: quyết định theo từng dự án, ghi rõ trong `HANDOFF.md` hoặc README của dự án đó.
 - **Secrets**: không hardcode key trong source, bất kể dùng stack nào.
 
-**EZwallet — Circle User-Controlled Wallets thay vì Developer-Controlled:** user tự giữ PIN, Circle giữ hạ tầng MPC nhưng không tự ký thay – ngược với TapTip (repo riêng, xem `HANDOFF.md`) chọn Developer-Controlled: server ký thay, user không ký gì, quét QR là tiền đi (từ 09-02, trước đó code chạy nhầm Modular Wallets/passkey theo app mẫu fork về). Hai hướng đều hợp lệ, khác nhau ở ai chịu trách nhiệm giữ chìa khoá – chọn theo đối tượng người dùng, không có đáp án đúng chung cho mọi app ví. Chi tiết dẫn chứng ở Vòng 2 Bước 3 (chốt stack).
+**EZwallet — Circle User-Controlled Wallets thay vì Developer-Controlled:** user tự giữ PIN, Circle giữ hạ tầng MPC nhưng không tự ký thay – ngược với TapTip (repo riêng, xem `HANDOFF.md`) chọn Developer-Controlled: server ký thay, user không ký gì, quét QR là tiền đi (từ 09-02, trước đó code chạy nhầm Modular Wallets/passkey theo app mẫu fork về). Hai hướng đều hợp lệ, khác nhau ở ai chịu trách nhiệm giữ chìa khoá – chọn theo đối tượng người dùng, không có đáp án đúng chung cho mọi app ví. Chi tiết dẫn chứng ở `archive/03-planning` Vòng 2 (chốt stack).
 
 **Trước khi research Arc/Circle lại từ đầu (tốn token):** đọc `ARC-RESOURCES.md` — link docs chính thức, network params Arc Testnet, cách cài App Kit SDK. Chỉ gọi MCP `arc-docs`/`circle` khi file đó chưa đủ chi tiết.
 

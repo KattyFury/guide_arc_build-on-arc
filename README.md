@@ -1,12 +1,25 @@
 # Hướng dẫn anh em build on Arc
 
-Series hướng dẫn build app trên Arc network, đi từng bước từ lên ý tưởng tới sản phẩm chạy được. Mỗi bước có sẵn prompt để AI (Claude, ChatGPT...) guide bạn trực tiếp, không cần đã rành Arc từ trước.
+Series hướng dẫn build app trên Arc network, từ ý tưởng tới sản phẩm chạy thật trên mainnet. Không cần đã rành Arc hay biết code.
+
+Từ 10/2026 series chỉ còn **4 bước**, vì [Arc Studio](https://studio.arc.io) (AI build app của Circle) giờ có chế độ **Plan**: tự lên kế hoạch, hỏi lại chỗ chưa rõ, rồi build và deploy bản demo lên testnet. Phần nặng nhất của bản cũ (viết PRD, phỏng vấn ngược, chốt stack, wireframe, setup môi trường) giờ Arc Studio lo gần hết.
+
+## 4 bước
+
+| Bước | Làm gì | Ở đâu |
+|---|---|---|
+| [1. Lên ý tưởng](01-y-tuong/README.md) | Bàn ý tưởng ra 2-3 hướng khai thác, chọn một, viết thành bản brief | Claude Chat |
+| [2. Plan với Arc Studio](02-arc-studio-plan/README.md) | Dán brief, bật chế độ Plan, trả lời câu hỏi, soi kế hoạch trước khi build | Arc Studio |
+| [3. Build và demo](03-build-demo/README.md) | Cho build, thử luồng chính trên preview với USDC testnet, sửa tới khi chạy trọn | Arc Studio |
+| [4. Hoàn thiện, lên mainnet](04-hoan-thien-mainnet/README.md) | Tải code về, cài Arc Studio CLI cho Claude Code / Codex, redesign, deploy lên mainnet | Claude Code / Codex |
+
+Đích cuối là **một link sản phẩm chạy thật trên mainnet**, người ngoài vào dùng được. Nhưng Bước 3 cũng là một điểm dừng hợp lệ: demo xong thấy ý tưởng không đáng làm tiếp thì dừng – rẻ hơn nhiều so với dừng sau khi đã redesign.
 
 ## Bắt đầu
 
-**1. Cài Claude Code + VS Code.** Chưa cài thì đọc bài này: [hướng dẫn setup](https://x.com/0xhieuxyz/status/2082123528573448506).
+**Chỉ cần trình duyệt** cho Bước 1-3: một tài khoản [Claude](https://claude.ai) và một tài khoản [Arc Studio](https://studio.arc.io). Mở [Bước 1](01-y-tuong/README.md), copy prompt, dán vào Claude Chat.
 
-**2. Clone repo này về, mở bằng Claude Code.**
+**Muốn có người giữ hộ trạng thái** (nhớ mình đang ở bước nào, lưu brief/kế hoạch xuống đĩa) thì mở repo này bằng Claude Code:
 
 ```bash
 git clone https://github.com/KattyFury/build-on-arc.git
@@ -14,64 +27,19 @@ cd build-on-arc
 claude
 ```
 
-**3. Nói với Claude Code đúng một câu:**
-
-> Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1.
-
-Xong. Nó tự biết đưa prompt nào, lưu kết quả vào đâu, khi nào sang bước sau.
-
-### Nếu không muốn dùng Claude Code
-
-Vẫn làm tay được, không sao: mở thư mục của bước, copy khối prompt trong đó dán vào [Claude Chat](https://claude.ai), nói chuyện xong thì tự lưu kết quả lại thành file. Claude Code chỉ giúp bạn khỏi phải nhớ mình đang ở đâu.
-
-## Cách hoạt động: Chat để nghĩ, Code để giữ và để làm
-
-| Bước | Công cụ | Vì sao |
-|---|---|---|
-| 1 → 4 | **Claude Chat** (web) | Hỏi đáp qua lại và vẽ spec thì Chat nhanh hơn hẳn |
-| Riêng wireframe ở Bước 4, nếu chưa biết Figma | **Claude Design** | Nhờ nó vẽ khung ra hình thật, khỏi phải học Figma |
-| 5 trở đi | **Claude Code** | Đụng file thật, chạy lệnh thật |
-| Riêng phần giao diện ở Bước 6 | **Claude Design** rồi mới về Code | Chốt hình hài ở chỗ lặp rẻ trước, đưa sang Code dựng một lần |
-
-Claude Code làm người dẫn đường xuyên suốt: nó đưa bạn prompt của bước đang tới, bạn mang sang Chat nói chuyện cho xong, rồi mang **kết quả chốt** về cho Code lưu vào `docs/` trong dự án của bạn.
-
-> ⚠️ Đừng dán từng lượt hội thoại của Chat ngược vào Code. Một bước chỉ mang về **một** kết quả chốt – không thì bạn đang trả tiền token cho đúng một việc là chép chính tả.
+Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài Claude Code thì xem [hướng dẫn setup](https://x.com/0xhieuxyz/status/2082123528573448506). Tới Bước 4 thì đằng nào cũng cần Claude Code (hoặc Codex).
 
 ## Mỗi bước có gì
 
-Bước nào cũng cùng một hình dạng, quen một bước là quen hết:
+1. **Vì sao cần bước này** – ngắn thôi
+2. **Prompt / cách làm** – copy dán được
+3. **Kết quả cuối bước** – mang gì sang bước sau
+4. **Prompt này từng hụt chỗ nào** – bản đầu sai ở đâu, sửa thế nào. Prompt được đem đi chạy thật, hụt chỗ nào ghi lại nguyên vẹn
 
-1. **Lý thuyết** – bước này để làm gì, vì sao đừng bỏ qua
-2. **Prompt** – khối copy được, dán thẳng vào Chat
-3. **Ví dụ** (một số bước) – quyết định có thật từ một dự án thật, đi qua đúng bước đó
-4. **Prompt này từng hụt chỗ nào** – bản đầu của prompt sai ở đâu, sửa thế nào
+## Bản 6 bước cũ
 
-Mục 4 là thứ ít series nào có, và có ở **mọi** bước. Prompt trong đây không phải viết một lần là xong – nó được đem đi chạy thử, hụt chỗ nào thì sửa, và chỗ hụt được ghi lại nguyên vẹn. Xem `git log` là thấy nó tiến hoá thế nào.
+Quy trình 6 bước trước đây (cùng ví dụ thật của [TapTip](https://github.com/KattyFury/taptip) và [EZwallet](https://github.com/KattyFury/ezwallet)) nằm ở [`archive/`](archive/README.md). Vẫn đáng đọc khi làm app đụng nhiều tiền hoặc cần lên kế hoạch kỹ hơn những gì Arc Studio tự hỏi.
 
-## Cấu trúc
+Link docs, thông số mạng mainnet/testnet, cách cài CLI: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
 
-| Bước | Làm gì | Prompt |
-|---|---|---|
-| [`01-ideation/`](01-ideation/README.md) | Lên ý tưởng: chưa có thì bắt đầu từ 6 hướng của Arc, có rồi thì vào thẳng 3 câu – đúng đối tượng, có điểm hơn, khả thi | ✅ |
-| [`02-hoan-thien-y-tuong/`](02-hoan-thien-y-tuong/README.md) | Viết ý tưởng thành 6 câu PRD + rút core value | ✅ |
-| [`03-planning/`](03-planning/README.md) | 2 vòng: AI hỏi ngược bạn về UX/logic/lỗi/bảo mật, rồi chốt stack cho từng luồng | ✅ |
-| [`04-wireframe/`](04-wireframe/README.md) | Vẽ wireframe chốt từng màn trước khi code, trên hệ lưới nhiều hàng/cột: chữ bội số của 3, khoảng cách và khối bội số của 8 | ✅ |
-| [`05-setup/`](05-setup/README.md) | Setup môi trường, nối dự án với GitHub, cài đúng stack đã chốt | ✅ |
-| [`06-build/`](06-build/README.md) | Build theo 3 giai đoạn: logic/flow → giao diện qua Claude Design → deploy lên live rồi sửa theo người dùng | ✅ |
-
-Đi lần lượt từng bước, xong bước nào mới qua bước đó. Đích cuối là **một link sản phẩm chạy thật**, người ngoài vào dùng được – không phải code chạy được trên máy mình.
-
-## Về dự án mẫu
-
-Repo này **thuần hướng dẫn** – không giữ code dự án mẫu song song bên trong. Từng thử cách đó với TapTip (Tip & Lì xì nhanh trên Arc, build song song với series), nhưng việc vừa viết guide vừa vá bug/deploy một app thật khiến công việc chính bị xao nhãng – nên đã tách TapTip ra [`KattyFury/taptip`](https://github.com/KattyFury/taptip), quay lại sau.
-
-Mục "Ví dụ" ở mỗi bước đặt **hai dự án thật** của tác giả cạnh nhau, cùng chạy trên Arc Testnet:
-
-| Dự án | Là gì | Ví dụ lấy từ đâu |
-|---|---|---|
-| [`KattyFury/taptip`](https://github.com/KattyFury/taptip) | Tip & Lì xì nhanh, quét QR là tiền đi | **Chạy thật** đúng prompt của từng bước, có bước chạy tới 2 lần (v1, v2). Kết quả nằm nguyên trong `docs/` của repo đó |
-| [`KattyFury/ezwallet`](https://github.com/KattyFury/ezwallet) | Ví crypto cho người dùng phổ thông, tại [ezwallet.cash](https://ezwallet.cash) | Có trước cả series nên **dựng ngược** từ quyết định có thật trong `HANDOFF.md`/`README.md`, không phải chép lại một buổi chạy prompt |
-
-Hai app cùng hướng P2P, cùng có người lớn tuổi trong đối tượng, nhưng chốt yêu cầu số một khác nhau (TapTip: nhanh, EZwallet: đơn giản) – nên đặt cạnh nhau là thấy mỗi bước lọc ra được gì. Chỗ nào không có đủ dữ liệu thật thì nói thẳng là thiếu, không nặn cho đủ. Prompt vẫn phải chạy thử thật trước khi đăng (không nhất thiết build trong repo này), và chỗ hụt tìm ra được ghi vào mục "Prompt này từng hụt chỗ nào" của từng bước.
-
-*(Quy định viết bài dành cho tác giả nằm ở `HANDOFF.md`, không để ở đây cho khỏi lệch hai chỗ.)*
+*(Quy định viết bài dành cho tác giả nằm ở `HANDOFF.md`.)*

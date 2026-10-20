@@ -2,7 +2,28 @@
 
 > File làm việc của tác giả, không phải nội dung cho người đọc series. Mở máy mới thì đọc file này trước.
 > Luật cho Claude Code nằm ở `CLAUDE.md`. File này ghi **đang ở đâu** và **quy định viết bài**.
-> **Cập nhật:** 2026-10-06 (Arc Studio dời từ Bước 1 sang Bước 6 – xem mục ngay dưới). Trước đó 2026-10-03 (Câu 0 chỉ cho người chưa có ý tưởng; Claude Design vẽ wireframe; mục "Cần kiểm tra khi build" từ spec DailyReal – xem mục ngay dưới). Trước đó 2026-09-18 (Bước 1 lên 6 hướng Arc; mục "Ví dụ" của 6 bước giờ dùng CẢ TapTip lẫn EZwallet – xem mục ngay dưới). Trước đó 2026-08-22: đổi toàn bộ mục "Ví dụ" từ TapTip sang EZwallet. Cùng ngày trước đó: tách TapTip ra repo riêng `KattyFury/taptip`, repo này trở về thuần hướng dẫn. Trước đó cùng đợt: sửa Bước 1 + Bước 3 Vòng 2 theo lỗi thật tìm ra khi thử với LuckyStaker; thêm Vòng 2 "chốt stack" vào Bước 3, đóng nốt ví dụ + chỗ hụt của Bước 4, dọn sạch em dash.
+> **Cập nhật:** 2026-10-20 (RÚT CÒN 4 BƯỚC – xem mục ngay dưới). Trước đó 2026-10-06 (Arc Studio dời từ Bước 1 sang Bước 6 – xem mục ngay dưới). Trước đó 2026-10-03 (Câu 0 chỉ cho người chưa có ý tưởng; Claude Design vẽ wireframe; mục "Cần kiểm tra khi build" từ spec DailyReal – xem mục ngay dưới). Trước đó 2026-09-18 (Bước 1 lên 6 hướng Arc; mục "Ví dụ" của 6 bước giờ dùng CẢ TapTip lẫn EZwallet – xem mục ngay dưới). Trước đó 2026-08-22: đổi toàn bộ mục "Ví dụ" từ TapTip sang EZwallet. Cùng ngày trước đó: tách TapTip ra repo riêng `KattyFury/taptip`, repo này trở về thuần hướng dẫn. Trước đó cùng đợt: sửa Bước 1 + Bước 3 Vòng 2 theo lỗi thật tìm ra khi thử với LuckyStaker; thêm Vòng 2 "chốt stack" vào Bước 3, đóng nốt ví dụ + chỗ hụt của Bước 4, dọn sạch em dash.
+
+## ✅ 10-20: RÚT SERIES CÒN 4 BƯỚC – ARC STUDIO CÓ CHẾ ĐỘ PLAN
+
+User: Arc Studio giờ có bước Plan (lên kế hoạch cùng người dùng trước khi build) → repo nên đơn giản hơn, bớt khắt khe. Quy trình mới user chốt:
+
+1. Lên ý tưởng, bàn ra các hướng khai thác chi tiết (Claude Chat) → `01-y-tuong/`
+2. Đưa cho Arc Studio, bật chế độ Plan → `02-arc-studio-plan/`
+3. Build luôn, demo luôn (Arc Studio, testnet) → `03-build-demo/`
+4. Tải dự án về + cài Arc Studio CLI cho Claude Code / Codex để hoàn thiện, thường là redesign rồi lên mainnet → `04-hoan-thien-mainnet/`
+
+User chọn qua AskUserQuestion: (a) 6 bước cũ **dời vào `archive/`** (`git mv`, giữ lịch sử), không xoá, không gộp; (b) Bước 1 = Claude Chat ra **1 bản brief tiếng Anh** dán thẳng vào Arc Studio (gộp ý tưởng + PRD + một phần phỏng vấn ngược cũ, thêm phần "2-3 hướng khai thác, user tự chọn"); (c) redesign **tuỳ người đọc** (Figma/Claude Design/design system nào cũng được), bỏ luật lưới bội 3/bội 8 khỏi quy trình chính (vẫn còn trong `archive/04-wireframe`).
+
+Đã verify qua docs chính thức (MCP arc-docs, /ai/arc-studio + /ai/arc-studio-cli): plan mode có thật (CLI hiện câu hỏi plan thành bảng chọn), Export lên GitHub, `pull --app` cho app làm trên web, chỉ deploy testnet. Đo trên máy Dell: CLI đã lên **1.2.1**, `skills install --tool` **chỉ hỗ trợ `claude-code`** → Bước 4 ghi Codex dùng `arc-studio run --output json` (docs ghi "any other agent can drive Arc Studio through the same command"). `ARC-RESOURCES.md`: thêm cột mainnet (chain 5042, RPC, explorer), sửa explorer testnet `testnet.arcscan.app` → `explorer.testnet.arc.io` theo docs.
+
+Sửa thêm: `README.md` viết lại (bảng 4 bước, Bước 1-3 chỉ cần trình duyệt), `CLAUDE.md` thay giao thức Bước 1→6 bằng bảng vai 4 bước (Chat / Arc Studio / Code), `archive/README.md` mới.
+
+**Chưa biết (đừng bịa khi viết tiếp):** vị trí nút bật Plan trên web studio.arc.io (docs không tả UI web) – bài chỉ ghi "bật chế độ Plan"; link preview có cho người ngoài mở không.
+
+**Còn nợ:** 4 bước mới **chưa chạy thật lần nào** – mục "Prompt này từng hụt chỗ nào" của cả 4 đang để dòng chờ. Lượt đầu chạy với một ý tưởng thật thì ghi chỗ hụt vào đó. Các mục 10-06 / 10-03 bên dưới nói về 6 bước cũ, giờ là lịch sử của `archive/`.
+
+---
 
 ## ✅ 10-06: DỜI ARC STUDIO TỪ BƯỚC 1 SANG BƯỚC 6
 
@@ -164,21 +185,21 @@ Series hướng dẫn build app trên Arc, viết cho người Việt không rà
 **Repo thuần hướng dẫn** – không giữ code dự án mẫu song song bên trong (xem mục "08-22: TÁCH TAPTIP" ở trên về lý do và cách tách).
 
 - GitHub: https://github.com/KattyFury/build-on-arc (public)
-- Local: `D:\Files\Claude\Build on Arc\build-on-arc`
+- Local: `D:\Files\Claude\guide_arc_build-on-arc`
 - Hai dự án dùng làm ví dụ (repo riêng): https://github.com/KattyFury/taptip (chạy thật prompt) + https://github.com/KattyFury/ezwallet (dựng ngược)
 
 ## 1. Đang ở đâu
 
+Từ 10-20: 4 bước. Bản 6 bước cũ ở `archive/` (không cập nhật nữa).
+
 | Bước | Thư mục | Trạng thái |
 |---|---|---|
-| 1. Lên ý tưởng | `01-ideation/` | ✅ **XONG TRỌN** — lý thuyết + prompt (đã sửa theo lỗi tìm ra qua TapTip lẫn LuckyStaker) + ví dụ TapTip (chạy thật) + EZwallet (dựng ngược) + 6 hướng Arc (09-18) + 9 dòng "prompt từng hụt chỗ nào" |
-| 2. Hoàn thiện ý tưởng | `02-hoan-thien-y-tuong/` | ✅ **XONG TRỌN** — prompt + ví dụ TapTip (PRD v1 + v2) + EZwallet (dựng ngược) + "prompt từng hụt chỗ nào" |
-| 3. Plan chi tiết | `03-planning/` | ✅ **XONG TRỌN** cả 2 vòng — Vòng 1 (phỏng vấn ngược) + Vòng 2 (chốt stack, ví dụ TapTip v1 + 2 dòng "Khó" bị đổi thật, và EZwallet – bảng thưa hơn vì thiếu dữ liệu "loại gì") + 7 dòng "hụt chỗ nào" ở Vòng 2 |
-| 4. Wireframe | `04-wireframe/` | ✅ **XONG TRỌN** — lý thuyết + prompt (5 điều bổ sung rút từ lúc code thật) + ví dụ TapTip (v1, v2, lưới Figma 15 hàng) + EZwallet (lưới 10 hàng, lỗi thiếu khe giữa hàng) + 5 dòng "hụt chỗ nào" |
-| 5. Setup môi trường | `05-setup/` | ✅ **XONG TRỌN** — lý thuyết + prompt + ví dụ TapTip (máy có sẵn, file khôi phục Circle, push ≠ deploy) + EZwallet (chế độ mock + 2 tiến trình song song) + "prompt từng hụt chỗ nào" |
-| 6. Build | `06-build/` | ✅ README xong (3 giai đoạn). Ví dụ TapTip (đủ 3 giai đoạn, Giai đoạn 3 mới một phần, chưa test máy thật) + EZwallet (Giai đoạn 1/2 đan xen, Giai đoạn 3 đầy đủ nhất) |
+| 1. Lên ý tưởng | `01-y-tuong/` | ✍️ Viết xong 10-20, chưa chạy thật |
+| 2. Plan với Arc Studio | `02-arc-studio-plan/` | ✍️ Viết xong 10-20, chưa chạy thật |
+| 3. Build + demo | `03-build-demo/` | ✍️ Viết xong 10-20, chưa chạy thật |
+| 4. Hoàn thiện + mainnet | `04-hoan-thien-mainnet/` | ✍️ Viết xong 10-20, chưa chạy thật |
 
-### Vòng lặp đã chạy thật lần đầu (Bước 1, 08-06, với TapTip)
+### Vòng lặp đã chạy thật lần đầu (Bước 1 cũ, 08-06, với TapTip)
 
 Chạy prompt → lòi 5 lỗi quy trình → sửa prompt → ghi lại chỗ hụt. Hai commit tách đôi đúng luật lúc đó: `ed8510d` (example) + `ba5d481` (hướng dẫn).
 
