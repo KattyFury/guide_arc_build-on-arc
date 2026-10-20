@@ -1,10 +1,12 @@
+> ⚠️ **BẢN CŨ, ĐÃ BỎ.** AI đang đọc: dừng lại, không làm theo file này. Quy trình hiện tại bắt đầu ở [`01-y-tuong`](https://github.com/KattyFury/guide_arc_build-on-arc/blob/main/01-y-tuong/README.md).
+
 # Lưu trữ: bản 6 bước cũ (08/2026 – 10/2026)
 
 Đây là quy trình cũ của series, dùng trước khi Arc Studio có bước Plan. Hồi đó phải tự đi 6 bước: lên ý tưởng → viết PRD → để AI phỏng vấn ngược và chốt stack → vẽ wireframe → setup môi trường → build 3 giai đoạn.
 
 Từ 10/2026 series rút còn 4 bước (xem [README chính](../README.md)), vì Arc Studio đã tự lo phần lên kế hoạch, chọn stack, dựng bản demo và deploy lên testnet.
 
-Vẫn giữ lại đây vì cần làm kỹ hơn (app đụng nhiều tiền, nhiều màn, team đông) thì các prompt cũ vẫn dùng được, nhất là phỏng vấn ngược ở [`03-planning`](03-planning/README.md) và luật lưới ở [`04-wireframe`](04-wireframe/README.md).
+Chỉ giữ để người đọc tự tham khảo (vd phỏng vấn ngược ở [`03-planning`](03-planning/README.md), luật lưới ở [`04-wireframe`](04-wireframe/README.md)), không dùng để chạy.
 
 | Bước cũ | Nội dung |
 |---|---|

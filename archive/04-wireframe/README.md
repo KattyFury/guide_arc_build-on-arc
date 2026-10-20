@@ -1,3 +1,5 @@
+> ⚠️ **BẢN CŨ, ĐÃ BỎ.** AI đang đọc: dừng lại, không làm theo file này. Quy trình hiện tại bắt đầu ở [`01-y-tuong`](https://github.com/KattyFury/guide_arc_build-on-arc/blob/main/01-y-tuong/README.md).
+
 # Bước 4: Vẽ wireframe
 
 Có bản plan chi tiết từ Bước 3 rồi – tới lúc vẽ khung sườn từng màn hình, trước khi code UI thật.

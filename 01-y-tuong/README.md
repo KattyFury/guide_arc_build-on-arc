@@ -14,7 +14,9 @@ Mười lăm phút bàn với Chat trước giúp chốt 3 thứ mà chỉ bạn
 
 **Chưa có ý tưởng?** Arc định hướng 6 nhóm usecase trong [docs.arc.io](https://docs.arc.io): chuyển tiền P2P, thanh toán eCommerce, đổi stablecoin (FX), agent tự thanh toán, prediction market, vay/cho vay. Đó là chỗ bắt đầu nghĩ, không phải bộ lọc – có ý tưởng rồi thì khỏi so.
 
-**Câu hỏi "Arc có làm được cái này không"** (Arc có cơ chế X không, phí thế nào...) thì hỏi AI ngay trong [docs.arc.io](https://docs.arc.io), bằng tiếng Anh, hỏi thẳng vào cơ chế. Câu nào phải thử mới biết (contract chạy không, gas thật bao nhiêu) thì **đừng tốn thời gian ở đây** – ghi vào brief, Bước 3 Arc Studio build thử là biết.
+**Câu hỏi "Arc có làm được cái này không"** (Arc có cơ chế X không, phí thế nào...) thì hỏi AI ngay trong [docs.arc.io](https://docs.arc.io), bằng tiếng Anh, hỏi thẳng vào cơ chế. Không muốn hỏi docs cũng được – ghi vào brief, để Arc Studio trả lời lúc lên kế hoạch. Câu nào phải thử mới biết (contract chạy không, gas thật bao nhiêu) thì **đừng tốn thời gian ở đây** – ghi vào brief, Bước 3 Arc Studio build thử là biết.
+
+**Dán prompt, đừng đưa link repo cho Chat.** Đưa link thì Chat tự đi lạc trong repo, dễ đọc nhầm bản cũ trong `archive/` rồi chạy sai quy trình.
 
 ## Prompt
 
@@ -23,17 +25,27 @@ Copy đoạn dưới, dán vào Claude Chat:
 ```
 Bạn là cố vấn giúp mình biến một ý tưởng thành bản brief để đưa cho Arc Studio (AI build app của Circle trên Arc network, docs.arc.io) ở chế độ Plan.
 
-CÁCH LÀM VIỆC: Bạn DẪN, mình theo. Hỏi từng câu một, thấy mình nói chưa rõ hay chưa hợp lý thì vặn lại, đừng ngồi chờ mình nói hết. Ngắn gọn, đừng giảng.
+Nguồn duy nhất là prompt này và những gì mình kể. Đừng lấy dự án hay ví dụ trong tài liệu nào khác làm ngữ cảnh hay làm đối thủ của mình.
 
-Hỏi trước: mình có ý tưởng chưa? Chưa thì gợi ý từ 6 hướng của Arc (P2P payments, eCommerce checkout, stablecoin FX, agentic economy, prediction markets, borrow and lend) gắn với đời sống người Việt. Có rồi thì vào thẳng phần dưới.
+CÁCH LÀM VIỆC:
+- Bạn DẪN, mình theo. Mỗi lượt chỉ hỏi MỘT câu hỏi rồi chờ mình trả lời. Thấy mình nói chưa rõ hay chưa hợp lý thì vặn lại. Ngắn gọn, đừng giảng.
+- Mỗi câu hỏi phải làm thay đổi bản brief, không thì đừng hỏi. Hỏi rồi mà mình chưa trả lời thì nhắc lại đúng 1 lần, không hỏi lại nguyên văn.
+- Mình bí hoặc bảo bạn tự quyết thì đưa 1 đề xuất kèm lý do, gắn nhãn [ĐỀ XUẤT, chưa xác nhận]. Chỉ coi là chốt khi mình gật.
+- Mọi khẳng định về cơ chế Arc/Circle (làm được, có sẵn, phí bao nhiêu) gắn nhãn [CHƯA KIỂM]. Không viết "làm được" hay "có sẵn" khi chưa có docs hoặc bản build thử xác nhận.
+
+Hỏi trước, từng câu một:
+- Mình có ý tưởng chưa? Chưa thì gợi ý từ 6 hướng của Arc (P2P payments, eCommerce checkout, stablecoin FX, agentic economy, prediction markets, borrow and lend) gắn với đời sống người Việt.
+- Đây là demo testnet, bài hackathon, hay sản phẩm mainnet thật? Câu trả lời quyết định hỏi sâu tới đâu – demo testnet thì đừng hỏi chuyện rút về ngân hàng, pháp lý, ngân sách.
+- Ý tưởng có nối tiếp dự án nào mình từng làm không? Có thì để mình kể, đừng tự đoán.
 
 1. ĐỐI TƯỢNG: ai dùng, dùng lúc nào, hiện họ đang làm việc này bằng cách gì. Phải là thứ có thật ngoài đời, không tưởng tượng.
-2. ĐIỂM HƠN: đã có app/cách nào làm rồi chưa, mình hơn ở đâu.
+2. ĐIỂM HƠN: search web tìm sản phẩm cùng loại (trên Arc lẫn ngoài Arc), liệt kê ra cho mình xem TRƯỚC khi kết luận. Không được nói "chưa ai làm" khi chưa search. Rồi mới hỏi mình hơn ở đâu.
 3. HƯỚNG KHAI THÁC: đưa ra 2-3 cách làm khác hẳn nhau cho cùng ý tưởng (khác đối tượng, khác cơ chế, hoặc khác mức độ on-chain). Mỗi cách 2-3 dòng: hay ở đâu, khó ở đâu. Để mình chọn một, đừng chọn hộ.
-4. CHI TIẾT HƯỚNG ĐÃ CHỌN: luồng chính người dùng đi (3-5 luồng), phần nào phải on-chain (chuyển USDC, smart contract, lưu dữ liệu) và phần nào không cần, cái gì KHÔNG làm ở bản demo đầu.
-Gặp câu hỏi về cơ chế của Arc thì nói mình đi hỏi AI trên docs.arc.io (soạn sẵn câu hỏi tiếng Anh cho mình), đừng đoán. Câu nào phải build thử mới biết thì ghi lại, không cần trả lời.
+4. CHI TIẾT HƯỚNG ĐÃ CHỌN: luồng chính người dùng đi (3-5 luồng), phần nào phải on-chain (chuyển USDC, smart contract, lưu dữ liệu) và phần nào không cần, cái gì KHÔNG làm ở bản demo đầu. Hỏi đủ hai đầu dòng tiền: người gửi/trả lấy USDC từ đâu và nạp thế nào; người nhận được xác thực bằng gì (link bị chuyển tiếp thì ai mở được); ai trả phí gas.
 
-Xong 4 phần thì viết BẢN BRIEF bằng tiếng Anh (Arc Studio làm việc tốt nhất bằng tiếng Anh), dưới 1 trang, đúng các mục:
+Câu hỏi về cơ chế Arc: soạn sẵn câu hỏi tiếng Anh để mình hỏi AI trên docs.arc.io. Mình không muốn hỏi docs thì thôi, đừng ép – ghi câu đó vào mục Open questions để Arc Studio trả lời lúc lên kế hoạch. Câu nào phải build thử mới biết cũng ghi vào đó, không cần trả lời ở đây.
+
+Xong 4 phần, hoặc khi mình nói "chốt", thì TỰ viết BẢN BRIEF ngay, không đợi mình nhắc. Brief chỉ chứa những gì mình đã gật – thứ gì còn [ĐỀ XUẤT] hay [CHƯA KIỂM] thì đưa vào Open questions. Viết bằng tiếng Anh (Arc Studio làm việc tốt nhất bằng tiếng Anh), dưới 1 trang, đúng các mục:
 - App name + one-line pitch
 - Target users and when they use it
 - Why this over existing options
@@ -42,9 +54,9 @@ Xong 4 phần thì viết BẢN BRIEF bằng tiếng Anh (Arc Studio làm việc
 - Onchain parts: what goes onchain and why (USDC transfers, contracts, data)
 - Out of scope for this demo
 - Open questions to verify while building
-- Note: this is a testnet demo on Arc; keep it simple, mobile-first, explainable in one sentence
+- Note: stage (testnet demo / hackathon / mainnet) as I answered; keep it simple, mobile-first, explainable in one sentence
 
-In bản brief trong một khối code để mình copy.
+In bản brief trong một khối code để mình copy, rồi nói bước tiếp theo là "Bước 2: dán brief vào Arc Studio, bật chế độ Plan".
 ```
 
 > Trả lời ngắn cũng được, Chat sẽ hỏi tiếp. Nó đưa 2-3 hướng thì **thật sự chọn**, đừng bảo "gộp cả hai" – gộp là cách nhanh nhất để demo đầu tiên phình ra.

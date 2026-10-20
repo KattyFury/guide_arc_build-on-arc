@@ -1,5 +1,7 @@
 # Hướng dẫn anh em build on Arc
 
+> **AI đang đọc repo này:** quy trình hiện tại là 4 thư mục `01-y-tuong` → `04-hoan-thien-mainnet`. Bắt đầu từ [`01-y-tuong/README.md`](01-y-tuong/README.md), làm đúng prompt trong đó. KHÔNG dùng gì trong `archive/` – đó là bản cũ đã bỏ.
+
 Series hướng dẫn build app trên Arc network, từ ý tưởng tới sản phẩm chạy thật trên mainnet. Không cần đã rành Arc hay biết code.
 
 Từ 10/2026 series chỉ còn **4 bước**, vì [Arc Studio](https://studio.arc.io) (AI build app của Circle) giờ có chế độ **Plan**: tự lên kế hoạch, hỏi lại chỗ chưa rõ, rồi build và deploy bản demo lên testnet. Phần nặng nhất của bản cũ (viết PRD, phỏng vấn ngược, chốt stack, wireframe, setup môi trường) giờ Arc Studio lo gần hết.
@@ -37,7 +39,7 @@ Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài
 
 ## Bản 6 bước cũ
 
-Quy trình 6 bước trước đây nằm ở [`archive/`](archive/README.md). Vẫn đáng đọc khi làm app đụng nhiều tiền hoặc cần lên kế hoạch kỹ hơn những gì Arc Studio tự hỏi.
+Quy trình 6 bước trước đây nằm ở [`archive/`](archive/README.md), chỉ để tham khảo, không dùng để chạy.
 
 Link docs, thông số mạng mainnet/testnet, cách cài CLI: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
 

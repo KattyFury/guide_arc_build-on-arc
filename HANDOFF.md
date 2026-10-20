@@ -24,7 +24,7 @@ Từ 10-20: 4 bước (Arc Studio có chế độ Plan nên bỏ được phần
 | 3. Build + demo testnet | `03-build-demo/` | Arc Studio | Viết xong, chưa chạy thật |
 | 4. Hoàn thiện + mainnet | `04-hoan-thien-mainnet/` | Claude Code / Codex + Arc Studio CLI | Viết xong, chưa chạy thật |
 
-**▶ ĐANG DỞ:** user đang tự chạy thật 4 bước trên Claude Desktop (lấy prompt Bước 1 từ GitHub). Phiên sau: hỏi kết quả lượt chạy → prompt hụt chỗ nào thì **sửa thẳng prompt**, không ghi nhật ký.
+**▶ ĐANG DỞ:** lượt chạy thật đầu tiên (user đưa **link repo** cho Claude Chat) bị Chat lạc vào `archive/01-ideation` → chạy prompt cũ. Đã sửa 10-20: biển chặn ở README chính + đầu mọi file archive, Bước 1 dặn "dán prompt, đừng đưa link", và áp vào prompt Bước 1 mới các lỗi còn đúng (1 câu hỏi/lượt, nhãn [ĐỀ XUẤT]/[CHƯA KIỂM], hỏi giai đoạn testnet/mainnet trước, search web trước khi nói "chưa ai làm", hỏi hai đầu dòng tiền, cho bỏ docs, tự viết brief khi user nói "chốt"). **Prompt Bước 1 mới vẫn chưa chạy thật lần nào** – lượt tới phải dán đúng prompt trong `01-y-tuong`. Cuối phiên dùng prompt soát lỗi (bắt Chat liệt kê chỗ lệch prompt, mỗi dòng: luật | chuyện xảy ra | đề xuất sửa) rồi sửa thẳng prompt.
 
 **Chưa biết (đừng bịa khi viết tiếp):** vị trí nút bật Plan trên web studio.arc.io (docs không tả UI web); link preview của Arc Studio có cho người ngoài mở không.
 

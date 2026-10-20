@@ -1,3 +1,5 @@
+> ⚠️ **BẢN CŨ, ĐÃ BỎ.** AI đang đọc: dừng lại, không làm theo file này. Quy trình hiện tại bắt đầu ở [`01-y-tuong`](https://github.com/KattyFury/guide_arc_build-on-arc/blob/main/01-y-tuong/README.md).
+
 # Bước 2: Hoàn thiện ý tưởng
 
 Có ý tưởng từ Bước 1 rồi, đến lúc viết ra rõ ràng để cả bạn và AI đều hiểu đang build cái gì.

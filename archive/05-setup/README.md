@@ -1,3 +1,5 @@
+> ⚠️ **BẢN CŨ, ĐÃ BỎ.** AI đang đọc: dừng lại, không làm theo file này. Quy trình hiện tại bắt đầu ở [`01-y-tuong`](https://github.com/KattyFury/guide_arc_build-on-arc/blob/main/01-y-tuong/README.md).
+
 # Bước 5: Setup môi trường
 
 Đã có 2 file spec – một về tính năng (Bước 3), một về giao diện (Bước 4). Bước này dựng môi trường để code: cài công cụ, nối GitHub, chuẩn bị để Claude Code làm việc trong đúng thư mục dự án.

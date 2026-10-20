@@ -1,3 +1,5 @@
+> ⚠️ **BẢN CŨ, ĐÃ BỎ.** AI đang đọc: dừng lại, không làm theo file này. Quy trình hiện tại bắt đầu ở [`01-y-tuong`](https://github.com/KattyFury/guide_arc_build-on-arc/blob/main/01-y-tuong/README.md).
+
 # Bước 3: Plan chi tiết trước khi code
 
 Có 6 câu mô tả sản phẩm từ Bước 2 rồi. Bước này đưa chúng cho AI bóc tách từng gạch đầu dòng, tìm ra những chỗ còn thiếu – trước khi viết dòng code đầu tiên.
