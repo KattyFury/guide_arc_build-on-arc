@@ -2,7 +2,7 @@
 
 > File làm việc của tác giả, không phải nội dung cho người đọc series. Mở máy mới thì đọc file này trước.
 > Luật cho Claude Code nằm ở `CLAUDE.md`. File này chỉ ghi **trạng thái hiện tại** – lịch sử cũ xem `git log`, không chép lại vào đây.
-> **Cập nhật:** 2026-10-20.
+> **Cập nhật:** 2026-10-26.
 
 ## 0. Repo này là gì
 
@@ -15,7 +15,7 @@ Series hướng dẫn build app trên Arc, viết cho người Việt không rà
 
 ## 1. Đang ở đâu
 
-Từ 10-20: 4 bước (Arc Studio có chế độ Plan nên bỏ được phần PRD/phỏng vấn ngược/chốt stack/wireframe/setup của bản cũ). Bản 6 bước cũ ở `archive/`, không cập nhật nữa.
+4 bước. Bản 6 bước cũ đã xoá hẳn (10-26), lịch sử ở git.
 
 | Bước | Thư mục | Ở đâu | Trạng thái |
 |---|---|---|---|
@@ -24,7 +24,9 @@ Từ 10-20: 4 bước (Arc Studio có chế độ Plan nên bỏ được phần
 | 3. Build + demo testnet | `03-build-demo/` | Arc Studio | Viết xong, chưa chạy thật |
 | 4. Hoàn thiện + mainnet | `04-hoan-thien-mainnet/` | Claude Code / Codex + Arc Studio CLI | Viết xong, chưa chạy thật |
 
-**▶ ĐANG DỞ:** 2 lượt chạy thật đầu (Bước 1 + "Bước 2" kiểu PRD 6 câu, app tingting) đều chạy prompt CŨ trong archive – lỗi của cả 2 lượt đã áp vào prompt Bước 1 mới (lượt 2 thêm: mỗi phía phải có người thật, xác định app bán gì rồi mới chọn đối thủ, cắt tính năng phải nói rủi ro mở ra, viết giúp nửa câu, brief định nghĩa thuật ngữ). Lượt đầu (user đưa **link repo** cho Claude Chat) bị Chat lạc vào `archive/01-ideation` → chạy prompt cũ. Đã sửa 10-20: biển chặn ở README chính + đầu mọi file archive, Bước 1 dặn "dán prompt, đừng đưa link", và áp vào prompt Bước 1 mới các lỗi còn đúng (1 câu hỏi/lượt, nhãn [ĐỀ XUẤT]/[CHƯA KIỂM], hỏi giai đoạn testnet/mainnet trước, search web trước khi nói "chưa ai làm", hỏi hai đầu dòng tiền, cho bỏ docs, tự viết brief khi user nói "chốt"). **Prompt Bước 1 mới vẫn chưa chạy thật lần nào** – lượt tới phải dán đúng prompt trong `01-y-tuong`. Cuối phiên dùng prompt soát lỗi (bắt Chat liệt kê chỗ lệch prompt, mỗi dòng: luật | chuyện xảy ra | đề xuất sửa) rồi sửa thẳng prompt.
+**▶ ĐANG DỞ:** **Prompt Bước 1 chưa chạy thật lần nào** – lượt tới chạy đúng prompt trong `01-y-tuong`. Cuối phiên dùng prompt soát lỗi (bắt Chat liệt kê chỗ lệch prompt, mỗi dòng: luật | chuyện xảy ra | đề xuất sửa) rồi sửa thẳng prompt.
+
+**Gửi link repo cho AI chat (10-26):** mặc định = Bước 1 (lên / hoàn thiện ý tưởng). Dặn ở khung đầu `README.md` + đầu `CLAUDE.md` + `AGENTS.md`. Có AI đọc bản repo đã lưu từ trước 10-20 (6 bước, ví dụ TapTip/EZwallet) – repo không xoá được bản lưu đó, nên Bước 1 vẫn khuyên dán thẳng prompt là chắc nhất.
 
 **Chưa biết (đừng bịa khi viết tiếp):** vị trí nút bật Plan trên web studio.arc.io (docs không tả UI web); link preview của Arc Studio có cho người ngoài mở không.
 

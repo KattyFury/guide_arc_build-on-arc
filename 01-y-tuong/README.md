@@ -16,7 +16,7 @@ Mười lăm phút bàn với Chat trước giúp chốt 3 thứ mà chỉ bạn
 
 **Câu hỏi "Arc có làm được cái này không"** (Arc có cơ chế X không, phí thế nào...) thì hỏi AI ngay trong [docs.arc.io](https://docs.arc.io), bằng tiếng Anh, hỏi thẳng vào cơ chế. Không muốn hỏi docs cũng được – ghi vào brief, để Arc Studio trả lời lúc lên kế hoạch. Câu nào phải thử mới biết (contract chạy không, gas thật bao nhiêu) thì **đừng tốn thời gian ở đây** – ghi vào brief, Bước 3 Arc Studio build thử là biết.
 
-**Dán prompt, đừng đưa link repo cho Chat.** Đưa link thì Chat tự đi lạc trong repo, dễ đọc nhầm bản cũ trong `archive/` rồi chạy sai quy trình.
+**Dán prompt, hoặc gửi link repo.** Gửi link repo cho Claude Chat / ChatGPT thì repo đã dặn sẵn: AI hiểu là bạn muốn lên ý tưởng hoặc hoàn thiện ý tưởng, và chạy đúng prompt dưới đây. Dán thẳng prompt vẫn chắc nhất – có AI đọc bản repo đã lưu từ lâu chứ không mở bản mới.
 
 ## Prompt
 

@@ -1,10 +1,10 @@
 # Hướng dẫn anh em build on Arc
 
-> **AI đang đọc repo này:** quy trình hiện tại là 4 thư mục `01-y-tuong` → `04-hoan-thien-mainnet`. Bắt đầu từ [`01-y-tuong/README.md`](01-y-tuong/README.md), làm đúng prompt trong đó. KHÔNG dùng gì trong `archive/` – đó là bản cũ đã bỏ.
+> **Gửi AI (Claude Chat, ChatGPT, Gemini...) vừa nhận link repo này:** người gửi link muốn **lên ý tưởng hoặc hoàn thiện ý tưởng** cho một app trên Arc – đó là Bước 1. Đừng tóm tắt repo, đừng hỏi "gửi link để làm gì". Mở [`01-y-tuong/README.md`](01-y-tuong/README.md) (bản thô: https://raw.githubusercontent.com/KattyFury/guide_arc_build-on-arc/main/01-y-tuong/README.md), làm đúng khối prompt trong đó như thể người dùng vừa dán nó vào, và hỏi ngay câu đầu tiên của prompt. Chỉ sang Bước 2-4 khi người dùng nói rõ họ đang ở bước đó.
 
 Series hướng dẫn build app trên Arc network, từ ý tưởng tới sản phẩm chạy thật trên mainnet. Không cần đã rành Arc hay biết code.
 
-Từ 10/2026 series chỉ còn **4 bước**, vì [Arc Studio](https://studio.arc.io) (AI build app của Circle) giờ có chế độ **Plan**: tự lên kế hoạch, hỏi lại chỗ chưa rõ, rồi build và deploy bản demo lên testnet. Phần nặng nhất của bản cũ (viết PRD, phỏng vấn ngược, chốt stack, wireframe, setup môi trường) giờ Arc Studio lo gần hết.
+Series có **4 bước**, vì [Arc Studio](https://studio.arc.io) (AI build app của Circle) có chế độ **Plan**: tự lên kế hoạch, hỏi lại chỗ chưa rõ, rồi build và deploy bản demo lên testnet. Viết spec, chốt stack, vẽ khung màn hình, setup môi trường – Arc Studio lo gần hết.
 
 ## 4 bước
 
@@ -19,7 +19,7 @@ Từ 10/2026 series chỉ còn **4 bước**, vì [Arc Studio](https://studio.ar
 
 ## Bắt đầu
 
-**Chỉ cần trình duyệt** cho Bước 1-3: một tài khoản [Claude](https://claude.ai) và một tài khoản [Arc Studio](https://studio.arc.io). Mở [Bước 1](01-y-tuong/README.md), copy prompt, dán vào Claude Chat.
+**Chỉ cần trình duyệt** cho Bước 1-3: một tài khoản [Claude](https://claude.ai) và một tài khoản [Arc Studio](https://studio.arc.io). Mở [Bước 1](01-y-tuong/README.md), copy prompt, dán vào Claude Chat. Hoặc gửi luôn link repo này cho Claude Chat / ChatGPT – nó sẽ hiểu là bạn muốn lên ý tưởng và bắt đầu hỏi.
 
 **Muốn có người giữ hộ trạng thái** (nhớ mình đang ở bước nào, lưu brief/kế hoạch xuống đĩa) thì mở repo này bằng Claude Code:
 
@@ -36,10 +36,6 @@ Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài
 1. **Vì sao cần bước này** – ngắn thôi
 2. **Prompt / cách làm** – copy dán được
 3. **Kết quả cuối bước** – mang gì sang bước sau
-
-## Bản 6 bước cũ
-
-Quy trình 6 bước trước đây nằm ở [`archive/`](archive/README.md), chỉ để tham khảo, không dùng để chạy.
 
 Link docs, thông số mạng mainnet/testnet, cách cài CLI: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
 

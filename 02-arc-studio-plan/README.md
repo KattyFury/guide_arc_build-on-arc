@@ -2,7 +2,7 @@
 
 [Arc Studio](https://studio.arc.io) là AI build app của Circle, chuyên về Arc: viết smart contract, dựng giao diện, deploy lên Arc testnet, có sẵn USDC testnet và ví để thử. Ở chế độ **Plan**, nó chưa viết code ngay mà lên kế hoạch trước, hỏi lại bạn những chỗ chưa rõ, rồi mới build.
 
-Bước này thay cho cả cụm "viết PRD → phỏng vấn ngược → chốt stack → wireframe" của bản cũ. Không phải vì mấy việc đó hết quan trọng, mà vì Arc Studio giờ tự làm được phần lớn, và nó hiểu Arc hơn một AI chat thông thường.
+Viết spec, chốt stack, vẽ khung màn hình – mấy việc đó vẫn quan trọng, nhưng Arc Studio tự làm được phần lớn, và nó hiểu Arc hơn một AI chat thông thường.
 
 ## Làm thế nào
 

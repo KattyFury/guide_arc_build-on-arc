@@ -86,6 +86,12 @@ Prompt giao cho Claude Code:
 
 Một link sản phẩm chạy thật trên Arc mainnet, người ngoài vào dùng được. Đưa cho người không biết gì về dự án dùng thử, ngồi nhìn họ mò – chỗ họ khựng lại là chỗ cần sửa.
 
-Kinh nghiệm build thật chi tiết hơn (đọc chữ ký hàm SDK trước khi gọi, sửa code nhớ sửa test, đo trước rồi mới đổ lỗi, RPC giới hạn request) nằm ở [`archive/06-build`](../archive/06-build/README.md), mục "5 thứ làm bạn chậm gấp nhiều lần".
+Mấy cái bẫy làm chậm gấp nhiều lần lúc build thật:
+
+1. **Gọi hàm SDK theo trí nhớ.** SDK cư xử lạ thì bảo Claude Code đọc chữ ký hàm thật trong `node_modules` (file `.d.ts`) trước, đừng đoán từ triệu chứng rồi thử-sai trên bản đang chạy.
+2. **Sửa giao diện mà không nhìn thấy.** Bắt AI tự chụp màn hình ở nhiều cỡ máy (390px và 375px) và đo bằng script, không đoán bằng mắt.
+3. **Sửa code quên sửa test.** Sửa logic ở đâu, sửa test ngay trong lượt đó – test đỏ lâu ngày thì nhìn quen rồi bỏ qua, mất tác dụng.
+4. **Đổ lỗi cho code trước khi đo.** Lỗi có thể do hạ tầng bên thứ ba, do terminal, hoặc đã có từ trước. Đo trước, đổ lỗi sau.
+5. **Retry dồn dập khi RPC giới hạn request.** Gộp lệnh đọc (Multicall), giãn cách lần thử lại; chưa chắc số liệu thì hiện `…`, đừng vẽ `0` – app tiền bạc hiện `0` sai là người dùng tưởng mất tiền.
 
 Có link rồi thì đăng lên X, Arc House, Discord: bạn là ai, vì sao làm app này, mời mọi người dùng thử. Đừng ngại lời chê – người chê là người còn quan tâm.

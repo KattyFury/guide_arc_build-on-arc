@@ -2,6 +2,8 @@
 
 > How to work with me. Read this before every session.
 
+> **AI chat (Claude Chat, ChatGPT...) đọc repo qua link:** file này dành cho Claude Code chạy trong máy, không phải cho bạn. Làm theo khung dặn ở đầu `README.md`: người gửi link muốn lên ý tưởng / hoàn thiện ý tưởng → chạy prompt trong `01-y-tuong/README.md`.
+
 ---
 
 ## Repo này là gì
@@ -28,8 +30,8 @@ Một câu cho dễ nhớ: **Chat để nghĩ, Arc Studio để dựng demo, Cod
 - **Thư mục dự án tạo ở Bước 1**, lúc lưu file đầu tiên (hỏi user đặt ở đâu – xem mục THƯ MỤC). Bước 4 code tải về (export GitHub hoặc `arc-studio pull`) để chung thư mục đó.
 - **Bước 4: đọc hết `docs/` trước khi sửa dòng code đầu tiên.** Lên mainnet là đụng tiền thật: giải thích contract bằng lời thường và chờ user đồng ý trước khi deploy, lấy chain ID/RPC/địa chỉ từ docs chính thức (`ARC-RESOURCES.md` trước, rồi MCP `arc-docs`), private key chỉ trong `.env` đã gitignore.
 - **Arc Studio CLI bản 1.2.1 chỉ `skills install --tool claude-code`.** Codex thì gọi `arc-studio run ... --output json` + `arc-studio pull`. Windows báo "Claude Code not found" → cách vá ở `04-hoan-thien-mainnet/README.md` mục 4.2.
+- **User chỉ gửi link repo / nói chung chung "bắt đầu" mà không nêu bước** → mặc định là Bước 1 (lên ý tưởng hoặc hoàn thiện ý tưởng).
 - **Đích cuối là link sản phẩm chạy thật trên mainnet.** Bước 3 (demo testnet) là điểm dừng hợp lệ nếu user quyết không làm tiếp.
-- Bản 6 bước cũ nằm ở `archive/` – **không còn dẫn theo nó**, chỉ trích khi user hỏi hoặc cần dẫn chứng/bài học.
 
 ---
 
@@ -119,7 +121,7 @@ When I'm in **planning phase**, don't rush to code. When I have a spec, don't re
 
 ## Tech Stack – chọn theo từng dự án, KHÔNG khoá cứng
 
-Đây là series hướng dẫn, không phải một sản phẩm duy nhất — dự án của người đọc chọn stack theo cái phù hợp nhất lúc đó (ở bản 4 bước, Arc Studio đề xuất trong kế hoạch Bước 2). Đừng mặc định Cloudflare Workers/Pages chỉ vì đó là stack quen thuộc của tác giả.
+Đây là series hướng dẫn, không phải một sản phẩm duy nhất — dự án của người đọc chọn stack theo cái phù hợp nhất lúc đó (Arc Studio đề xuất trong kế hoạch Bước 2). Đừng mặc định Cloudflare Workers/Pages chỉ vì đó là stack quen thuộc của tác giả.
 
 - **Chain**: Arc
 - Backend/frontend/hosting: quyết định theo từng dự án, ghi rõ trong `HANDOFF.md` hoặc README của dự án đó.
