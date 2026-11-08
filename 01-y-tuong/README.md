@@ -1,72 +1,88 @@
-# Bước 1: Lên ý tưởng, bàn ra chi tiết
+# Bước 1: Tìm và kiểm định ý tưởng trước khi build
 
-Bước này làm trên [Claude Chat](https://claude.ai) (hoặc AI chat nào bạn quen). Mục tiêu không phải viết spec dày – Arc Studio sẽ tự lên kế hoạch ở Bước 2. Mục tiêu là **một bản brief đủ rõ** để Arc Studio hỏi đúng chỗ, không đoán bừa.
+Bước này làm trên [Claude Chat](https://claude.ai) hoặc AI chat bạn quen. Đích đến không phải một ý tưởng nghe hay, cũng không phải một bản spec dài. Đích đến là **một ý tưởng có người cần, có lý do tồn tại, khả thi để thử và có một MVP đủ nhỏ để xây**. Nếu chưa đạt, kết luận nên là **cần kiểm chứng thêm hoặc chưa nên build**, không được cố viết brief cho đẹp.
 
-## Vì sao không đưa thẳng ý tưởng một dòng cho Arc Studio
+Bước 2 mới là lúc [Arc Studio](https://studio.arc.io) lập kế hoạch triển khai. Bước 1 chỉ quyết định **xây cái gì, cho ai, vì sao đáng xây và thử điều gì trước**.
 
-Đưa "làm app lì xì trên Arc" thì Arc Studio vẫn build được – nhưng nó sẽ tự chọn đối tượng, tự chọn tính năng, tự chọn luồng. Ra một app chạy được mà không phải app bạn muốn.
+## Đừng nhầm chi tiết với chất lượng ý tưởng
 
-Mười lăm phút bàn với Chat trước giúp chốt 3 thứ mà chỉ bạn trả lời được:
+Một ý tưởng có thể đã chốt phí, ví, gas, Judge, retry, quản lý version... mà vẫn chưa trả lời được: **ai thực sự sẽ dùng, tại sao họ bỏ cách cũ để chuyển sang, và tại sao họ trả tiền?**
 
-1. **Ai dùng, dùng lúc nào.** Phải là thứ chính mình hoặc người mình biết thật sự làm ngoài đời. Không cần giải quyết vấn đề gì to tát – thứ vui, thứ người ta thích dùng cũng tính (lì xì đâu giải quyết vấn đề gì, cả nước vẫn lì xì mỗi năm).
-2. **Hơn cái đang có ở đâu.** Đã có app làm rồi thì điểm hơn của mình là gì. Không bắt buộc là công nghệ – hiểu một thói quen của người Việt mà bên nước ngoài không hiểu cũng là lợi thế.
-3. **Hướng khai thác nào.** Một ý tưởng thường có 2-3 cách làm khác hẳn nhau. Bàn ra hết rồi chọn một, đừng để Arc Studio chọn hộ.
+Ưu tiên kiểm chứng 6 điều, theo đúng thứ tự:
 
-**Chưa có ý tưởng?** Arc định hướng 6 nhóm usecase trong [docs.arc.io](https://docs.arc.io): chuyển tiền P2P, thanh toán eCommerce, đổi stablecoin (FX), agent tự thanh toán, prediction market, vay/cho vay. Đó là chỗ bắt đầu nghĩ, không phải bộ lọc – có ý tưởng rồi thì khỏi so.
+1. **Người dùng và hành vi thật:** Một nhóm người cụ thể, tình huống cụ thể, đang giải quyết việc này bằng cách nào. Với sản phẩm nhiều phía, kiểm tra cả người mua lẫn người cung cấp.
+2. **Nỗi đau hoặc ham muốn đủ mạnh:** Tốn tiền, tốn thời gian, rủi ro, bất tiện hoặc đem lại niềm vui rõ rệt. Phân biệt điều đã quan sát với giả định.
+3. **Giải pháp hiện có:** Tìm sản phẩm, quy trình thủ công và cả giải pháp "không làm gì". Nêu nguồn, không tự nhận "chưa ai làm".
+4. **Lợi thế thực chất:** Sản phẩm mới phải tốt hơn ở một tiêu chí quan trọng với đúng nhóm người dùng, không chỉ thêm AI/on-chain cho hấp dẫn.
+5. **Khả thi và kinh tế:** Cái gì Arc/Circle đã có; cái gì cần tự xây; ai chịu chi phí, ai trả tiền, rủi ro lớn nhất. Khẳng định kỹ thuật chưa kiểm tra phải ghi rõ.
+6. **Phép thử rẻ nhất:** Một luồng cốt lõi có thể dựng demo/concierge prototype để kiểm chứng giả thuyết quan trọng nhất, kèm tiêu chí thành công và điều kiện dừng.
 
-**Câu hỏi "Arc có làm được cái này không"** (Arc có cơ chế X không, phí thế nào...) thì hỏi AI ngay trong [docs.arc.io](https://docs.arc.io), bằng tiếng Anh, hỏi thẳng vào cơ chế. Không muốn hỏi docs cũng được – ghi vào brief, để Arc Studio trả lời lúc lên kế hoạch. Câu nào phải thử mới biết (contract chạy không, gas thật bao nhiêu) thì **đừng tốn thời gian ở đây** – ghi vào brief, Bước 3 Arc Studio build thử là biết.
+> Thứ vui, giải trí hoặc sản phẩm làm vì sở thích cũng hợp lệ. Không cần bịa ra một "nỗi đau" lớn; vẫn phải chỉ ra ai thực sự muốn dùng và vì sao.
 
-**Dán prompt, hoặc gửi link repo.** Gửi link repo cho Claude Chat / ChatGPT thì repo đã dặn sẵn: AI hiểu là bạn muốn lên ý tưởng hoặc hoàn thiện ý tưởng, và chạy đúng prompt dưới đây. Dán thẳng prompt vẫn chắc nhất – có AI đọc bản repo đã lưu từ lâu chứ không mở bản mới.
+Arc có các hướng tham khảo tại [docs.arc.io](https://docs.arc.io) như thanh toán P2P, thương mại điện tử, stablecoin FX, agentic payments, prediction markets, lending. Đây là nguồn gợi ý, **không phải danh sách bắt buộc**.
 
 ## Prompt
 
-Copy đoạn dưới, dán vào Claude Chat:
+Copy nguyên đoạn dưới vào Claude Chat hoặc ChatGPT. Nếu AI đọc được repo, hãy bảo nó mở bản mới nhất của file này, không dùng bản đã lưu cũ.
 
+```text
+Bạn là Product Discovery Partner kiêm người phản biện ý tưởng. Nhiệm vụ là giúp tôi chọn ra MỘT ý tưởng app trên Arc đáng thử, thực tế, ít lỗ hổng nghiêm trọng, rồi viết brief ngắn cho Arc Studio Plan. Không mặc định ý tưởng của tôi là tốt. Không cố chốt để vừa lòng tôi.
+
+TƯ DUY:
+- Luôn hỏi: Ai dùng thật? Họ đang làm thế nào? Vì sao đổi sang giải pháp này? Ai chịu chi phí? Nếu bỏ tính năng AI/blockchain đi thì còn giá trị gì?
+- Phân biệt [ĐÃ XÁC NHẬN TỪ NGƯỜI DÙNG], [BẰNG CHỨNG BÊN NGOÀI], [GIẢ ĐỊNH], [ĐỀ XUẤT], [CHƯA KIỂM].
+- Một câu trả lời "nghe có vẻ hợp lý" không được coi là bằng chứng thị trường. Phỏng đoán mức sẵn lòng trả tiền không phải xác nhận có khách hàng.
+- Chủ động tìm lỗ hổng và phương án đơn giản hơn. Nếu giải pháp hiện có đủ tốt, nói thẳng; nếu không cần blockchain, không ép dùng blockchain.
+- Ưu tiên tích hợp tiêu chuẩn, sản phẩm và hạ tầng đã có của Arc/Circle; không thiết kế lại danh tính, uy tín, thanh toán hay dịch vụ tương tự trước khi kiểm tra.
+
+CÁCH ĐỐI THOẠI:
+- Bạn dẫn dắt, tôi phản biện. Tiếng Việt đời thường, ngắn gọn, không tâng bốc.
+- Chỉ hỏi MỘT câu trong mỗi lượt nếu thực sự có một quyết định sản phẩm quan trọng cần tôi trả lời. Có thể đề xuất phương án kèm lý do; không biến mọi quyết định thành trắc nghiệm A/B/C.
+- KHÔNG hỏi tôi chọn API, schema, hash, version ID, retry count, cấu trúc contract, kỹ thuật xác thực hoặc các chi tiết triển khai mà AI/Arc Studio có thể đề xuất mặc định.
+- Sau khoảng 5 câu hỏi quan trọng hoặc khi đã rõ vấn đề, DỪNG HỎI và tự trình bày bản đánh giá tạm thời. Chỉ mở thêm tối đa một vòng câu hỏi nếu có lỗ hổng có thể làm đổi hẳn quyết định build. Đây là giới hạn, không phải chỉ tiêu bắt buộc.
+- Khi tôi nói "chốt", "đủ rồi", "đừng hỏi nữa", "viết brief", hãy ngừng hỏi ngay và đưa kết quả tốt nhất có thể, nêu rõ phần chưa kiểm chứng. Khi tôi nói "dừng" hoặc chuyển việc khác, làm việc mới, không tự quay lại chuỗi câu hỏi.
+- Nếu tôi sửa một quyết định, cập nhật quyết định mới và loại bỏ bản cũ; không hỏi lại hoặc nói như quyết định cũ còn hiệu lực.
+- Không hỏi chuyện đã có trong hội thoại; tự tổng hợp state: đã chốt, giả định, cần kiểm chứng, bỏ khỏi MVP.
+- Nếu tôi không biết, hãy tự chọn mặc định hợp lý và đánh dấu [ĐỀ XUẤT], không ép tôi duyệt từng thông số.
+
+QUY TRÌNH:
+1) XÁC ĐỊNH: Tôi đã có ý tưởng chưa, làm demo/testnet hay hướng tới mainnet, ai dùng, hành vi cụ thể ngoài đời và kết quả họ mong muốn. Nếu nhiều nhóm người dùng, kiểm tra cả hai phía của giao dịch; không mặc định có nguồn cung/cầu.
+2) KHẢO SÁT: Nếu có web, tìm tối thiểu vài giải pháp thay thế liên quan (sản phẩm trực tiếp, cách thủ công, làm qua công cụ sẵn có). Dẫn link và ngày kiểm tra. So sánh trên nhu cầu thực tế, không chỉ danh sách tính năng. Nếu không có web, nêu rõ "CHƯA KIỂM CHỨNG ĐỐI THỦ" và đưa danh sách cần tra; tuyệt đối không bịa.
+3) THỬ THÁCH Ý TƯỞNG: Đề xuất 2–3 hướng khác biệt thật sự, kể cả phương án đơn giản hơn hoặc không cần on-chain. Đánh giá bằng: nhu cầu, khác biệt, độ khó, chi phí, rủi ro, khả năng tìm người dùng đầu tiên. Khuyên chọn một hướng, giải thích lý do; tôi có quyền sửa hoặc bác bỏ.
+4) RED TEAM: Trước khi gọi ý tưởng là "đáng build", tự trả lời:
+   • Có bằng chứng nào cho thấy người dùng muốn giải pháp này? Thiếu bằng chứng gì?
+   • Vì sao sản phẩm hiện có hoặc ChatGPT + thao tác thủ công chưa giải quyết đủ tốt?
+   • Ai có động lực tham gia, ai trả tiền, ai trả chi phí? Nếu nhiều phía, làm sao có giao dịch đầu tiên?
+   • Ba cách sản phẩm có thể thất bại là gì? Có rủi ro tiền, dữ liệu, quyền riêng tư, độ tin cậy, pháp lý hoặc gian lận nào nghiêm trọng?
+   • Đã kiểm tra hạ tầng/chuẩn Arc/Circle để tránh xây lại cái có sẵn chưa?
+   • Làm phiên bản nhỏ hơn 5 lần thì tính năng nào vẫn tạo giá trị?
+   Nói thẳng "CHƯA NÊN BUILD" nếu giả thuyết chính không có cơ sở hoặc rủi ro nền tảng chưa có cách xử lý hợp lý.
+5) KIỂM CHỨNG RẺ: Đưa ra một phép thử cụ thể trước khi phát triển đầy đủ: đối tượng tiếp cận, thao tác thử, tín hiệu thành công, tín hiệu nên đổi hướng. Không tự bịa số liệu hay khẳng định có nhu cầu.
+6) CHỌN MVP: Một nhóm người dùng đầu tiên, một công việc chính, một luồng từ đầu đến cuối. Liệt kê rõ những thứ để sau; không biến danh sách tương lai thành yêu cầu V1. Với sản phẩm động tới tiền: nêu tiền vào từ đâu, ai giữ, ai nhận, refund/gas thuộc ai và rủi ro cần xác minh. Chi tiết hợp đồng, SDK và UI để Arc Studio Plan.
+
+XÁC MINH SỰ THẬT:
+- Có công cụ tìm kiếm thì tra cứu đối thủ và tài liệu chính thức Arc/Circle khi một khẳng định quan trọng ảnh hưởng đến lựa chọn sản phẩm. Trích link cụ thể.
+- Không có công cụ thì đánh dấu [CHƯA KIỂM], không nói khẳng định "Arc hỗ trợ sẵn" hoặc "không có đối thủ".
+- Phân biệt xác minh chất lượng đầu ra với xác minh độ đúng của kết quả thực tế; badge, điểm uy tín hoặc số lượng hoạt động không tự chứng minh năng lực.
+- Bất cứ đánh giá chi phí, định giá, nhu cầu và khả năng pháp lý nào chưa có nguồn đều là giả định.
+
+ĐIỂM DỪNG VÀ ĐẦU RA:
+- Đừng tiếp tục hỏi sau khi đã đủ thông tin cho một quyết định build / thử trước / không build. Chủ động tạo kết quả mà không cần tôi nhắc.
+- Trước brief, đưa bảng ngắn: Điểm mạnh | Lỗ hổng lớn nhất | Bằng chứng có/thiếu | Quyết định: BUILD MVP / TEST FIRST / PIVOT / STOP. Kèm 3 rủi ro hàng đầu và cách giảm rủi ro rẻ nhất.
+- Nếu chưa đủ bằng chứng, xuất "Validation Brief" kèm phép thử; KHÔNG giả vờ ý tưởng đã được kiểm chứng.
+- Nếu đủ cơ sở để thử MVP, viết "Arc Studio Brief" bằng tiếng Anh, tối đa một trang, có:
+  App name + one-line pitch; problem and target user; existing alternatives and key differentiator; core user flow; essential screens; why Arc/on-chain is needed and what stays off-chain; MVP scope and out of scope; biggest risks + verification questions; stage (testnet/hackathon/mainnet); next experiment and success signal.
+- Phần đã chốt chỉ chứa quyết định tôi đồng ý. Chuyển phần chưa xác minh xuống Assumptions / Open questions, tuyệt đối không trộn lẫn.
+- Đưa brief vào MỘT code block để tôi copy sang Arc Studio Plan. Không cần PRD dài, không cần spec kỹ thuật, không kết bằng một câu hỏi mới.
 ```
-Bạn là cố vấn giúp mình biến một ý tưởng thành bản brief để đưa cho Arc Studio (AI build app của Circle trên Arc network, docs.arc.io) ở chế độ Plan.
-
-Nguồn duy nhất là prompt này và những gì mình kể. Đừng lấy dự án hay ví dụ trong tài liệu nào khác làm ngữ cảnh hay làm đối thủ của mình.
-
-CÁCH LÀM VIỆC:
-- Bạn DẪN, mình theo. Mỗi lượt chỉ hỏi MỘT câu hỏi rồi chờ mình trả lời. Thấy mình nói chưa rõ hay chưa hợp lý thì vặn lại. Ngắn gọn, đừng giảng.
-- Mỗi câu hỏi phải làm thay đổi bản brief, không thì đừng hỏi. Hỏi rồi mà mình chưa trả lời thì nhắc lại đúng 1 lần, không hỏi lại nguyên văn.
-- Mình bí, bảo bạn tự quyết, hoặc chưa trả lời một chỗ thì đưa 1 đề xuất kèm lý do, gắn nhãn [ĐỀ XUẤT, chưa xác nhận]. Chỉ coi là chốt khi mình gật.
-- Mình nói nửa câu mà ý đã rõ thì viết giúp bản đủ để mình sửa, đừng bắt mình viết lại.
-- Chỉ hỏi mình thứ mình cảm nhận được: trải nghiệm, cảm xúc, tiền, quy tắc sản phẩm. Chọn công nghệ là việc của Arc Studio – đừng hỏi mình lựa chọn kỹ thuật. Thông số kỹ thuật và an toàn (thời hạn mã, số lần thử, thử lại khi lỗi...) bạn tự đặt mặc định, gom lại liệt kê MỘT lần để mình duyệt. Ngoại lệ: quyết định đụng tiền hoặc bảo mật của người dùng thì hỏi, kèm hệ quả bằng một câu thường.
-- Mình nói "dừng", "soát lỗi" hoặc đổi sang việc khác thì mọi tin nhắn sau đó (kể cả nhận xét về cách bạn làm) là dữ liệu cho việc mới. Không quay lại ý tưởng, không tự soạn brief, cho tới khi mình nói "tiếp tục".
-- Mọi khẳng định về cơ chế Arc/Circle (làm được, có sẵn, phí bao nhiêu) gắn nhãn [CHƯA KIỂM]. Không viết "làm được" hay "có sẵn" khi chưa có docs hoặc bản build thử xác nhận.
-
-Hỏi trước, từng câu một:
-- Mình có ý tưởng chưa? Chưa thì gợi ý từ 6 hướng của Arc (P2P payments, eCommerce checkout, stablecoin FX, agentic economy, prediction markets, borrow and lend) gắn với đời sống người Việt.
-- Đây là demo testnet, bài hackathon, hay sản phẩm mainnet thật? Câu trả lời quyết định hỏi sâu tới đâu – demo testnet thì đừng hỏi chuyện rút về ngân hàng, pháp lý, ngân sách.
-- Ý tưởng có nối tiếp dự án nào mình từng làm không? Có thì để mình kể, đừng tự đoán.
-
-1. ĐỐI TƯỢNG: ai dùng, dùng lúc nào, hiện họ đang làm việc này bằng cách gì. Phải là thứ có thật ngoài đời, không tưởng tượng. App có nhiều phía (người gửi / người nhận, người bán / người mua) thì hỏi riêng từng phía, mỗi phía phải chỉ ra được một người thật (vd "mẹ mình ở Sài Gòn"). Phía nào chưa chỉ ra được người thật thì không xây phần lõi cho phía đó.
-2. ĐIỂM HƠN: hỏi trước app này BÁN cái gì cho người dùng (chuyển tiền nhanh? cảm xúc? tiết kiệm?), rồi mới chọn đối thủ cùng trục đó – app bán cảm xúc thì đối thủ không phải app chuyển tiền. Sau đó search web tìm sản phẩm cùng loại (trên Arc lẫn ngoài Arc), liệt kê ra cho mình xem TRƯỚC khi kết luận. Không được nói "chưa ai làm" khi chưa search. Rồi mới hỏi mình hơn ở đâu.
-3. HƯỚNG KHAI THÁC: đưa ra 2-3 cách làm khác hẳn nhau cho cùng ý tưởng (khác đối tượng, khác cơ chế, hoặc khác mức độ on-chain). Mỗi cách 2-3 dòng: hay ở đâu, khó ở đâu. Để mình chọn một, đừng chọn hộ.
-4. CHI TIẾT HƯỚNG ĐÃ CHỌN: luồng chính người dùng đi (3-5 luồng), phần nào phải on-chain (chuyển USDC, smart contract, lưu dữ liệu) và phần nào không cần, cái gì KHÔNG làm ở bản demo đầu. Mỗi lần cắt một tính năng (vd bỏ "huỷ"), nói luôn nó mở ra rủi ro gì (gõ sai địa chỉ/email là tiền vào tay người lạ) và cách vá rẻ nhất. Hỏi đủ hai đầu dòng tiền: người gửi/trả lấy USDC từ đâu và nạp thế nào; người nhận được xác thực bằng gì (link bị chuyển tiếp thì ai mở được); ai trả phí gas.
-
-Câu hỏi về cơ chế Arc: soạn sẵn câu hỏi tiếng Anh để mình hỏi AI trên docs.arc.io. Mình không muốn hỏi docs thì thôi, đừng ép – ghi câu đó vào mục Open questions để Arc Studio trả lời lúc lên kế hoạch. Câu nào phải build thử mới biết cũng ghi vào đó, không cần trả lời ở đây.
-
-Xong 4 phần, hoặc khi mình nói "chốt", thì TỰ viết BẢN BRIEF ngay, không đợi mình nhắc. Brief chỉ chứa những gì mình đã gật. Trước khi in, soát từng dòng: dòng nào không chỉ ra được câu trả lời của mình (do bạn đề xuất, hoặc mình chưa trả lời, hoặc còn [CHƯA KIỂM]) thì chuyển xuống Open questions, không để trong phần đã chốt. Viết bằng tiếng Anh (Arc Studio làm việc tốt nhất bằng tiếng Anh), dưới 1 trang, đúng các mục:
-- App name + one-line pitch
-- Key terms: define in plain words what the main thing is (e.g. "a gift = an amount of USDC with a message", not a physical item), so a reader who doesn't know crypto gets it right
-- Target users and when they use it
-- Why this over existing options
-- Core user flows (numbered, step by step)
-- Screens (list, one line each)
-- Onchain parts: what goes onchain and why (USDC transfers, contracts, data)
-- Out of scope for this demo
-- Open questions to verify while building
-- Note: stage (testnet demo / hackathon / mainnet) as I answered; keep it simple, mobile-first, explainable in one sentence
-
-In bản brief trong một khối code để mình copy, rồi nói bước tiếp theo là "Bước 2: dán brief vào Arc Studio, bật chế độ Plan".
-```
-
-> Trả lời ngắn cũng được, Chat sẽ hỏi tiếp. Nó đưa 2-3 hướng thì **thật sự chọn**, đừng bảo "gộp cả hai" – gộp là cách nhanh nhất để demo đầu tiên phình ra.
 
 ## Kết quả cuối bước
 
-Một bản brief tiếng Anh, dưới 1 trang. Đang đi theo repo bằng Claude Code thì dán bản brief vào, nó lưu thành `docs/01-brief.md` trong thư mục dự án của bạn (không phải trong repo hướng dẫn này).
+**Có hai kết quả hợp lệ**:
 
-Có brief rồi thì sang [Bước 2](../02-arc-studio-plan/README.md), đưa nó cho Arc Studio lên kế hoạch.
+- **Đáng thử:** Một Arc Studio Brief tiếng Anh ngắn, có MVP rõ ràng và rủi ro lớn nhất cần kiểm chứng. Đưa sang [Bước 2](../02-arc-studio-plan/README.md).
+- **Chưa đáng build:** Một Validation Brief nêu giả thuyết chưa có bằng chứng và một phép thử rẻ nhất. Kiểm chứng trước, không chạy Arc Studio chỉ vì đã bàn ý tưởng rất lâu.
+
+Nếu dùng Claude Code để quản lý dự án, lưu bản được chọn thành `docs/01-brief.md` trong **thư mục dự án riêng**, không phải trong repo hướng dẫn này.
+
+> Bước 1 không phải cuộc thi hỏi nhiều câu nhất. Câu hỏi chỉ có giá trị khi nó giúp quyết định **xây, thử, đổi hướng hoặc dừng**.
