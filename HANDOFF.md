@@ -1,66 +1,68 @@
 # HANDOFF – guide_arc_build-on-arc
 
-> File làm việc của tác giả, không phải nội dung cho người đọc series. Mở máy mới thì đọc file này trước.
-> Luật cho Claude Code nằm ở `CLAUDE.md`. File này chỉ ghi **trạng thái hiện tại** – lịch sử cũ xem `git log`, không chép lại vào đây.
-> **Cập nhật:** 2026-10-26.
+> The author's working file, not content for readers of the series. On a new machine, read this file first.
+> Rules for Claude Code are in `CLAUDE.md`. This file only records the **current state** – for older history see `git log`, don't copy it here.
+> **Updated:** 2026-11-09.
 
-## 0. Repo này là gì
+## 0. What this repo is
 
-Series hướng dẫn build app trên Arc, viết cho người Việt không rành crypto và không có nền lập trình. Nội dung gốc là loạt bài "Build on Arc bằng Claude Code" trên X của [@0xhieuxyz](https://x.com/0xhieuxyz) – repo này là bản có nhà, vì X thì bài chết sau 48 giờ.
+A series on building apps on Arc, written for people who don't know crypto and have no programming background. The original content is the Vietnamese-language "Build on Arc bằng Claude Code" series on X by [@0xhieuxyz](https://x.com/0xhieuxyz) – this repo is its permanent home, because posts on X die after 48 hours.
 
-**Thuần hướng dẫn:** không code dự án mẫu, không mục "Ví dụ", không mục "Prompt này từng hụt chỗ nào" (gỡ hết 10-20).
+**Translated to English on 2026-11-09.** The Vietnamese version is in the git history, before that commit. The folders `01-y-tuong/` and `04-hoan-thien-mainnet/` became `01-idea/` and `04-polish-mainnet/`.
+
+**Guide only:** no sample project code, no "Examples" section, no "Where this prompt fell short" section (all removed Oct 20).
 
 - GitHub: https://github.com/KattyFury/guide_arc_build-on-arc (public)
 - Local: `D:\Files\Claude\guide_arc_build-on-arc`
 
-## 1. Đang ở đâu
+## 1. Where things stand
 
-4 bước. Bản 6 bước cũ đã xoá hẳn (10-26), lịch sử ở git.
+4 steps. The old 6-step version was removed entirely (Oct 26), history is in git.
 
-| Bước | Thư mục | Ở đâu | Trạng thái |
+| Step | Folder | Where | Status |
 |---|---|---|---|
-| 1. Lên ý tưởng → brief tiếng Anh | `01-y-tuong/` | Claude Chat | Viết xong, chưa chạy thật |
-| 2. Plan | `02-arc-studio-plan/` | Arc Studio | Viết xong, chưa chạy thật |
-| 3. Build + demo testnet | `03-build-demo/` | Arc Studio | Viết xong, chưa chạy thật |
-| 4. Hoàn thiện + mainnet | `04-hoan-thien-mainnet/` | Claude Code / Codex + Arc Studio CLI | Viết xong, chưa chạy thật |
+| 1. Idea → English brief | `01-idea/` | Claude Chat | Written, not run for real |
+| 2. Plan | `02-arc-studio-plan/` | Arc Studio | Written, not run for real |
+| 3. Build + testnet demo | `03-build-demo/` | Arc Studio | Written, not run for real |
+| 4. Polish + mainnet | `04-polish-mainnet/` | Claude Code / Codex + Arc Studio CLI | Written, not run for real |
 
-**▶ ĐANG DỞ:** **Prompt Bước 1 chưa chạy thật lần nào** – lượt tới chạy đúng prompt trong `01-y-tuong`. Cuối phiên dùng prompt soát lỗi (bắt Chat liệt kê chỗ lệch prompt, mỗi dòng: luật | chuyện xảy ra | đề xuất sửa) rồi sửa thẳng prompt.
+**▶ IN PROGRESS:** **The Step 1 prompt hasn't been run for real, in its current English form** – on the next run, use exactly the prompt in `01-idea`. At the end of the session, use a review prompt (make Chat list where it deviated from the prompt, one line each: rule | what happened | suggested fix), then fix the prompt directly.
 
-**Gửi link repo cho AI chat (10-26):** mặc định = Bước 1 (lên / hoàn thiện ý tưởng). Dặn ở khung đầu `README.md` + đầu `CLAUDE.md` + `AGENTS.md`. Có AI đọc bản repo đã lưu từ trước 10-20 (6 bước, ví dụ TapTip/EZwallet) – repo không xoá được bản lưu đó, nên Bước 1 vẫn khuyên dán thẳng prompt là chắc nhất.
+**Sending the repo link to an AI chat (Oct 26):** defaults to Step 1 (come up with / refine an idea). Instructions are at the top of `README.md` + top of `CLAUDE.md` + `AGENTS.md`. Some AIs read a cached copy of the repo from before Oct 20 (6 steps, TapTip/EZwallet examples) – the repo can't delete those caches, so Step 1 still recommends pasting the prompt directly as the safest option.
 
-**Chưa biết (đừng bịa khi viết tiếp):** vị trí nút bật Plan trên web studio.arc.io (docs không tả UI web); link preview của Arc Studio có cho người ngoài mở không.
+**Unknown (don't make these up when writing more):** where the Plan toggle is on the studio.arc.io web UI (the docs don't describe the web UI); whether Arc Studio's preview links can be opened by outsiders.
 
-**Đã verify 10-20** (MCP arc-docs + npm + máy Dell): mainnet chain `5042` / testnet `5042002`, RPC + explorer như `ARC-RESOURCES.md`; 6 hướng usecase trên docs; Arc Studio có Plan, Export GitHub, chỉ deploy testnet; `@circle-fin/arc-studio-cli` bản mới nhất **1.2.1**, `skills install --tool` chỉ hỗ trợ `claude-code` (Codex dùng `arc-studio run --output json`); Windows báo "Claude Code not found" → cách vá ở Bước 4 mục 4.2.
+**Verified Oct 20** (arc-docs MCP + npm + the Dell machine): mainnet chain `5042` / testnet `5042002`, RPC + explorer as in `ARC-RESOURCES.md`; 6 use-case directions in the docs; Arc Studio has Plan, GitHub Export, testnet-only deploys; the latest `@circle-fin/arc-studio-cli` is **1.2.1**, `skills install --tool` only supports `claude-code` (Codex uses `arc-studio run --output json`); Windows reports "Claude Code not found" → workaround in Step 4 section 4.2.
 
-## 2. Cách làm việc
+## 2. How to work
 
-1. Viết/sửa prompt của một bước.
-2. **Chạy thử thật trước khi đăng** – với dự án thật của ai đó, hoặc chạy khô.
-3. Hụt chỗ nào → sửa prompt. Xong là thôi, không ghi lại lịch sử lỗi trong bài.
+1. Write/edit the prompt for a step.
+2. **Test it for real before publishing** – with someone's real project, or as a dry run.
+3. If it falls short → fix the prompt. Done, no error history in the article.
 
-## 3. Quy định viết bài
+## 3. Writing rules
 
-- **Tiêu chí ý tưởng:** thứ vui, thứ người ta thích dùng cũng tính (lì xì đâu giải quyết vấn đề gì). Cái không nới: phải là thứ mình hoặc người mình biết **thật sự làm ngoài đời**.
-- **Giọng văn:** tiếng Việt đời thường, xưng "mình" / "anh em". Câu ngắn, không sáo. Bảng khi so sánh, blockquote cho ghi chú đáng nhớ, mỗi bước kết bằng một câu dẫn sang bước sau.
-- **Dấu gạch dài: chỉ en dash `–` (U+2013), không em dash (U+2014)** trong mọi file người đọc thấy. Kiểm bằng `grep -c` phải ra 0.
+- **Idea criteria:** fun things, things people just like using, count too (red envelopes don't solve any problem). What doesn't flex: it has to be something you or someone you know **actually does in real life**.
+- **Voice:** plain, everyday English, first person "I" talking to the reader as "you". Short sentences, no clichés. Tables for comparisons, blockquotes for notes worth remembering, and every step ends with a line leading into the next.
+- **Long dashes: only the en dash `–` (U+2013), no em dash (U+2014)** in any file readers see. Check with `grep -c`, which must return 0.
 
-## 4. Bước 4: đọc skill trước khi đụng Circle/Arc
+## 4. Step 4: read the skills before touching Circle/Arc
 
-Trước khi viết code đụng Circle Wallets hoặc Arc, **load đúng skill trước**, đừng mò docs rồi thử-sai:
+Before writing code that touches Circle Wallets or Arc, **load the right skill first**, don't dig through docs and trial-and-error:
 
-- **Modular Wallets (Passkey, gasless)** → `circle:use-modular-wallets` (có bảng lỗi + rule "complete Console Setup before using SDK").
+- **Modular Wallets (Passkey, gasless)** → `circle:use-modular-wallets` (has an error table + the rule "complete Console Setup before using SDK").
 - **Developer-Controlled Wallets (Entity Secret)** → `circle:use-developer-controlled-wallets`.
-- **Thứ khác của Circle** (USDC, Gateway, swap, bridge...) → danh sách skill ở https://docs.arc.io/ai/skills, cài qua `/plugin marketplace add circlefin/skills`.
-- **Câu hỏi chung về Arc** → MCP `arc-docs` (`docs.arc.io/mcp`), index https://docs.arc.io/llms.txt.
+- **Other Circle products** (USDC, Gateway, swap, bridge...) → skill list at https://docs.arc.io/ai/skills, install via `/plugin marketplace add circlefin/skills`.
+- **General Arc questions** → the `arc-docs` MCP (`docs.arc.io/mcp`), index at https://docs.arc.io/llms.txt.
 
-## 5. Tools tham khảo cho redesign (Bước 4 mục 4.3)
+## 5. Reference tools for the redesign (Step 4 section 4.3)
 
-- **21st.dev** – https://21st.dev/ – marketplace React+Tailwind, prompt sẵn cho Claude Code/Cursor/v0
-- **Magic UI** – https://magicui.design/ – component + animation React+Tailwind
-- **Astryx (Meta)** – https://astryx.atmeta.com/ – design system của Meta, React 19 + StyleX – hơi nặng cho app nhỏ
-- **ui-ux-pro-max-skill** – https://github.com/nextlevelbuilder/ui-ux-pro-max-skill – skill sinh design system theo project
-- **taste-skill** – https://github.com/Leonxlnx/taste-skill – skill chống AI sinh UI "generic slop"
+- **21st.dev** – https://21st.dev/ – React+Tailwind marketplace, ready-made prompts for Claude Code/Cursor/v0
+- **Magic UI** – https://magicui.design/ – React+Tailwind components + animation
+- **Astryx (Meta)** – https://astryx.atmeta.com/ – Meta's design system, React 19 + StyleX – a bit heavy for small apps
+- **ui-ux-pro-max-skill** – https://github.com/nextlevelbuilder/ui-ux-pro-max-skill – skill that generates a design system per project
+- **taste-skill** – https://github.com/Leonxlnx/taste-skill – skill against AI-generated "generic slop" UI
 
 ## 6. Git
 
-Remote `origin` = GitHub, branch `main`. Xong việc là commit + push ngay.
+Remote `origin` = GitHub, branch `main`. When a task is done, commit + push right away.

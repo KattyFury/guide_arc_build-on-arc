@@ -1,37 +1,37 @@
-# Bước 3: Build và demo luôn trên Arc Studio
+# Step 3: Build and demo right in Arc Studio
 
-Kế hoạch đã chốt thì cho Arc Studio build. Nó viết code, deploy contract lên Arc testnet và chạy app trong một bản **preview** – mở ra là bấm thử được, có sẵn faucet USDC testnet và nối ví để ký giao dịch thật trên testnet.
+With the plan locked in, let Arc Studio build. It writes the code, deploys the contracts to Arc testnet, and runs the app in a **preview** – open it and you can click through it, with a testnet USDC faucet built in and a wallet connection for signing real transactions on testnet.
 
-Bước này dừng lại khi **luồng chính chạy trọn vẹn trên preview**. Chưa cần đẹp, chưa cần đủ tính năng.
+This step ends when **the main flow works end to end on the preview**. It doesn't need to look good or have every feature yet.
 
-## Thử như người dùng thật
+## Test it like a real user
 
-Mở preview, đi hết luồng chính từ đầu tới cuối như một người lần đầu dùng – đừng bỏ bước nào vì "biết rồi":
+Open the preview and go through the main flow from start to finish like someone using it for the first time – don't skip a step because "I already know that one":
 
-1. Lấy USDC testnet từ faucet có sẵn, nối ví.
-2. Làm đúng việc chính của app (gửi tiền, tạo phòng, đặt cược...), xem tiền có đi thật không.
-3. Mở link explorer của giao dịch ra xem, đừng tin mỗi dòng "thành công" trên màn hình.
-4. Thử chỗ dễ sai: nhập số 0, số lẻ, bấm 2 lần, huỷ giữa chừng.
+1. Get testnet USDC from the built-in faucet and connect a wallet.
+2. Do the app's main job (send money, create a room, place a bet...) and check whether the money really moves.
+3. Open the transaction's explorer link and look at it. Don't just trust a "success" message on the screen.
+4. Try the places that break easily: enter 0, enter decimals, click twice, cancel halfway through.
 
-## Sửa thế nào cho rẻ
+## How to fix things cheaply
 
-- **Mỗi lượt một việc.** "Nút gửi không ra gì khi số dư bằng 0" – một lượt. Đừng gom 5 lỗi vào một câu, nó sửa lỗi này làm hỏng lỗi kia mà mình không biết do đâu.
-- **Tả cái mình thấy, không tả cách sửa.** "Bấm Gửi xong màn hình trắng" tốt hơn "sửa hàm handleSend". Nó đang cầm code, mình thì không.
-- **Đừng sửa giao diện bằng lời ở bước này.** Ngứa mắt thì ghi lại, để dành Bước 4. Tả "nút dịch xuống tí, màu nhạt tí" là cách đắt nhất để làm giao diện.
-- **Dán nguyên văn lỗi.** Có thông báo lỗi thì copy nguyên văn đưa nó, đừng kể lại.
+- **One thing per round.** "The send button does nothing when the balance is 0" – that's one round. Don't pack 5 bugs into one message: fixing one can break another, and you won't know what caused it.
+- **Describe what you see, not how to fix it.** "After I click Send the screen goes white" beats "fix the handleSend function". It's holding the code, and you're not.
+- **Don't fix the interface with words at this step.** If something bugs you, write it down and save it for Step 4. Describing "move the button down a bit, make the color a bit lighter" is the most expensive way to do UI.
+- **Paste errors word for word.** If there's an error message, copy it exactly and give it that. Don't retell it.
 
-## Ghi lại trước khi rời Arc Studio
+## Write things down before you leave Arc Studio
 
-Trước khi sang Bước 4, chép ra (hoặc dán cho Claude Code lưu vào `docs/03-demo.md`):
+Before you go to Step 4, copy these out (or paste them to Claude Code to save in `docs/03-demo.md`):
 
-- Link preview và tên app trên Arc Studio
-- Địa chỉ từng contract đã deploy + link explorer (copy từ kết quả Arc Studio trả về, mở explorer kiểm có thật không)
-- Những gì đã thử chạy được, những gì còn lỗi, những gì để dành Bước 4
+- The preview link and the app's name on Arc Studio
+- The address of each deployed contract + explorer link (copy them from Arc Studio's output, then open the explorer to confirm they're real)
+- What you tested that worked, what's still broken, and what's saved for Step 4
 
-> Kết quả Arc Studio báo về (địa chỉ, "deploy thành công") là **chưa kiểm** – docs của chính Arc Studio ghi vậy. Mở explorer xem tận mắt.
+> The results Arc Studio reports back (addresses, "deployed successfully") are **unverified** – Arc Studio's own docs say so. Open the explorer and see for yourself.
 
-## Kết quả cuối bước
+## What you end up with
 
-Một bản demo chạy trên Arc testnet, luồng chính đi trọn được, có link preview để khoe. Đủ để biết ý tưởng có đáng làm tiếp hay không – nhiều ý tưởng tới đây là biết nên dừng, và dừng ở đây rẻ hơn nhiều so với dừng sau khi đã redesign.
+A demo running on Arc testnet, with the main flow working end to end and a preview link to show off. That's enough to tell whether the idea is worth continuing – many ideas reveal here that it's time to stop, and stopping here is much cheaper than stopping after a redesign.
 
-Demo ổn và muốn làm tiếp thì sang [Bước 4](../04-hoan-thien-mainnet/README.md): mang code về máy, redesign, lên mainnet.
+If the demo is solid and you want to keep going, head to [Step 4](../04-polish-mainnet/README.md): bring the code to your machine, redesign, and go to mainnet.

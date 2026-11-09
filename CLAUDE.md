@@ -2,46 +2,46 @@
 
 > How to work with me. Read this before every session.
 
-> **AI chat (Claude Chat, ChatGPT...) đọc repo qua link:** file này dành cho Claude Code chạy trong máy, không phải cho bạn. Làm theo khung dặn ở đầu `README.md`: người gửi link muốn lên ý tưởng / hoàn thiện ý tưởng → chạy prompt trong `01-y-tuong/README.md`.
+> **AI chat (Claude Chat, ChatGPT...) reading the repo through a link:** this file is for Claude Code running on a local machine, not for you. Follow the instructions at the top of `README.md`: the person who sent the link wants to come up with or refine an idea → run the prompt in `01-idea/README.md`.
 
 ---
 
-## Repo này là gì
+## What this repo is
 
-Series hướng dẫn build app trên Arc: lý thuyết ngắn + prompt copy-dán được. **Prompt chưa đem
-đi chạy thật thì chưa được đăng.** Chạy thấy hụt chỗ nào thì sửa thẳng vào prompt – không giữ
-nhật ký lỗi, không giữ ví dụ dự án mẫu.
+A series on building apps on Arc: short theory + copy-paste prompts. **A prompt can't be published
+until it has been run for real.** If a run shows it falling short, fix the prompt directly – no
+error logs, no sample projects.
 
 ---
 
-## VAI CỦA MỖI BÊN – quy trình 4 bước (từ 2026-10-20)
+## WHO DOES WHAT – the 4-step process (since 2026-10-20)
 
-| Bước | Ai làm | Claude Code (cửa sổ này) làm gì |
+| Step | Who does it | What Claude Code (this window) does |
 |---|---|---|
-| **1. Ý tưởng** | User + **Claude Chat** (web) | Đọc `01-y-tuong/README.md`, đưa nguyên khối prompt, ĐỨNG CHỜ. Nhận bản brief user dán về → lưu `docs/01-brief.md` trong thư mục dự án |
-| **2. Plan** | User + **Arc Studio** (web, chế độ Plan) | Đưa câu kèm brief trong `02-arc-studio-plan/README.md`, nhắc 4 điểm soi kế hoạch. Nhận kế hoạch chốt → lưu `docs/02-plan.md` |
-| **3. Build + demo** | User + **Arc Studio** | Không làm hộ. Nhận link preview + địa chỉ contract + ghi chú thử → lưu `docs/03-demo.md` |
-| **4. Hoàn thiện + mainnet** | **Claude Code** (hoặc Codex) trong thư mục dự án | Làm thật: tải code về, cài Arc Studio CLI, redesign, deploy mainnet theo `04-hoan-thien-mainnet/README.md` |
+| **1. Idea** | User + **Claude Chat** (web) | Read `01-idea/README.md`, hand over the full prompt block, STAND BY. When the user pastes back the brief → save `docs/01-brief.md` in the project folder |
+| **2. Plan** | User + **Arc Studio** (web, Plan mode) | Hand over the line that goes with the brief in `02-arc-studio-plan/README.md`, remind them of the 4 things to check in the plan. When the plan is final → save `docs/02-plan.md` |
+| **3. Build + demo** | User + **Arc Studio** | Don't do it for them. When given the preview link + contract addresses + test notes → save `docs/03-demo.md` |
+| **4. Polish + mainnet** | **Claude Code** (or Codex) in the project folder | Do the real work: download the code, install the Arc Studio CLI, redesign, deploy to mainnet following `04-polish-mainnet/README.md` |
 
-Một câu cho dễ nhớ: **Chat để nghĩ, Arc Studio để dựng demo, Code để giữ và để hoàn thiện.**
+One line to remember: **Chat for thinking, Arc Studio for the demo, Code for keeping and finishing.**
 
-- **Bước 1-3 Claude Code KHÔNG trả lời hộ, KHÔNG tự viết brief, KHÔNG tự lên kế hoạch thay Arc Studio.** Chỉ đưa prompt, chờ, nhận kết quả chốt, lưu.
-- **Một bước = một lần giao + một lần nhận kết quả chốt.** Không để user dán từng lượt hội thoại của Chat/Arc Studio vào đây – đó là trả tiền token cho việc chép chính tả. Thấy đoạn dở dang thì nhắc: *"Cái này chưa chốt, nói tiếp bên kia cho xong rồi mang bản cuối về."*
-- **Thư mục dự án tạo ở Bước 1**, lúc lưu file đầu tiên (hỏi user đặt ở đâu – xem mục THƯ MỤC). Bước 4 code tải về (export GitHub hoặc `arc-studio pull`) để chung thư mục đó.
-- **Bước 4: đọc hết `docs/` trước khi sửa dòng code đầu tiên.** Lên mainnet là đụng tiền thật: giải thích contract bằng lời thường và chờ user đồng ý trước khi deploy, lấy chain ID/RPC/địa chỉ từ docs chính thức (`ARC-RESOURCES.md` trước, rồi MCP `arc-docs`), private key chỉ trong `.env` đã gitignore.
-- **Arc Studio CLI bản 1.2.1 chỉ `skills install --tool claude-code`.** Codex thì gọi `arc-studio run ... --output json` + `arc-studio pull`. Windows báo "Claude Code not found" → cách vá ở `04-hoan-thien-mainnet/README.md` mục 4.2.
-- **User chỉ gửi link repo / nói chung chung "bắt đầu" mà không nêu bước** → mặc định là Bước 1 (lên ý tưởng hoặc hoàn thiện ý tưởng).
-- **Đích cuối là link sản phẩm chạy thật trên mainnet.** Bước 3 (demo testnet) là điểm dừng hợp lệ nếu user quyết không làm tiếp.
+- **In Steps 1-3, Claude Code does NOT answer for the user, does NOT write the brief itself, and does NOT plan in place of Arc Studio.** Just hand over the prompt, wait, receive the final result, save it.
+- **One step = one handoff + one final result received.** Don't let the user paste every conversation turn from Chat/Arc Studio into here – that's paying tokens for dictation. If you see something half-finished, remind them: *"This isn't final yet. Finish it over there and bring back the final version."*
+- **The project folder is created in Step 1**, when saving the first file (ask the user where to put it – see the FOLDERS section). The code downloaded in Step 4 (GitHub export or `arc-studio pull`) goes in that same folder.
+- **Step 4: read all of `docs/` before changing the first line of code.** Mainnet means real money: explain the contracts in plain language and wait for the user's approval before deploying, get the chain ID/RPC/addresses from official docs (`ARC-RESOURCES.md` first, then the `arc-docs` MCP), and keep the private key only in a gitignored `.env`.
+- **Arc Studio CLI version 1.2.1 only supports `skills install --tool claude-code`.** For Codex, call `arc-studio run ... --output json` + `arc-studio pull`. If Windows reports "Claude Code not found" → the workaround is in section 4.2 of `04-polish-mainnet/README.md`.
+- **If the user only sends the repo link or says a general "let's start" without naming a step** → default to Step 1 (coming up with or refining an idea).
+- **The finish line is a link to a product running for real on mainnet.** Step 3 (testnet demo) is a valid stopping point if the user decides not to continue.
 
 ---
 
-## ⚠️ THƯ MỤC – đừng build đè vào repo hướng dẫn
+## ⚠️ FOLDERS – don't build on top of the guide repo
 
-Repo này không chứa code dự án nào, kể cả dự án mẫu – chỉ có `.md` hướng dẫn. Dự án của user
-→ **thư mục riêng, NGOÀI repo này.** Chưa có thì hỏi user muốn đặt ở đâu rồi tạo.
+This repo contains no project code, not even a sample project – only guide `.md` files. The user's project
+→ **a separate folder, OUTSIDE this repo.** If there isn't one yet, ask the user where they want it, then create it.
 
-Không nói rõ chỗ này thì Claude Code sẽ nhét code của người ta vào giữa mấy file README.
-Đã lường trước, đừng để xảy ra.
+Without saying this explicitly, Claude Code will stuff people's code in between the README files.
+It's been anticipated, so don't let it happen.
 
 ---
 
@@ -63,7 +63,7 @@ I'm a **Vietnamese vibecoder** – I have ideas, not a programming background. I
 
 ## How to Talk to Me
 
-- Respond in **Vietnamese**. Use English for code, technical terms, and proper nouns.
+- Respond in **the language I write in**. Use English for code, technical terms, and proper nouns.
 - **No filler**: skip "Great question!", "Sure!", "Certainly!".
 - **Answer directly**. Short task = short answer.
 - **Don't dump theory** – build first, explain when needed.
@@ -73,16 +73,16 @@ I'm a **Vietnamese vibecoder** – I have ideas, not a programming background. I
 
 ---
 
-## Giọng văn của series – KHÔNG ĐƯỢC SAI
+## The series' voice – DON'T GET THIS WRONG
 
-- **Tiếng Việt đời thường**, xưng "mình" / "anh em" như bài gốc trên X. Câu ngắn. Không sáo.
-- Bảng khi so sánh, blockquote cho ghi chú đáng nhớ, mỗi bước kết bằng một câu dẫn sang bước sau.
-- **Dấu gạch dài: CHỈ dùng en dash `–` (U+2013). TUYỆT ĐỐI KHÔNG em dash `—` (U+2014).**
-  Áp dụng cho mọi chữ người đọc nhìn thấy: README các bước, tài liệu, bài đăng.
-- **Không có mục "Ví dụ", không có mục "Prompt này từng hụt chỗ nào".** Prompt hụt thì sửa
-  prompt, xong là thôi – lịch sử đã có git.
-- Prompt sửa xong nên chạy thử trước khi coi là chốt (chạy thật với ai đó, hoặc tự chạy khô) –
-  sửa theo chỗ hụt lòi ra lúc chạy, đừng đoán trên giấy.
+- **Plain, everyday English**, first person "I" talking to the reader as "you". Short sentences. No clichés.
+- Tables for comparisons, blockquotes for notes worth remembering, and every step ends with a line leading into the next.
+- **Long dashes: ONLY the en dash `–` (U+2013). NEVER the em dash (U+2014).**
+  This applies to all text readers see: step READMEs, documents, posts.
+- **No "Examples" section, no "Where this prompt fell short" section.** If a prompt falls short, fix the
+  prompt and be done – git already has the history.
+- After editing a prompt, test it before treating it as final (run it for real with someone, or do a dry run) –
+  fix what the run exposes, don't guess on paper.
 
 ---
 
@@ -119,15 +119,15 @@ When I'm in **planning phase**, don't rush to code. When I have a spec, don't re
 
 ---
 
-## Tech Stack – chọn theo từng dự án, KHÔNG khoá cứng
+## Tech Stack – chosen per project, NOT locked in
 
-Đây là series hướng dẫn, không phải một sản phẩm duy nhất — dự án của người đọc chọn stack theo cái phù hợp nhất lúc đó (Arc Studio đề xuất trong kế hoạch Bước 2). Đừng mặc định Cloudflare Workers/Pages chỉ vì đó là stack quen thuộc của tác giả.
+This is a guide series, not a single product – each reader's project picks whatever stack fits best at the time (Arc Studio proposes one in the Step 2 plan). Don't default to Cloudflare Workers/Pages just because it's the author's familiar stack.
 
 - **Chain**: Arc
-- Backend/frontend/hosting: quyết định theo từng dự án, ghi rõ trong `HANDOFF.md` hoặc README của dự án đó.
-- **Secrets**: không hardcode key trong source, bất kể dùng stack nào.
+- Backend/frontend/hosting: decided per project, recorded in that project's `HANDOFF.md` or README.
+- **Secrets**: never hardcode keys in source, whatever the stack.
 
-**Trước khi research Arc/Circle lại từ đầu (tốn token):** đọc `ARC-RESOURCES.md` — link docs chính thức, network params Arc Testnet, cách cài App Kit SDK. Chỉ gọi MCP `arc-docs`/`circle` khi file đó chưa đủ chi tiết.
+**Before researching Arc/Circle from scratch (expensive in tokens):** read `ARC-RESOURCES.md` – official docs links, network params, how to install the App Kit SDK. Only call the `arc-docs`/`circle` MCPs when that file doesn't have enough detail.
 
 ---
 

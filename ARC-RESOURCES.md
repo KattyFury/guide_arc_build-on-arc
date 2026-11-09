@@ -1,47 +1,47 @@
-# Tài nguyên Arc & Circle
+# Arc & Circle resources
 
-> Tra cứu nhanh trước khi research lại từ đầu bằng MCP — đỡ tốn token. Link lấy từ MCP `arc-docs` + `circle`, verify ngày 2026-08-11, mạng + Arc Studio verify lại 2026-10-20, không phải đoán. Nếu nghi ngờ đã đổi, tra lại qua MCP trước khi tin file này.
+> A quick reference to check before researching from scratch through MCP – it saves tokens. Links come from the `arc-docs` + `circle` MCPs, verified on 2026-08-11, with the network details + Arc Studio re-verified on 2026-10-20, not guessed. If you suspect something has changed, check through MCP again before trusting this file.
 
-## Docs chính thức
+## Official docs
 
-- **Arc Docs**: https://docs.arc.io — khái niệm chain, RPC, deploy contract, connect wallet, evm differences.
-- **Arc App Kit** (SDK Bridge/Swap/Send/Unified Balance): https://docs.arc.io/app-kit
-- **Arc Studio** (AI build app của Circle, ra 09/2026): https://studio.arc.io – có chế độ Plan (lên kế hoạch, hỏi lại trước khi build), viết/preview/deploy app + contract lên **Arc testnet** (không deploy mainnet), export code lên GitHub. Docs: https://docs.arc.io/ai/arc-studio. CLI: `npm install -g @circle-fin/arc-studio-cli` → `arc-studio login` → `arc-studio skills install --tool claude-code` (bản 1.2.1 chỉ hỗ trợ `claude-code`; tool khác gọi `arc-studio run ... --output json`). Tải app làm trên web về: `arc-studio apps` → `arc-studio pull --app <ID>`. Docs CLI: https://docs.arc.io/ai/arc-studio-cli (verify 2026-10-20).
-- **Circle Developer Docs**: https://developers.circle.com — Wallets (dev/user-controlled, modular), CCTP, Smart Contract Platform.
-- **Circle Console** (API key, kit key, entity secret, wallet sets): https://console.circle.com
+- **Arc Docs**: https://docs.arc.io – chain concepts, RPC, contract deployment, wallet connection, EVM differences.
+- **Arc App Kit** (Bridge/Swap/Send/Unified Balance SDK): https://docs.arc.io/app-kit
+- **Arc Studio** (Circle's AI app builder, released September 2026): https://studio.arc.io – has a Plan mode (plans and asks questions before building), writes/previews/deploys apps + contracts to **Arc testnet** (no mainnet deploys), exports code to GitHub. Docs: https://docs.arc.io/ai/arc-studio. CLI: `npm install -g @circle-fin/arc-studio-cli` → `arc-studio login` → `arc-studio skills install --tool claude-code` (version 1.2.1 only supports `claude-code`; other tools call `arc-studio run ... --output json`). To download an app made on the web: `arc-studio apps` → `arc-studio pull --app <ID>`. CLI docs: https://docs.arc.io/ai/arc-studio-cli (verified 2026-10-20).
+- **Circle Developer Docs**: https://developers.circle.com – Wallets (dev/user-controlled, modular), CCTP, Smart Contract Platform.
+- **Circle Console** (API keys, kit keys, entity secret, wallet sets): https://console.circle.com
 
-## Thông số mạng
+## Network parameters
 
-Nguồn: https://docs.arc.io/arc/references/rpc-endpoints + /arc/references/contract-addresses (verify 2026-10-20).
+Source: https://docs.arc.io/arc/references/rpc-endpoints + /arc/references/contract-addresses (verified 2026-10-20).
 
 | Field | Mainnet | Testnet |
 |---|---|---|
 | Chain ID | `5042` | `5042002` |
 | RPC (HTTPS) | `https://rpc.mainnet.arc.io` | `https://rpc.testnet.arc.io` |
-| RPC dự phòng | `https://rpc.drpc.mainnet.arc.io` (và các bên khác trong docs) | `https://rpc.drpc.testnet.arc.io` (và các bên khác trong docs) |
+| Backup RPC | `https://rpc.drpc.mainnet.arc.io` (and other providers in the docs) | `https://rpc.drpc.testnet.arc.io` (and other providers in the docs) |
 | Block explorer | https://explorer.arc.io | https://explorer.testnet.arc.io |
 | Faucet | – | https://faucet.circle.com |
 | USDC (ERC-20, 6 decimals) | `0x3600000000000000000000000000000000000000` | `0x3600000000000000000000000000000000000000` |
-| Gas token | USDC native (18 decimals on-chain – cùng một số dư với ERC-20 6 decimals) | như mainnet |
+| Gas token | Native USDC (18 decimals on-chain – the same balance as the 6-decimal ERC-20) | same as mainnet |
 | CCTP domain | `26` | `26` |
 
-Các contract khác (EURC, Memo, Multicall3, Permit2, CCTP, Gateway...) xem bảng đầy đủ trong trang contract-addresses – đừng chép tay từ trí nhớ.
+For other contracts (EURC, Memo, Multicall3, Permit2, CCTP, Gateway...), see the full table on the contract-addresses page – don't copy them from memory.
 
-## App Kit SDK — cài đặt
+## App Kit SDK – installation
 
 ```bash
 npm install @circle-fin/app-kit          # full: Bridge + Swap + Send + Unified Balance
-npm install @circle-fin/bridge-kit       # chỉ bridge
-npm install @circle-fin/swap-kit         # chỉ swap
+npm install @circle-fin/bridge-kit       # bridge only
+npm install @circle-fin/swap-kit         # swap only
 npm install @circle-fin/unified-balance-kit
 ```
 
-Kèm đúng 1 adapter theo stack đang dùng: `@circle-fin/adapter-viem-v2`, `@circle-fin/adapter-ethers-v6`, `@circle-fin/adapter-solana-kit`, hoặc `@circle-fin/adapter-circle-wallets` (server-side, dùng chung Developer-Controlled Wallets).
+Add exactly 1 adapter for your stack: `@circle-fin/adapter-viem-v2`, `@circle-fin/adapter-ethers-v6`, `@circle-fin/adapter-solana-kit`, or `@circle-fin/adapter-circle-wallets` (server-side, shared with Developer-Controlled Wallets).
 
 ## Brand assets
 
-Chưa có bộ media kit public để tải — docs Arc ghi thẳng "contact the Arc team for logo files". Đừng tự chế logo/icon Arc; nếu cần thì hỏi user liên hệ team Arc trực tiếp.
+There's no public media kit to download yet – the Arc docs say outright "contact the Arc team for logo files". Don't make up an Arc logo or icon; if one is needed, ask the user to contact the Arc team directly.
 
-## Cách dùng file này
+## How to use this file
 
-Đọc file này trước khi gọi MCP `arc-docs`/`circle` research lại từ đầu. Chỉ tra MCP khi cần chi tiết sâu hơn bảng trên (code mẫu cho 1 quickstart cụ thể, API reference đầy đủ, sản phẩm Circle chưa liệt kê ở đây).
+Read this file before calling the `arc-docs`/`circle` MCPs to research from scratch. Only go to MCP when you need more detail than what's above (sample code for a specific quickstart, the full API reference, Circle products not listed here).

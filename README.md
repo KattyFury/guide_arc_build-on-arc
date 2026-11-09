@@ -1,27 +1,27 @@
-# Hướng dẫn anh em build on Arc
+# A guide to building on Arc
 
-> **Gửi AI (Claude Chat, ChatGPT, Gemini...) vừa nhận link repo này:** người gửi link muốn **lên ý tưởng hoặc hoàn thiện ý tưởng** cho một app trên Arc – đó là Bước 1. Mục tiêu là kiểm định ý tưởng, không hỏi vô tận hoặc ép viết brief nếu chưa có bằng chứng. Đừng tóm tắt repo, đừng hỏi "gửi link để làm gì". Mở [`01-y-tuong/README.md`](01-y-tuong/README.md) (bản thô: https://raw.githubusercontent.com/KattyFury/guide_arc_build-on-arc/main/01-y-tuong/README.md), làm đúng khối prompt trong đó như thể người dùng vừa dán nó vào, và hỏi ngay câu đầu tiên của prompt. Chỉ sang Bước 2-4 khi người dùng nói rõ họ đang ở bước đó.
+> **To the AI (Claude Chat, ChatGPT, Gemini...) that just received this repo link:** the person who sent it wants to **come up with or refine an idea** for an app on Arc – that's Step 1. The goal is to validate the idea, not to ask endless questions or force a brief when there's no evidence yet. Don't summarize the repo, and don't ask "what did you send this link for?". Open [`01-idea/README.md`](01-idea/README.md) (raw version: https://raw.githubusercontent.com/KattyFury/guide_arc_build-on-arc/main/01-idea/README.md), follow the prompt block in it exactly as if the user had just pasted it, and ask the prompt's first question right away. Only move to Steps 2-4 when the user says clearly that they're on that step.
 
-Series hướng dẫn build app trên Arc network, từ ý tưởng tới sản phẩm chạy thật trên mainnet. Không cần đã rành Arc hay biết code.
+A series on building an app on the Arc network, from idea to a product running for real on mainnet. You don't need to know Arc or how to code.
 
-Series có **4 bước**, vì [Arc Studio](https://studio.arc.io) (AI build app của Circle) có chế độ **Plan**: tự lên kế hoạch, hỏi lại chỗ chưa rõ, rồi build và deploy bản demo lên testnet. Viết spec, chốt stack, vẽ khung màn hình, setup môi trường – Arc Studio lo gần hết.
+The series has **4 steps**, because [Arc Studio](https://studio.arc.io) (Circle's AI app builder) has a **Plan** mode: it makes its own plan, asks about anything unclear, then builds and deploys a demo to testnet. Writing the spec, choosing the stack, sketching the screens, setting up the environment – Arc Studio handles nearly all of it.
 
-## 4 bước
+## The 4 steps
 
-| Bước | Làm gì | Ở đâu |
+| Step | What you do | Where |
 |---|---|---|
-| [1. Lên ý tưởng](01-y-tuong/README.md) | Kiểm chứng nhu cầu, soi đối thủ và rủi ro; quyết định thử MVP hay chưa nên build | Claude Chat |
-| [2. Plan với Arc Studio](02-arc-studio-plan/README.md) | Dán brief, bật chế độ Plan, trả lời câu hỏi, soi kế hoạch trước khi build | Arc Studio |
-| [3. Build và demo](03-build-demo/README.md) | Cho build, thử luồng chính trên preview với USDC testnet, sửa tới khi chạy trọn | Arc Studio |
-| [4. Hoàn thiện, lên mainnet](04-hoan-thien-mainnet/README.md) | Tải code về, cài Arc Studio CLI cho Claude Code / Codex, redesign, deploy lên mainnet | Claude Code / Codex |
+| [1. Find an idea](01-idea/README.md) | Validate demand, check competitors and risks; decide whether to try an MVP or not build yet | Claude Chat |
+| [2. Plan with Arc Studio](02-arc-studio-plan/README.md) | Paste the brief, turn on Plan mode, answer its questions, review the plan before building | Arc Studio |
+| [3. Build and demo](03-build-demo/README.md) | Let it build, test the main flow on the preview with testnet USDC, fix until it works end to end | Arc Studio |
+| [4. Polish and go to mainnet](04-polish-mainnet/README.md) | Download the code, install the Arc Studio CLI for Claude Code / Codex, redesign, deploy to mainnet | Claude Code / Codex |
 
-Đích cuối là **một link sản phẩm chạy thật trên mainnet**, người ngoài vào dùng được. Nhưng Bước 3 cũng là một điểm dừng hợp lệ: demo xong thấy ý tưởng không đáng làm tiếp thì dừng – rẻ hơn nhiều so với dừng sau khi đã redesign.
+The finish line is **a link to a product running for real on mainnet** that outsiders can use. But Step 3 is also a valid place to stop: if the demo shows the idea isn't worth continuing, stop – it's much cheaper than stopping after a redesign.
 
-## Bắt đầu
+## Getting started
 
-**Chỉ cần trình duyệt** cho Bước 1-3: một tài khoản [Claude](https://claude.ai) và một tài khoản [Arc Studio](https://studio.arc.io). Mở [Bước 1](01-y-tuong/README.md), copy prompt, dán vào Claude Chat. Hoặc gửi luôn link repo này cho Claude Chat / ChatGPT – nó sẽ hiểu là bạn muốn lên ý tưởng và bắt đầu hỏi.
+**All you need for Steps 1-3 is a browser**: a [Claude](https://claude.ai) account and an [Arc Studio](https://studio.arc.io) account. Open [Step 1](01-idea/README.md), copy the prompt, paste it into Claude Chat. Or just send this repo link to Claude Chat / ChatGPT – it will understand that you want to work on an idea and start asking.
 
-**Muốn có người giữ hộ trạng thái** (nhớ mình đang ở bước nào, lưu brief/kế hoạch xuống đĩa) thì mở repo này bằng Claude Code:
+**Want something to keep track of state for you** (remember which step you're on, save the brief and plan to disk)? Open this repo with Claude Code:
 
 ```bash
 git clone https://github.com/KattyFury/guide_arc_build-on-arc.git
@@ -29,14 +29,14 @@ cd guide_arc_build-on-arc
 claude
 ```
 
-Rồi nói: *"Đọc CLAUDE.md rồi dẫn tôi đi từ Bước 1."* Chưa cài Claude Code thì xem [hướng dẫn setup](https://x.com/0xhieuxyz/status/2082123528573448506). Tới Bước 4 thì đằng nào cũng cần Claude Code (hoặc Codex).
+Then say: *"Read CLAUDE.md and walk me through it from Step 1."* If you haven't installed Claude Code yet, see the [setup guide](https://x.com/0xhieuxyz/status/2082123528573448506). You'll need Claude Code (or Codex) by Step 4 anyway.
 
-## Mỗi bước có gì
+## What each step contains
 
-1. **Vì sao cần bước này** – ngắn thôi
-2. **Prompt / cách làm** – copy dán được
-3. **Kết quả cuối bước** – mang gì sang bước sau
+1. **Why this step matters** – kept short
+2. **The prompt / how to do it** – ready to copy and paste
+3. **What you end up with** – what to carry into the next step
 
-Link docs, thông số mạng mainnet/testnet, cách cài CLI: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
+Docs links, mainnet/testnet network parameters, and CLI install instructions: [`ARC-RESOURCES.md`](ARC-RESOURCES.md).
 
-*(Quy định viết bài dành cho tác giả nằm ở `HANDOFF.md`.)*
+*(Writing rules for the author are in `HANDOFF.md`.)*

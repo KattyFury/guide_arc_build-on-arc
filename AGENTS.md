@@ -1,5 +1,5 @@
 # AGENTS.md
 
-Nếu bạn là AI chat (ChatGPT, Claude Chat...) nhận link repo này: người gửi muốn lên ý tưởng / hoàn thiện ý tưởng – làm theo khung dặn ở đầu `README.md`, chạy prompt trong `01-y-tuong/README.md`.
+If you are an AI chat (ChatGPT, Claude Chat...) that received this repo link: the sender wants to come up with or refine an idea – follow the instructions at the top of `README.md` and run the prompt in `01-idea/README.md`.
 
-Nếu bạn là Codex (hoặc agent khác không tự đọc `CLAUDE.md`): đọc `CLAUDE.md` ở root trước — đó là nguồn luật duy nhất cho repo này, file này không lặp lại nội dung.
+If you are Codex (or another agent that doesn't read `CLAUDE.md` on its own): read `CLAUDE.md` at the root first – it is the single source of rules for this repo, and this file does not repeat its contents.
