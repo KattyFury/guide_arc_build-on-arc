@@ -19,7 +19,7 @@ error logs, no sample projects.
 | Step | Who does it | What Claude Code (this window) does |
 |---|---|---|
 | **1. Idea** | User + **Claude Chat** (web) | Read `01-idea/README.md`, hand over the full prompt block, STAND BY. When the user pastes back the brief → save `docs/01-brief.md` in the project folder |
-| **2. Plan** | User + **Arc Studio** (web, Plan mode) | Hand over the line that goes with the brief in `02-arc-studio-plan/README.md`, remind them of the 4 things to check in the plan. When the plan is final → save `docs/02-plan.md` |
+| **2. Tech + plan** | User + **Arc Studio** (web, Plan mode) | Hand over the line that goes with the brief in `02-arc-studio-plan/README.md`, remind them of the 5 things to check in the plan (tech choices included). When the plan is final → save `docs/02-plan.md` |
 | **3. Build + demo** | User + **Arc Studio** | Don't do it for them. When given the preview link + contract addresses + test notes → save `docs/03-demo.md` |
 | **4. Polish + mainnet** | **Claude Code** (or Codex) in the project folder | Do the real work: download the code, install the Arc Studio CLI, redesign, deploy to mainnet following `04-polish-mainnet/README.md` |
 

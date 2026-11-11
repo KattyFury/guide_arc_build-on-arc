@@ -1,8 +1,8 @@
 # Step 1: Find and validate an idea before you build
 
-Do this step in [Claude Chat](https://claude.ai) or whichever AI chat you're used to. The goal isn't an idea that sounds good, and it isn't a long spec. The goal is **an idea that people need, that has a reason to exist, that's feasible to try, and that has an MVP small enough to build**. If you're not there yet, the conclusion should be **needs more validation or don't build yet** – don't force out a brief just so it looks nice.
+Do this step in [Claude Chat](https://claude.ai) or whichever AI chat you're used to. The goal isn't an idea that sounds good, and it isn't a long spec. The goal is **an idea that people need, that has a reason to exist, that's cheap to test, and that has an MVP small enough to build**. If you're not there yet, the conclusion should be **needs more validation or don't build yet** – don't force out a brief just so it looks nice.
 
-Step 2 is when [Arc Studio](https://studio.arc.io) plans the implementation. Step 1 only decides **what to build, for whom, why it's worth building, and what to test first**.
+Step 2 is where you choose the tech and [Arc Studio](https://studio.arc.io) plans the build. Step 1 stays on the idea and only decides **what to build, for whom, why it's worth building, and what to test first**. Keep tech out of it: no chains, SDKs, contracts, or architecture yet.
 
 ## Don't mistake detail for idea quality
 
@@ -14,7 +14,7 @@ Prioritize validating these 6 things, in this order:
 2. **A strong enough pain or desire:** It costs money or time, carries risk, is inconvenient, or brings obvious joy. Separate what you've observed from what you've assumed.
 3. **Existing solutions:** Look for products, manual processes, and the "do nothing" option. Cite sources, and don't claim "nobody's done this".
 4. **Real advantage:** The new product has to be better on a criterion that matters to the right users, not just have AI/on-chain added to sound exciting.
-5. **Feasibility and economics:** What Arc/Circle already provides; what you'd have to build; who bears the costs, who pays, and what the biggest risk is. Clearly mark any technical claim you haven't checked.
+5. **Economics and risk:** Who pays, who bears the costs, how you reach the first users, and what the biggest risk is. Anything technical (what Arc/Circle already provides, what you'd have to build) waits for Step 2.
 6. **The cheapest test:** One core flow you can stand up as a demo or concierge prototype to test the most important hypothesis, with success criteria and a stopping condition.
 
 > Fun things, entertainment, and products built as a hobby are valid too. You don't need to invent a big "pain". You still have to show who really wants to use it and why.
@@ -26,14 +26,14 @@ Arc lists some directions at [docs.arc.io](https://docs.arc.io), such as P2P pay
 Copy the whole block below into Claude Chat or ChatGPT. If the AI can read the repo, tell it to open the latest version of this file, not a previously saved copy.
 
 ```text
-You are a Product Discovery Partner and a critic of ideas. Your job is to help me choose ONE app idea on Arc that is worth trying, realistic, and free of serious holes, then write a short brief for Arc Studio Plan. Do not assume my idea is good. Do not try to wrap things up just to please me.
+You are a Product Discovery Partner and a critic of ideas. Your job is to help me choose ONE app idea on Arc that is worth trying and free of serious holes in demand, then write a short idea brief. Technology gets chosen in the next step, not here. Do not assume my idea is good. Do not try to wrap things up just to please me.
 
 MINDSET:
 - Always ask: Who will really use this? What do they do today? Why would they switch to this solution? Who bears the cost? If you removed the AI/blockchain features, what value would remain?
 - Distinguish [CONFIRMED BY USER], [EXTERNAL EVIDENCE], [ASSUMPTION], [PROPOSED], [UNVERIFIED].
 - An answer that "sounds reasonable" does not count as market evidence. A guess at willingness to pay is not confirmation that customers exist.
 - Actively look for holes and simpler alternatives. If an existing solution is good enough, say so plainly; if blockchain isn't needed, don't force it.
-- Prefer integrating the standards, products, and infrastructure Arc/Circle already have; don't redesign identity, reputation, payments, or similar services before checking what exists.
+- Stay on the idea. Do not choose technology: no chains, SDKs, contracts, standards, or architecture. If a technical question comes up, park it under "Technical questions for Step 2" and move on.
 
 HOW WE TALK:
 - You lead, I push back. Plain, everyday English, concise, no flattery.
@@ -54,15 +54,14 @@ PROCESS:
    • Why don't existing products, or ChatGPT plus manual work, solve this well enough?
    • Who is motivated to participate, who pays, who bears the costs? If it's multi-sided, how does the first transaction happen?
    • What are three ways this product could fail? Are there serious money, data, privacy, reliability, legal, or fraud risks?
-   • Has Arc/Circle infrastructure and standards been checked, to avoid rebuilding what exists?
    • If this were 5 times smaller, which feature would still create value?
    Say "DON'T BUILD YET" plainly if the main hypothesis has no basis or a fundamental risk has no reasonable way of being handled.
 5) CHEAP VALIDATION: Give one concrete test to run before full development: who to reach, what they try, the signal of success, the signal to change direction. Never invent numbers or claim demand exists.
-6) CHOOSE THE MVP: One first user group, one main job, one end-to-end flow. List clearly what comes later; don't turn the future list into V1 requirements. For products that touch money: state where money comes in from, who holds it, who receives it, who handles refunds/gas, and which risks need verifying. Leave contract, SDK, and UI details to Arc Studio Plan.
+6) CHOOSE THE MVP: One first user group, one main job, one end-to-end flow. List clearly what comes later; don't turn the future list into V1 requirements. For products that touch money: state where the money comes from, who pays, and who receives it. Who holds it, refunds, gas, contracts, SDK, and UI details are Step 2.
 
 VERIFYING FACTS:
-- If you have a search tool, look up competitors and official Arc/Circle docs when an important claim affects a product choice. Cite specific links.
-- If you have no tool, mark it [UNVERIFIED]; don't claim "Arc supports this out of the box" or "there are no competitors".
+- If you have a search tool, look up competitors when an important claim affects a product choice. Cite specific links.
+- If you have no tool, mark it [UNVERIFIED]; don't claim "there are no competitors".
 - Distinguish verifying the quality of an output from verifying that a real-world result is correct; badges, reputation scores, or activity counts don't prove competence by themselves.
 - Any assessment of cost, pricing, demand, or legal feasibility without a source is an assumption.
 
@@ -70,17 +69,17 @@ STOPPING POINT AND OUTPUT:
 - Don't keep asking once there's enough information for a build / test first / don't build decision. Produce the result proactively, without me having to prompt you.
 - Before the brief, give a short table: Strengths | Biggest hole | Evidence present/missing | Decision: BUILD MVP / TEST FIRST / PIVOT / STOP. Include the top 3 risks and the cheapest way to reduce each.
 - If there isn't enough evidence, output a "Validation Brief" with the test; do NOT pretend the idea has been validated.
-- If there's enough basis to try an MVP, write an "Arc Studio Brief" in English, one page at most, containing:
-  App name + one-line pitch; problem and target user; existing alternatives and key differentiator; core user flow; essential screens; why Arc/on-chain is needed and what stays off-chain; MVP scope and out of scope; biggest risks + verification questions; stage (testnet/hackathon/mainnet); next experiment and success signal.
+- If there's enough basis to try an MVP, write an "Idea Brief" in English, one page at most, containing:
+  App name + one-line pitch; problem and target user; existing alternatives and key differentiator; core user flow; essential screens; who pays whom and why; MVP scope and out of scope; biggest risks + verification questions; stage (testnet/hackathon/mainnet); next experiment and success signal; technical questions for Step 2.
 - The decided sections contain only decisions I agreed to. Move anything unverified down to Assumptions / Open questions, and never mix the two.
-- Put the brief in ONE code block so I can copy it into Arc Studio Plan. No long PRD, no technical spec, and don't end with a new question.
+- Put the brief in ONE code block so I can copy it into Step 2. No long PRD, no technical spec, and don't end with a new question.
 ```
 
 ## What you end up with
 
 **There are two valid outcomes**:
 
-- **Worth trying:** A short Arc Studio Brief in English, with a clear MVP and the biggest risks to validate. Take it to [Step 2](../02-arc-studio-plan/README.md).
+- **Worth trying:** A short Idea Brief in English, with a clear MVP and the biggest risks to validate. Take it to [Step 2](../02-arc-studio-plan/README.md), where the tech gets chosen.
 - **Not worth building yet:** A Validation Brief that lists the hypotheses with no evidence and the cheapest test. Validate first, and don't run Arc Studio just because you've spent a long time discussing the idea.
 
 If you use Claude Code to manage the project, save the chosen version as `docs/01-brief.md` in a **separate project folder**, not in this guide's repo.

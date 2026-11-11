@@ -2,7 +2,7 @@
 
 > The author's working file, not content for readers of the series. On a new machine, read this file first.
 > Rules for Claude Code are in `CLAUDE.md`. This file only records the **current state** – for older history see `git log`, don't copy it here.
-> **Updated:** 2026-11-09.
+> **Updated:** 2026-11-11.
 
 ## 0. What this repo is
 
@@ -21,12 +21,12 @@ A series on building apps on Arc, written for people who don't know crypto and h
 
 | Step | Folder | Where | Status |
 |---|---|---|---|
-| 1. Idea → English brief | `01-idea/` | Claude Chat | Written, not run for real |
-| 2. Plan | `02-arc-studio-plan/` | Arc Studio | Written, not run for real |
+| 1. Idea only → English Idea Brief (no tech) | `01-idea/` | Claude Chat | Written, not run for real |
+| 2. Tech choice + plan | `02-arc-studio-plan/` | Arc Studio | Written, not run for real |
 | 3. Build + testnet demo | `03-build-demo/` | Arc Studio | Written, not run for real |
 | 4. Polish + mainnet | `04-polish-mainnet/` | Claude Code / Codex + Arc Studio CLI | Written, not run for real |
 
-**▶ IN PROGRESS:** **The Step 1 prompt hasn't been run for real, in its current English form** – on the next run, use exactly the prompt in `01-idea`. At the end of the session, use a review prompt (make Chat list where it deviated from the prompt, one line each: rule | what happened | suggested fix), then fix the prompt directly.
+**▶ IN PROGRESS:** **The Step 1 prompt hasn't been run for real, in its current English form** – on the next run, use exactly the prompt in `01-idea`. At the end of the session, use a review prompt (make Chat list where it deviated from the prompt, one line each: rule | what happened | suggested fix), then fix the prompt directly. On 2026-11-11 the tech questions moved out of Step 1 and into Step 2 (tech choice + plan); the Step 2 prompt line hasn't been run for real in this form either.
 
 **Sending the repo link to an AI chat (Oct 26):** defaults to Step 1 (come up with / refine an idea). Instructions are at the top of `README.md` + top of `CLAUDE.md` + `AGENTS.md`. Some AIs read a cached copy of the repo from before Oct 20 (6 steps, TapTip/EZwallet examples) – the repo can't delete those caches, so Step 1 still recommends pasting the prompt directly as the safest option.
 

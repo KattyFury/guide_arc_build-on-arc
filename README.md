@@ -11,7 +11,7 @@ The series has **4 steps**, because [Arc Studio](https://studio.arc.io) (Circle'
 | Step | What you do | Where |
 |---|---|---|
 | [1. Find an idea](01-idea/README.md) | Validate demand, check competitors and risks; decide whether to try an MVP or not build yet | Claude Chat |
-| [2. Plan with Arc Studio](02-arc-studio-plan/README.md) | Paste the brief, turn on Plan mode, answer its questions, review the plan before building | Arc Studio |
+| [2. Choose the tech and plan](02-arc-studio-plan/README.md) | Paste the idea brief, turn on Plan mode, let Arc Studio choose the tech and make the plan, review both before building | Arc Studio |
 | [3. Build and demo](03-build-demo/README.md) | Let it build, test the main flow on the preview with testnet USDC, fix until it works end to end | Arc Studio |
 | [4. Polish and go to mainnet](04-polish-mainnet/README.md) | Download the code, install the Arc Studio CLI for Claude Code / Codex, redesign, deploy to mainnet | Claude Code / Codex |
 
